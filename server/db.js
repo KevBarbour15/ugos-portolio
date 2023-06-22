@@ -1,5 +1,7 @@
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://kevin:kevin@ugoportfolio.fbagqep.mongodb.net/?retryWrites=true&w=majority";
+const mongoose = require("mongoose");
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb+srv://kevin:kevin@ugoportfolio.fbagqep.mongodb.net/portfolio?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -8,9 +10,21 @@ const client = new MongoClient(uri, {
 
 async function connect() {
   try {
-    // Connect the client to the server
     await client.connect();
-    console.log("Connected to MongoDB!");
+    console.log("You successfully connected to MongoDB!");
+    const databasesList = await client.db().admin().listDatabases();
+    console.log("Databases:");
+    databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
+
+    mongoose
+      .connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() => console.log("Connected to MongoDB through Mongoose"))
+      .catch((err) =>
+        console.error("Could not connect to MongoDB through Mongoose", err)
+      );
   } catch (err) {
     console.error("Could not connect to MongoDB", err);
   }
