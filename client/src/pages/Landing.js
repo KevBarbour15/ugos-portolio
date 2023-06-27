@@ -8,7 +8,7 @@ function Landing() {
     <div className="main-container">
       <img className="background-image" src={image1} alt="Landing" />
       <div className="btn-enter">
-        <Link to="Home">Enter</Link>
+        <Link to="Home">enter</Link>
       </div>
     </div>
   );

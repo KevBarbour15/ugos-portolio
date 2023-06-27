@@ -27,11 +27,18 @@ body {
   border: 1px solid white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: 'Copperplate', fantasy;
+  font-family: "Copperplate", fantasy;
+  text-decoration: none;
 }
 
 .btn-enter:hover {
   background-color: #000;
   color: #fff;
-  font-family: 'Copperplate', fantasy;
+  font-family: "Copperplate", fantasy;
+}
+
+.btn-enter > a,
+.btn-enter > a:visited {
+  color: white;
+  text-decoration: none;
 }

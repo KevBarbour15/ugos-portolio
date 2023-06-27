@@ -5,10 +5,14 @@ const AlbumSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
+  description: {
     type: String,
-    required: true,
-  }
+    required: false,
+  },
+  albumCover: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Album", AlbumSchema);
