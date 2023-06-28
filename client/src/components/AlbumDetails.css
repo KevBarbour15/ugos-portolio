@@ -1,0 +1,26 @@
+/* AlbumDetails.css */
+
+.container {
+  margin: 0 auto;
+  max-width: 800px; /* adjust this for your design */
+  padding: 20px;
+}
+
+.container img {
+  max-width: 45%;
+  height: auto;
+}
+
+.container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.container p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.container .media-container {
+  margin-bottom: 20px;
+}

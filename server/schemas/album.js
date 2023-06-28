@@ -9,6 +9,12 @@ const AlbumSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  media: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Media",
+    },
+  ],
   albumCover: {
     type: String,
     required: false,

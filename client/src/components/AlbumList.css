@@ -1,0 +1,21 @@
+.album-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.album {
+  width: calc(50% - 20px); /* you can change this for your desired layout */
+  margin-bottom: 20px;
+}
+
+.album img {
+  width: 50%;
+  height: auto;
+}
+
+.album a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}

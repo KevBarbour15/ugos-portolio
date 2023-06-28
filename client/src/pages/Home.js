@@ -1,7 +1,15 @@
 import React from "react";
+import AlbumList from "../components/AlbumList";
+import Login from "../components/Login";
 
-function Home() {
-  return <h1>Home</h1>;
-}
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Ugo's Portfolio!</h1>
+      <AlbumList />
+      <Login />
+    </div>
+  );
+};
 
 export default Home;
