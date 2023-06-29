@@ -15,7 +15,7 @@ router.post("/", verifyToken, async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const albums = await Album.find({});
+    const albums = await Album.find({}).populate("albumCover");
     res.send(albums);
   } catch (error) {
     res.status(500).send(error);
@@ -24,9 +24,10 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const album = await Album.findById(req.params.id).populate("media");
+    const album = await Album.findById(req.params.id).populate(
+      "media albumCover"
+    );
     if (!album) res.status(404).send("No album found");
-    console.log(album); // log the album data
     res.send(album);
   } catch (error) {
     res.status(500).send(error);
@@ -35,8 +36,9 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", verifyToken, async (req, res) => {
   try {
-    const album = await Album.findByIdAndUpdate(req.params.id, req.body);
-    await album.save();
+    const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    }).populate("albumCover");
     res.send(album);
   } catch (error) {
     res.status(500).send(error);

@@ -16,8 +16,8 @@ const AlbumSchema = new mongoose.Schema({
     },
   ],
   albumCover: {
-    type: String,
-    required: false,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Media",
   },
 });
 

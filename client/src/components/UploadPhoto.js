@@ -23,19 +23,22 @@ function UploadPhoto() {
     setSelectedAlbum(e.target.value);
   };
 
+  /// Thing to do:
+  /// 1. File Validation
+  /// 2. File Size Limit
+  /// 3. Server-Side Validation - currently, the server will accept any file type, we need to everntually restrict this to only accept images
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("file", file);
     data.append("album", selectedAlbum);
 
-    // Retrieve the token from localStorage
     const token = localStorage.getItem("token");
 
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        // Pass the token as a Bearer token in Authorization header
         Authorization: `Bearer ${token}`,
       },
     };
