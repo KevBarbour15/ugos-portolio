@@ -1,7 +1,15 @@
 import React from "react";
+import AlbumList from "../components/AlbumList";
+import Login from "../components/Login";
+import Header from "../components/Header";
 
-function Home() {
-  return <h1>Home</h1>;
-}
+const Home = () => {
+  return (
+    <div>
+      <Header />
+      <AlbumList />
+    </div>
+  );
+};
 
 export default Home;

@@ -10,14 +10,6 @@ const MediaSchema = new mongoose.Schema({
     ref: 'Album', 
     required: true,
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: false
-  }
 });
 
 module.exports = mongoose.model("Media", MediaSchema);
