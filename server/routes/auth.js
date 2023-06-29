@@ -1,5 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../middleware");
 const router = express.Router();
 
 const SECRET_KEY = "verysecretkey";
@@ -17,5 +18,10 @@ router.post("/login", (req, res) => {
     res.status(401).json({ error: "Invalid username or password" });
   }
 });
+
+router.get("/validate-token", verifyToken, (req, res) => {
+  res.status(200).send({ valid: true });
+});
+
 
 module.exports = router;

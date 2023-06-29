@@ -1,13 +1,13 @@
 import React from "react";
 import AlbumList from "../components/AlbumList";
 import Login from "../components/Login";
+import Header from "../components/Header";
 
 const Home = () => {
   return (
     <div>
-      <h1>Welcome to Ugo's Portfolio!</h1>
+      <Header />
       <AlbumList />
-      <Login />
     </div>
   );
 };
