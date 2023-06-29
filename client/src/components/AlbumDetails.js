@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./AlbumDetails.css";
+import Header from "./Header";
 
+///// need to fix how this loads
 const AlbumDetails = () => {
   const { id } = useParams();
   const [album, setAlbum] = useState(null);
@@ -26,18 +28,21 @@ const AlbumDetails = () => {
   }
 
   return (
-    <div className="container">
-      <h2>{album.title}</h2>
-      <p>{album.description}</p>
-      {album.media && album.media.length > 0 ? (
-        album.media.map((media) => (
-          <div className="media-container" key={media._id}>
-            <img src={media.url} alt="media" />
-          </div>
-        ))
-      ) : (
-        <p>No media in this album.</p>
-      )}
+    <div>
+      <Header />
+      <div className="container">
+        <h2>{album.title}</h2>
+        <p>{album.description}</p>
+        {album.media && album.media.length > 0 ? (
+          album.media.map((media) => (
+            <div className="media-container" key={media._id}>
+              <img src={media.url} alt="media" />
+            </div>
+          ))
+        ) : (
+          <p>No media in this album.</p>
+        )}
+      </div>
     </div>
   );
 };

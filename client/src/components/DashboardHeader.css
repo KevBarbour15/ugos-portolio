@@ -1,0 +1,31 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.dashboard-header nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-header nav ul li {
+  margin-right: 20px;
+}
+
+.dashboard-header nav ul li:last-child {
+  margin-right: 0;
+}
+
+.dashboard-header nav a {
+  text-decoration: none;
+  color: #343a40;
+}
+
+.dashboard-header nav a:hover {
+  color: #007bff;
+}
