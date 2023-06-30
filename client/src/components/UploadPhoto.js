@@ -10,7 +10,11 @@ function UploadPhoto() {
     const fetchAlbums = async () => {
       const res = await axios.get("/albums");
       setAlbums(res.data);
+      if (res.data.length > 0) {
+        setSelectedAlbum(res.data[0]._id);
+      }
     };
+    
 
     fetchAlbums();
   }, []);
@@ -30,6 +34,12 @@ function UploadPhoto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!selectedAlbum) {
+      alert("Please select an album before uploading a photo.");
+      return;
+    }
+
     const data = new FormData();
     data.append("file", file);
     data.append("album", selectedAlbum);

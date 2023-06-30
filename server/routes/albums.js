@@ -2,6 +2,7 @@ const express = require("express");
 const Album = require("../schemas/album");
 const verifyToken = require("../middleware");
 const router = express.Router();
+const mongoose = require('mongoose');
 
 router.post("/", verifyToken, async (req, res) => {
   try {
@@ -36,11 +37,15 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", verifyToken, async (req, res) => {
   try {
+    console.log(`Is albumCover id valid? ${mongoose.Types.ObjectId.isValid(req.body.albumCover)}`);
+    console.log("ID: ", req.params.id);
+    console.log("Body: ", req.body);
     const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     }).populate("albumCover");
     res.send(album);
   } catch (error) {
+    console.log("ERROR: ", error); 
     res.status(500).send(error);
   }
 });

@@ -1,12 +1,13 @@
-// Header.js
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 
 const Header = () => {
-  const { isAuthenticated } = useContext(AuthContext); // Changed isLoggedIn to isAuthenticated
+  const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -25,16 +26,23 @@ const Header = () => {
           <li></li>
           <li>
             <div className="dropdown">
-              <button className="dropbtn">Menu</button>
+              <FontAwesomeIcon
+                className="dropbtn"
+                icon={faBars}
+                onClick={handleLoginClick}
+                color="gold"
+                size="3x"
+              />
               <div className="dropdown-content">
                 <Link to="/home">Photo Galleries</Link>
                 <Link to="/about">About</Link>
                 <Link to="/contact">Contact</Link>
-                <button onClick={handleLoginClick}>User Login</button>
+                <button onClick={handleLoginClick} className="dropdown-button">
+                  Owner Portal
+                </button>
               </div>
             </div>
           </li>
-          <li></li>
         </ul>
       </nav>
     </header>

@@ -33,10 +33,13 @@ const AlbumDetails = () => {
       <div className="container">
         <h2>{album.title}</h2>
         <p>{album.description}</p>
+
         {album.media && album.media.length > 0 ? (
           album.media.map((media) => (
-            <div className="media-container" key={media._id}>
-              <img src={media.url} alt="media" />
+            <div className="gallery-item">
+              <div className="image" key={media._id}>
+                <img src={media.url} alt="media" />
+              </div>
             </div>
           ))
         ) : (

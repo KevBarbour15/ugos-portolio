@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import CreateAlbum from "../components/CreateAlbum";
@@ -8,10 +8,16 @@ import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
 
 const Dashboard = () => {
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState("Upload Photo");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

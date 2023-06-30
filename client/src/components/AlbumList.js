@@ -18,10 +18,12 @@ function AlbumList() {
   return (
     <div className="album-list">
       {albums.map((album) => (
+        
         <div className="album" key={album._id}>
+          {console.log(album)}
           <Link to={`/albums/${album._id}`}>
-            {" "}
-            <img src={album.albumCover} alt={album.title} /> {album.title}
+            {console.log(album.albumCover)}
+            <img src={album.albumCover.url} alt={album.title} /> {album.title}
           </Link>
         </div>
       ))}
