@@ -1,26 +1,20 @@
-/* AlbumDetails.css */
-
-.container {
+.album-details {
+  max-width: 1200px;
   margin: 0 auto;
-  max-width: 800px; /* adjust this for your design */
-  padding: 20px;
+}
+.container {
+  padding: 30px;
 }
 
-.container img {
-  max-width: 45%;
-  height: auto;
+h2 {
+  margin: 0;
+  padding-bottom: 20px;
+  color: #333;
+  font-size: 2em;
 }
 
-.container h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+p {
+  color: #666;
+  font-size: 1.2em;
 }
 
-.container p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.container .media-container {
-  margin-bottom: 20px;
-}

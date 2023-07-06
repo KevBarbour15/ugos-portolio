@@ -1,21 +1,71 @@
 .album-list {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .album {
-  width: calc(50% - 20px); /* you can change this for your desired layout */
-  margin-bottom: 20px;
+  width: 45%;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-.album img {
-  width: 50%;
-  height: auto;
+.album .album-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.album a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
+.album-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.album-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-description {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: calc(7.5vw);
+  text-align: center;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.album-image:hover .album-description {
+  opacity: 1;
+}
+
+.album-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+  display: flex;
+  align-items: stretch;
 }
