@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import AuthContext from "../context/AuthContext";
+import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -21,9 +22,7 @@ const Login = () => {
       });
 
       localStorage.setItem("token", response.data.token);
-
-      setIsAuthenticated(true); // Changed setIsLoggedIn to setIsAuthenticated
-
+      setIsAuthenticated(true);
       navigate("/dashboard");
     } catch (error) {
       console.log("Failed to login");
@@ -33,26 +32,28 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Username:
+      <div className="login-page">
+        <div className="login-container">
+          <form className="login-form" onSubmit={handleSubmit}>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username" 
             />
-          </label>
-          <label>
-            Password:
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password" 
             />
-          </label>
-          <button type="submit">Log In</button>
-        </form>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button className="login-btn" type="submit">
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

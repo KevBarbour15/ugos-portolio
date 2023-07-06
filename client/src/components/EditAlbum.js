@@ -129,7 +129,6 @@ const EditAlbum = () => {
 
   return (
     <div>
-      <h1>Edit Album</h1>
       <select onChange={handleSelectAlbum}>
         <option>Select an album...</option>
         {albums.map((album) => (

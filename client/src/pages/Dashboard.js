@@ -6,6 +6,7 @@ import UploadPhoto from "../components/UploadPhoto";
 import EditAlbum from "../components/EditAlbum";
 import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
+import styles from "./Dashboard.css";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -41,10 +42,10 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div className={styles.dashboard}>
       <Header />
       <DashboardHeader activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout} />
-      <div>
+      <div className="dashboard-content">
         <CurrentComponent />
       </div>
     </div>

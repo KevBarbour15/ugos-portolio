@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ProgressBar from "react-bootstrap/ProgressBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./UploadPhoto.module.css";
 
 function UploadPhoto() {
   const [albums, setAlbums] = useState([]);
   const [selectedAlbum, setSelectedAlbum] = useState("");
   const [file, setFile] = useState(null);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -14,7 +18,6 @@ function UploadPhoto() {
         setSelectedAlbum(res.data[0]._id);
       }
     };
-    
 
     fetchAlbums();
   }, []);
@@ -53,37 +56,56 @@ function UploadPhoto() {
       },
     };
 
+    setProgress(30);
+
     try {
       const res = await axios.post("/media/upload", data, config);
 
       console.log("File uploaded successfully. Response: ", res.data);
+      setProgress(100);
+
+      setTimeout(() => {
+        setProgress(0);
+      }, 1000);
     } catch (error) {
       console.error(
         "An error occurred while uploading the file. Error: ",
         error
       );
+      setProgress(0);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Upload Photo</h1>
-      <label>
-        Select Album:
-        <select value={selectedAlbum} onChange={handleSelectChange}>
-          {albums.map((album) => (
-            <option value={album._id} key={album._id}>
-              {album.title}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Select Photo:
-        <input type="file" onChange={handleFileChange} />
-      </label>
-      <button type="submit">Upload</button>
-    </form>
+    <div className={styles.container}>
+      <div className={styles.uploadArea}>
+        <ProgressBar
+          className={styles.progressBarCustom}
+          now={progress}
+          label={`${progress}%`}
+          srOnly
+          striped
+          variant="info"
+        />
+        <form onSubmit={handleSubmit}>
+          <label>
+            Select Album:
+            <select value={selectedAlbum} onChange={handleSelectChange}>
+              {albums.map((album) => (
+                <option value={album._id} key={album._id}>
+                  {album.title}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Select Photo:
+            <input type="file" onChange={handleFileChange} />
+          </label>
+          <button type="submit">Upload</button>
+        </form>
+      </div>
+    </div>
   );
 }
 

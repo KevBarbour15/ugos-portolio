@@ -1,7 +1,8 @@
 .dashboard-header {
   display: flex;
-  justify-content: space-around;
-  background-color: #f8f9fa;
+  justify-content: center;
+  color: white;
+  background-color: black;
   padding: 10px 0;
   margin-bottom: 20px;
   z-index: 1;
@@ -9,23 +10,42 @@
 
 .dashboard-header nav ul {
   display: flex;
+  justify-content: space-between;
   list-style: none;
   padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .dashboard-header nav ul li {
-  margin-right: 20px;
+  flex: 1;
+  text-align: center;
 }
 
-.dashboard-header nav ul li:last-child {
-  margin-right: 0;
-}
-
-.dashboard-header nav a {
+.dashboard-header nav ul li button.header-button {
+  background: none;
+  border: none;
+  color: white;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
   text-decoration: none;
-  color: #343a40;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
 }
 
-.dashboard-header nav a:hover {
-  color: #007bff;
+.dashboard-header nav ul li button.header-button.active {
+  color: black;
+  background-color: white;
+  font-weight: 900;
+}
+
+.dashboard-header nav ul li button.header-button:hover {
+  background-color: #ffb6c1;
 }

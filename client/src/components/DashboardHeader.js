@@ -8,7 +8,9 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
         <ul>
           <li>
             <button
-              className={activeTab === "Upload Photo" ? "active" : ""}
+              className={`header-button ${
+                activeTab === "Upload Photo" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("Upload Photo")}
             >
               Upload Photo
@@ -16,7 +18,9 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
           </li>
           <li>
             <button
-              className={activeTab === "Create Album" ? "active" : ""}
+              className={`header-button ${
+                activeTab === "Create Album" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("Create Album")}
             >
               Create Album
@@ -24,14 +28,18 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
           </li>
           <li>
             <button
-              className={activeTab === "Edit Album" ? "active" : ""}
+              className={`header-button ${
+                activeTab === "Edit Album" ? "active" : ""
+              }`}
               onClick={() => setActiveTab("Edit Album")}
             >
               Edit Album
             </button>
           </li>
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button className={`header-button`} onClick={() => handleLogout()}>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>
