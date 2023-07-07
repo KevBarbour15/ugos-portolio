@@ -9,7 +9,7 @@ const router = express.Router();
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: 15 * 1024 * 1024,
+    fileSize: 75 * 1024 * 1024,
   },
 });
 
@@ -44,6 +44,9 @@ router.post(
       const album = await Album.findById(req.body.album);
       if (album) {
         album.media.push(media._id);
+        if (!album.albumCover) {
+          album.albumCover = media._id;
+        }
         await album.save();
       } else {
         console.log(`No album with id: ${req.body.album} found`);

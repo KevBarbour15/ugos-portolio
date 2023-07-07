@@ -2,7 +2,7 @@ const express = require("express");
 const Album = require("../schemas/album");
 const verifyToken = require("../middleware");
 const router = express.Router();
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 router.post("/", verifyToken, async (req, res) => {
   try {
@@ -10,7 +10,11 @@ router.post("/", verifyToken, async (req, res) => {
     await album.save();
     res.status(201).send(album);
   } catch (error) {
-    res.status(400).send(error);
+    if (error.code === 11000) {
+      res.status(400).send("An album with this title already exists");
+    } else {
+      res.status(400).send(error);
+    }
   }
 });
 
@@ -37,7 +41,11 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", verifyToken, async (req, res) => {
   try {
-    console.log(`Is albumCover id valid? ${mongoose.Types.ObjectId.isValid(req.body.albumCover)}`);
+    console.log(
+      `Is albumCover id valid? ${mongoose.Types.ObjectId.isValid(
+        req.body.albumCover
+      )}`
+    );
     console.log("ID: ", req.params.id);
     console.log("Body: ", req.body);
     const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
@@ -45,7 +53,7 @@ router.put("/:id", verifyToken, async (req, res) => {
     }).populate("albumCover");
     res.send(album);
   } catch (error) {
-    console.log("ERROR: ", error); 
+    console.log("ERROR: ", error);
     res.status(500).send(error);
   }
 });

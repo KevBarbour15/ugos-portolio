@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "./UploadPhoto.module.css";
+import styles from "../styles/UploadPhoto.module.css";
 
 function UploadPhoto() {
   const [albums, setAlbums] = useState([]);
@@ -77,8 +77,22 @@ function UploadPhoto() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.uploadArea}>
+    <div className={styles.background}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h3>Upload Photo</h3>
+
+        <label htmlFor="album">Select Album:</label>
+        <select id="album" value={selectedAlbum} onChange={handleSelectChange}>
+          {albums.map((album) => (
+            <option value={album._id} key={album._id}>
+              {album.title}
+            </option>
+          ))}
+        </select>
+
+        <label htmlFor="photo">Select Photo:</label>
+        <input type="file" id="photo" onChange={handleFileChange} />
+
         <ProgressBar
           className={styles.progressBarCustom}
           now={progress}
@@ -87,24 +101,9 @@ function UploadPhoto() {
           striped
           variant="info"
         />
-        <form onSubmit={handleSubmit}>
-          <label>
-            Select Album:
-            <select value={selectedAlbum} onChange={handleSelectChange}>
-              {albums.map((album) => (
-                <option value={album._id} key={album._id}>
-                  {album.title}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Select Photo:
-            <input type="file" onChange={handleFileChange} />
-          </label>
-          <button type="submit">Upload</button>
-        </form>
-      </div>
+
+        <button type="submit">Upload</button>
+      </form>
     </div>
   );
 }

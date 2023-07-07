@@ -14,15 +14,22 @@ const CreateAlbum = () => {
     };
 
     try {
-      await axios.post("/albums", album, {
+      const response = await axios.post("/albums", album, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      // handle success here, e.g., show a success message or redirect
+
+      setTitle("");
+      setDescription("");
+      alert("Album successfully created!");
     } catch (error) {
-      // handle error here
-      console.error(error);
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data);
+      } else {
+        console.error(error);
+        alert("An error occurred while trying to create the album.");
+      }
     }
   };
 

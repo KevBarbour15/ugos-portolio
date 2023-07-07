@@ -1,15 +1,15 @@
 import React from "react";
-import "./DashboardHeader.css";
+import styles from "../styles/DashboardHeader.module.css";
 
 const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
   return (
-    <header className="dashboard-header">
+    <header className={styles.dashboardHeader}>
       <nav>
         <ul>
           <li>
             <button
-              className={`header-button ${
-                activeTab === "Upload Photo" ? "active" : ""
+              className={`${styles.headerButton} ${
+                activeTab === "Upload Photo" ? styles.active : ""
               }`}
               onClick={() => setActiveTab("Upload Photo")}
             >
@@ -18,8 +18,8 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
           </li>
           <li>
             <button
-              className={`header-button ${
-                activeTab === "Create Album" ? "active" : ""
+              className={`${styles.headerButton} ${
+                activeTab === "Create Album" ? styles.active : ""
               }`}
               onClick={() => setActiveTab("Create Album")}
             >
@@ -28,8 +28,8 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
           </li>
           <li>
             <button
-              className={`header-button ${
-                activeTab === "Edit Album" ? "active" : ""
+              className={`${styles.headerButton} ${
+                activeTab === "Edit Album" ? styles.active : ""
               }`}
               onClick={() => setActiveTab("Edit Album")}
             >
@@ -37,7 +37,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
             </button>
           </li>
           <li>
-            <button className={`header-button`} onClick={() => handleLogout()}>
+            <button className={styles.headerButton} onClick={handleLogout}>
               Logout
             </button>
           </li>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import goldBars from "../images/gold-bars.png";
-import "./Header.css";
+import styles from "../styles/Header.module.css";
 
 const Header = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -18,21 +18,20 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <nav>
-        <ul className="nav-links">
-          <div className="title-container">
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <ul className={styles.navLinks}>
+          <div className={styles.titleContainer}>
             Ugo
             Mbakwe
           </div>
-          <li>
-            <div className="dropdown">
-              <img className="dropbtn" src={goldBars} alt="gold-bars" />
-              <div className="dropdown-content">
-                <Link to="/home">Galleries</Link>
-                <Link to="/about">About</Link>
-                <Link to="/contact">Contact</Link>
-                <button onClick={handleLoginClick} className="dropdown-button">
+          <li className={styles.navItem}>
+            <div className={styles.dropdown}>
+              <img className={styles.dropbtn} src={goldBars} alt="gold-bars" />
+              <div className={styles.dropdownContent}>
+                <Link className={styles.navLink} to="/home">Galleries</Link>
+                <Link className={styles.navLink} to="/about">About</Link>
+                <button onClick={handleLoginClick} className={styles.dropdownButton}>
                   Owner
                 </button>
               </div>
