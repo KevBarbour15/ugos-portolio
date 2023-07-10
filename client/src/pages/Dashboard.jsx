@@ -42,9 +42,14 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
-      <Header />
-      <DashboardHeader activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout} />
+    <div className={styles.dashboardContainer}>
+      <Header className={styles.dashboardHeader} />
+      <DashboardHeader 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+        handleLogout={handleLogout} 
+        className={styles.dashboardSubHeader} 
+      />
       <div className={styles.contentContainer}>
         <CurrentComponent />
       </div>

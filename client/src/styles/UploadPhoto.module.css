@@ -1,34 +1,15 @@
 .background {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+  height: 50vh;
+  position: relative;
+  transform: none;
+  left: 0;
+  top: 0;
+
 }
 
-.background .background__shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-
-.background__shape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-
-.background__shape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-}
 
 .background__form {
-  height: 520px;
-  width: 400px;
+  height: 50vh;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
