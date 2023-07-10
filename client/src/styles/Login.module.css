@@ -6,92 +6,84 @@
   box-sizing: border-box;
 }
 
-.ownerLoginBackground {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+.loginContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }
 
-.ownerLoginShape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-.ownerLoginShape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-}
 .ownerLoginForm {
-  color: black;
-  height: 520px;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
+  color: white;
+  width: 70%; 
+  max-width: 415px;
+  background-color: black;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 35px;
+  padding: 10vh 5vh;
+  margin: 10vh auto; 
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* other css rules remain unchanged */
 
 .ownerLoginForm * {
-  font-family: "Poppins", sans-serif;
-  color: black;
-  letter-spacing: 0.5px;
+  font-family: "SEA";
+  color: white;
   outline: none;
   border: none;
 }
+
 .ownerLoginHeading {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 42px;
   text-align: center;
-  color: black;
+  color: white;
+  letter-spacing: 2.5px;
 }
+
 .ownerLoginLabel {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
-  color: black;
+  color: white;
   align-items: center;
 }
+
 .ownerLoginInput {
   display: block;
   height: 50px;
-  width: 100%;
+  width: 80%;
   background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
   padding: 0 10px;
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 300;
-  color: black;
-  border: 1px solid black;
+  font-weight: 900;
+  color: white;
+  border: 1px solid white;
 }
+
 ::placeholder {
-  color: black;
+  color: white;
 }
 
 .ownerLoginButton {
-  margin-top: 50px;
-  width: 100%;
+  text-align: center;
+  margin-top: 5vh;
+  width: 50%;
   background-color: #ffffff;
   color: white;
   padding: 15px 0;
   font-size: 18px;
   font-weight: 600;
-  border-radius: 5px;
   cursor: pointer;
   background-color: black;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .ownerLoginButton:hover {
