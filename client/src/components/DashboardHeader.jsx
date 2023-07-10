@@ -5,39 +5,48 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
   return (
     <header className={styles.dashboardHeader}>
       <nav>
-        <ul>
-          <li>
+        <ul className={styles.dashboardHeaderNav}>
+          <li className={styles.dashboardHeaderNavItem}>
             <button
-              className={`${styles.headerButton} ${
-                activeTab === "Upload Photo" ? styles.active : ""
+              className={`${styles.dashboardHeaderButton} ${
+                activeTab === "Upload Photo"
+                  ? styles.dashboardHeaderButtonActive
+                  : ""
               }`}
               onClick={() => setActiveTab("Upload Photo")}
             >
               Upload Photo
             </button>
           </li>
-          <li>
+          <li className={styles.dashboardHeaderNavItem}>
             <button
-              className={`${styles.headerButton} ${
-                activeTab === "Create Album" ? styles.active : ""
+              className={`${styles.dashboardHeaderButton} ${
+                activeTab === "Create Album"
+                  ? styles.dashboardHeaderButtonActive
+                  : ""
               }`}
               onClick={() => setActiveTab("Create Album")}
             >
               Create Album
             </button>
           </li>
-          <li>
+          <li className={styles.dashboardHeaderNavItem}>
             <button
-              className={`${styles.headerButton} ${
-                activeTab === "Edit Album" ? styles.active : ""
+              className={`${styles.dashboardHeaderButton} ${
+                activeTab === "Edit Album"
+                  ? styles.dashboardHeaderButtonActive
+                  : ""
               }`}
               onClick={() => setActiveTab("Edit Album")}
             >
               Edit Album
             </button>
           </li>
-          <li>
-            <button className={styles.headerButton} onClick={handleLogout}>
+          <li className={styles.dashboardHeaderNavItem}>
+            <button
+              className={styles.dashboardHeaderButton}
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </li>

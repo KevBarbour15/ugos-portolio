@@ -1,0 +1,14 @@
+@font-face {
+  font-family:"Sea";
+  src: local("Sea") url("./fonts/Sea.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:"JB";
+  src: local("JB") url("./fonts/JB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:"TF";
+  src: local("TF") url("./fonts/TF.ttf") format("truetype");
+}

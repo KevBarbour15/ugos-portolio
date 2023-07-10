@@ -1,4 +1,3 @@
-/* UploadPhoto.css */
 .background {
   width: 430px;
   height: 520px;
@@ -8,26 +7,26 @@
   top: 50%;
 }
 
-.background .shape {
+.background .background__shape {
   height: 200px;
   width: 200px;
   position: absolute;
   border-radius: 50%;
 }
 
-.shape:first-child {
+.background__shape:first-child {
   background: linear-gradient(#1845ad, #23a2f6);
   left: -80px;
   top: -80px;
 }
 
-.shape:last-child {
+.background__shape:last-child {
   background: linear-gradient(to right, #ff512f, #f09819);
   right: -30px;
   bottom: -80px;
 }
 
-form {
+.background__form {
   height: 520px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
@@ -42,7 +41,7 @@ form {
   padding: 50px 35px;
 }
 
-form * {
+.background__form * {
   font-family: "Poppins", sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
@@ -50,22 +49,22 @@ form * {
   border: none;
 }
 
-form h3 {
+.background__form h3 {
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
 
-label {
+.background__form label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
 }
 
-input,
-select {
+.background__form input,
+.background__form select {
   display: block;
   height: 50px;
   width: 100%;
@@ -77,11 +76,11 @@ select {
   font-weight: 300;
 }
 
-::placeholder {
+.background__form ::placeholder {
   color: #e5e5e5;
 }
 
-button {
+.background__form button {
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
@@ -93,6 +92,6 @@ button {
   cursor: pointer;
 }
 
-.progressBarCustom {
+.background__progressBarCustom {
   margin-top: 20px;
 }

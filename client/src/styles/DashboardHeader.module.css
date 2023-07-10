@@ -8,7 +8,7 @@
   z-index: 1;
 }
 
-.dashboardHeader nav ul {
+.dashboardHeaderNav {
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -17,12 +17,12 @@
   width: 100%;
 }
 
-.dashboardHeader nav ul li {
+.dashboardHeaderNavItem {
   flex: 1;
   text-align: center;
 }
 
-.dashboardHeader nav ul li button.headerButton {
+.dashboardHeaderButton {
   background: none;
   border: none;
   color: white;
@@ -40,12 +40,12 @@
   font-weight: 600;
 }
 
-.dashboardHeader nav ul li button.headerButton.active {
+.dashboardHeaderButtonActive {
   color: black;
   background-color: white;
   font-weight: 900;
 }
 
-.dashboardHeader nav ul li button.headerButton:hover {
+.dashboardHeaderButton:hover {
   background-color: #ffb6c1;
 }

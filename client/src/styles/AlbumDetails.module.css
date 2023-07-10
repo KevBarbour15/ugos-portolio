@@ -5,10 +5,12 @@
 
 .container {
   padding: 30px;
+  box-shadow: 4 4 10px rgba(0, 0, 0, 0.15);
 }
 
 .container img {
   max-width: 100%;
+  box-shadow: 4 4 10px rgba(0, 0, 0, 0.15);
 }
 
 p {

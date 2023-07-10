@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css"; // This imports the CSS file for the Lightbox
+import "react-image-lightbox/style.css"; 
 import styles from "../styles/AlbumDetails.module.css";
 
 const AlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
-  const [photoIndex, setPhotoIndex] = useState(0); // State for currently viewed photo
-  const [isOpen, setIsOpen] = useState(false); // State for lightbox open status
+  const [photoIndex, setPhotoIndex] = useState(0); 
+  const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
     const fetchAlbum = async () => {

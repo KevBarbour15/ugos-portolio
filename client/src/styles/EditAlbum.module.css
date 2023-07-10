@@ -1,59 +1,47 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.select {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.formContainer {
+.albumEditContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 1rem;
+}
+
+.albumEditSelect {
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.label {
-  margin-bottom: 0.5rem;
-}
-
-.input,
-.textarea {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1rem;
+.albumEditForm {
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.thumbnail {
+.albumEditImageSelector {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.albumEditImageSelector .albumEditImage {
+  max-width: 100px;
+  height: auto;
+  margin: 10px;
   cursor: pointer;
 }
 
-.button {
-  padding: 0.5rem 1rem;
+.albumEditButton {
   border: none;
-  background: #000;
-  color: #fff;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 1rem;
 }
 
-.button:hover {
-  background: #ffb6c1;
-}
-
-.buttonDanger {
-  background: #ff0000;
-}
-
-.buttonDanger:hover {
-  background: #ff6347;
+.albumEditButton:hover {
+  color: white;
 }

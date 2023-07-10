@@ -78,7 +78,7 @@ function UploadPhoto() {
 
   return (
     <div className={styles.background}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.background__form} onSubmit={handleSubmit}>
         <h3>Upload Photo</h3>
 
         <label htmlFor="album">Select Album:</label>
@@ -94,7 +94,7 @@ function UploadPhoto() {
         <input type="file" id="photo" onChange={handleFileChange} />
 
         <ProgressBar
-          className={styles.progressBarCustom}
+          className={styles.background__progressBarCustom}
           now={progress}
           label={`${progress}%`}
           srOnly

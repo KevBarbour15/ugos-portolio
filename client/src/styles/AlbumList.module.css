@@ -13,9 +13,15 @@
 
 .albumImage {
   position: relative;
-  width: 100%;
+  width: calc(100%-12px);
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1.5px solid black;
+  background-color: white;
+  margin: 5px;
 }
+
 
 .albumImage img {
   width: 100%;
@@ -37,10 +43,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Roboto", sans-serif;
+  font-family: "Sea";
   font-weight: 900;
   font-style: italic;
-  font-size: calc(7.5vw);
+  font-size: calc(2.5vw);
   text-align: center;
   box-sizing: border-box;
   padding: 15px;
@@ -50,6 +56,3 @@
   opacity: 1;
 }
 
-.albumImage:hover img {
-  transform: scale(1.05);
-}

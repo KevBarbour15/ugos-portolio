@@ -8,7 +8,6 @@ import placeholderImg from "../images/gold-bars.png"; // import a placeholder im
 function AlbumList() {
   const [albums, setAlbums] = useState([]);
 
-  // Image preloading function
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
       let img = new Image();

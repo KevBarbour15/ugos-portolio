@@ -7,7 +7,7 @@ const CreateAlbum = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    title.toLowerCase();
     const album = {
       title,
       description,

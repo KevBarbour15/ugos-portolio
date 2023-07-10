@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import AuthContext from "../context/AuthContext";
 import styles from "../styles/Login.module.css";
+import Footer from "./Footer";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -31,29 +32,37 @@ const Login = () => {
   return (
     <>
       <Header />
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h3>Owner Login</h3>
+      <form className={styles.ownerLoginForm} onSubmit={handleSubmit}>
+        <h3 className={styles.ownerLoginHeading}>Owner Login</h3>
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username" className={styles.ownerLoginLabel}>
+          Username:
+        </label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           id="username"
+          className={styles.ownerLoginInput}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className={styles.ownerLoginLabel}>
+          Password:
+        </label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           id="password"
+          className={styles.ownerLoginInput}
         />
-
-        <button type="submit">Log In</button>
+        <button type="submit" className={styles.ownerLoginButton}>
+          Log In
+        </button>
       </form>
+      <Footer />
     </>
   );
 };

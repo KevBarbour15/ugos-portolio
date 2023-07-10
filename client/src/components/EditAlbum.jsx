@@ -162,8 +162,8 @@ const EditAlbum = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <select onChange={handleSelectAlbum} className={styles.select}>
+    <div className={styles.albumEditContainer}>
+      <select onChange={handleSelectAlbum} className={styles.albumEditSelect}>
         <option>Select an album...</option>
         {albums.map((album) => (
           <option key={album._id} value={album._id}>
@@ -172,34 +172,30 @@ const EditAlbum = () => {
         ))}
       </select>
 
-      <form onSubmit={handleUpdateTitle} className={styles.formContainer}>
-        <label className={styles.label}>Title:</label>
+      <form onSubmit={handleUpdateTitle} className={styles.albumEditForm}>
+        <label>Title:</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className={styles.input}
+          className={styles.albumEditInput}
         />
-        <button type="submit" className={styles.button}>
-          Update Title
-        </button>
+        <button type="submit" className={styles.albumEditButton}>Update Title</button>
       </form>
 
-      <form onSubmit={handleUpdateDescription} className={styles.formContainer}>
-        <label className={styles.label}>Description:</label>
+      <form onSubmit={handleUpdateDescription} className={styles.albumEditForm}>
+        <label>Description:</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className={styles.textarea}
+          className={styles.albumEditTextarea}
         />
-        <button type="submit" className={styles.button}>
-          Update Description
-        </button>
+        <button type="submit" className={styles.albumEditButton}>Update Description</button>
       </form>
 
-      <form onSubmit={handleUpdateCoverImage} className={styles.formContainer}>
-        <label className={styles.label}>Cover Image:</label>
-        <div className="image-selector">
+      <form onSubmit={handleUpdateCoverImage} className={styles.albumEditForm}>
+        <label>Cover Image:</label>
+        <div className={styles.albumEditImageSelector}>
           {media.map((m) => (
             <img
               key={m._id}
@@ -211,23 +207,17 @@ const EditAlbum = () => {
                 border: coverImage === m._id ? "2px solid red" : "none",
               }}
               onClick={() => setCoverImage(m._id)}
-              className={styles.thumbnail}
+              className={styles.albumEditImage}
             />
           ))}
         </div>
-        <button type="submit" className={styles.button}>
-          Update Cover Image
-        </button>
+        <button type="submit" className={styles.albumEditButton}>Update Cover Image</button>
       </form>
 
-      <button
-        onClick={handleDeleteAlbum}
-        className={`${styles.button} ${styles.buttonDanger}`}
-      >
-        Delete Album
-      </button>
+      <button onClick={handleDeleteAlbum} className={styles.albumEditButton}>Delete Album</button>
     </div>
   );
+
 };
 
 export default EditAlbum;
