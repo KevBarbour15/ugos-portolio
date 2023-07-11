@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "OstrichSans-Black";
+  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
+}
+
 body {
   overflow: hidden;
 }
@@ -29,8 +34,9 @@ body {
   font-size: 3em;
   background-color: transparent;
   cursor: pointer;
-  font-family: "Sea";
+  font-family: "OstrichSans-Black";
   text-decoration: none;
+  letter-spacing: 0.25em;
 }
 
 .landingButtonEnter:hover {
@@ -45,5 +51,5 @@ body {
 
 .landingButtonEnter span {
   color: white;
-  text-shadow: 0.35px 1px 1.25px black;
+  text-shadow: 0.35px 1.25px 1.25px black;
 }

@@ -1,6 +1,4 @@
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -8,23 +6,50 @@
 
 .albumEditContainer {
   display: flex;
-  flex: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2.5vh;
+}
+
+.albumEditSelectContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid black;
+  padding: 20px;
+  width: 70%;
+  max-width: 425px;
+  box-shadow: 0 0 2.5px grey;
+  margin-bottom: 20px;
+}
+
+.albumEditGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: start;
+  width: 70%;
+  max-width: 425px;
+  margin-top: 20px;
+}
+
+.albumEditSection {
+  display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
+  border: 0.5px solid black;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 0 2.5px grey;
 }
 
 .albumEditForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 0.5px solid black;
-  padding: 20px;
-  margin: 10px;
-  width: 70%%;
-  max-width: 425px;
-  box-shadow: 0 0 2.5px grey;
+  width: 100%;
 }
 
 .albumEditForm * {
@@ -32,6 +57,10 @@
   color: black;
   outline: none;
   border: none;
+}
+
+.albumEditForm button, .albumEditForm textarea {
+  box-sizing: content-box;
 }
 
 .albumEditInput,
@@ -54,11 +83,28 @@
   border: none;
   cursor: pointer;
   text-align: center;
-  width: 100%;
+  width: 50%;
 }
 
 .albumEditButton:hover {
   background-color: #777;
+}
+
+.albumDeleteButton {
+  display: inline-block;
+  background-color: #ff0000;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  width: 70%;
+  max-width: 300px;
+}
+
+.albumDeleteButton:hover {
+  background-color: #ff7777;
 }
 
 .albumEditImageSelector {

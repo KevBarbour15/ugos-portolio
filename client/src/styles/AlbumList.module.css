@@ -40,16 +40,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Sea";
-  font-weight: 900;
-  font-style: italic;
-  font-size: calc(2.5vw);
+  font-family: "OstrichSans-Bold";
+  font-size: calc(2.75vw);
   text-align: center;
   box-sizing: border-box;
   padding: 15px;
 }
 
 .albumImage:hover .albumDescription {
-  opacity: 1;
+  opacity: 1.5;
 }
 

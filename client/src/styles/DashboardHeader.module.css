@@ -31,22 +31,24 @@
   text-align: center;
   display: block;
   font-size: 16px;
-  margin: 0;
+  margin-left: 5vh;
+  margin-right: 5vh;
   padding: 10px;
   cursor: pointer;
   outline: none;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  font-family: "SEA";
+  font-family: "OstrichSans-Black";
+  font-size: 1.5em;
   font-weight: 900;
-  font-spacing: 1px;
+  letter-spacing: 0.15em;
 }
 
 .dashboardHeaderButtonActive {
   color: white;
   background-color: black;
   font-weight: 900;
-  box-shadow: 0 0 2px 0 black;
+  box-shadow: 0 0 0 1.5px grey;
 }
 
