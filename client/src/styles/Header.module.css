@@ -2,31 +2,28 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: black;
-  /*background-image: url("../images/homepage.jpg");*/
+  background-color: white;
   background-position: center 40%;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  border: 1.5px solid white;
+  border-left: 0.5px solid grey;
+  border-top: 0.5px solid grey;
+  border-right: 0.5px solid grey;
 }
 
 .header__titleContainer {
   flex-grow: 1;
   display: flex;
-  flex-direction: row; /* Change to row for horizontal layout */
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
   margin: 0;
-  color: rgb(250, 249, 246);
-  font-family: "Sea";
+  color: black;
+  font-family: "OstrichSans-Black";
   font-weight: 900;
   font-size: calc(1rem + 3vw);
-  letter-spacing: 0.1em;
-  text-shadow: .75px .75px .75px black, 1.25px 1.25px 1.25px red,
-    1.5px 1.5px 1.5px yellow;
+  letter-spacing: 0.5em;
 }
-
 
 .header__dropdownBtn {
   cursor: pointer;
@@ -53,7 +50,7 @@
 .header__navLinks a,
 .header__dropdownContent button {
   text-decoration: none;
-  color: white;
+  color: black;
   padding: 12px 16px;
   display: block;
 }
@@ -67,7 +64,7 @@
   display: none;
   position: absolute;
   right: 15px;
-  background-color: black;
+  background-color: white;
   min-width: 250px;
   z-index: 1;
   transition: all 0.3s ease-out;
@@ -76,15 +73,16 @@
   font-size: 1.75em;
   letter-spacing: 0.25em;
   text-align: center;
-  text-shadow: 1px 1px 1px #ff0000;
-  box-shadow: 0 1px 1.5px white;
-  border: 1.5px solid #F0EAD6;
+  text-shadow: 1px 1px 1px grey;
+  box-shadow: 0 1px 2.5px grey;
+  border: .5px solid black;
 }
 
 .header__dropdownContent a:hover,
 .header__dropdownContent button:hover {
-  background-color: red;
-  text-shadow: 1px 1px 1px black;
+  color: white;
+  background-color: black;
+  text-shadow: 1px 1px 1px grey;
 }
 
 .header__dropdown:hover .header__dropdownContent {
@@ -97,7 +95,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  color: white;
+  color: black;
   cursor: pointer;
   width: 100%;
   margin: 0;
@@ -107,8 +105,11 @@
   outline: none;
   text-align: center;
   letter-spacing: inherit;
+  text-shadow: 1px 1px 1px grey;
 }
 
 .header__dropdownContent button.header__dropdownButton:hover {
-  background-color: red;
+  color: white;
+  background-color: black;
+  text-shadow: 1px 1px 1px grey;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import styles from "../styles/CreateAlbum.module.css";
 
 const CreateAlbum = () => {
   const [title, setTitle] = useState("");
@@ -34,24 +35,28 @@ const CreateAlbum = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <div className={styles.createAlbumContainer}>
+      <form className={styles.createAlbumForm} onSubmit={onSubmit}>
         <input
+          className={styles.createAlbumInput}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
+          placeholder="Album Title:"
           required
         />
 
         <textarea
+          className={styles.createAlbumText}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description"
+          placeholder="Album Description:"
           required
         />
 
-        <button type="submit">Create Album</button>
+        <button className={styles.createAlbumButton} type="submit">
+          Create Album
+        </button>
       </form>
     </div>
   );

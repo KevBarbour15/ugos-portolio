@@ -77,12 +77,17 @@ function UploadPhoto() {
   };
 
   return (
-    <div className={styles.background}>
-      <form className={styles.background__form} onSubmit={handleSubmit}>
-        <h3>Upload Photo</h3>
-
-        <label htmlFor="album">Select Album:</label>
-        <select id="album" value={selectedAlbum} onChange={handleSelectChange}>
+    <div className={styles.uploadContainer}>
+      <form className={styles.uploadForm} onSubmit={handleSubmit}>
+        <label htmlFor="album" className={styles.uploadLabel}>
+          Select Album To Upload To:
+        </label>
+        <select
+          id="album"
+          value={selectedAlbum}
+          onChange={handleSelectChange}
+          className={styles.uploadSelect}
+        >
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
               {album.title}
@@ -90,19 +95,29 @@ function UploadPhoto() {
           ))}
         </select>
 
-        <label htmlFor="photo">Select Photo:</label>
-        <input type="file" id="photo" onChange={handleFileChange} />
+        <label htmlFor="photo" className={styles.uploadLabel}>
+          Select Photo To Upload:
+        </label>
+        <input
+          className={styles.uploadInput}
+          type="file"
+          id="photo"
+          onChange={handleFileChange}
+        />
 
         <ProgressBar
-          className={styles.background__progressBarCustom}
+          className={styles.progressBar}
           now={progress}
+          placeholder="Upload Progress"
           label={`${progress}%`}
           srOnly
           striped
           variant="info"
         />
 
-        <button type="submit">Upload</button>
+        <button type="submit" className={styles.uploadButton}>
+          Upload
+        </button>
       </form>
     </div>
   );

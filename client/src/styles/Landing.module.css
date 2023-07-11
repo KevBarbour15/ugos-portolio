@@ -2,25 +2,25 @@ body {
   overflow: hidden;
 }
 
-.maineContainer {
+.landingContainer {
   position: relative;
-  width: calc(100% - 20px); 
+  width: calc(100% - 20px);
   height: calc(100vh - 20px);
-  border: 2px solid black;
-  box-sizing: border-box; 
-  margin: 10px; 
+  border: 0.5px solid black;
+  box-sizing: border-box;
+  margin: 10px;
 }
 
-.maineContainer__backgroundVideo {
+.landingVideo {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; 
+  
 }
-.maineContainer__buttonEnter {
+.landingButtonEnter {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,22 +28,22 @@ body {
   padding: 10px 20px;
   font-size: 3em;
   background-color: transparent;
-  color: white;
   cursor: pointer;
   font-family: "Sea";
   text-decoration: none;
 }
 
-.maineContainer__buttonEnter:hover {
-  color: #fff;
+.landingButtonEnter:hover {
+  color: white;
 }
 
-.maineContainer__buttonEnter a,
-.maineContainer__buttonEnter a:visited {
+.landingButtonEnter a,
+.landingButtonEnter a:visited {
   color: white;
   text-decoration: none;
 }
 
-.maineContainer__buttonEnter span {
+.landingButtonEnter span {
+  color: white;
   text-shadow: 0.35px 1px 1.25px black;
 }

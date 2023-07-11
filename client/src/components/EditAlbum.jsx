@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styles from "../styles/EditAlbum.module.css";
 
@@ -9,6 +9,15 @@ const EditAlbum = () => {
   const [description, setDescription] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [media, setMedia] = useState([]);
+  const imageContainerRef = useRef(null);
+
+  const scrollLeft = () => {
+    imageContainerRef.current.scrollBy({ left: -100, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    imageContainerRef.current.scrollBy({ left: 100, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -98,12 +107,8 @@ const EditAlbum = () => {
     e.preventDefault();
 
     try {
-      console.log(`Updating albumCover with id: ${coverImage}`);
-
-      // Get the token from wherever you're storing it (localStorage, context, etc.)
       const token = localStorage.getItem("token");
 
-      // Add it to the headers of your request
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -114,13 +119,11 @@ const EditAlbum = () => {
           albumCover: coverImage,
         },
         config
-      ); // Don't forget to pass the config to the request
+      );
 
       console.log("response: ", response);
       if (response.status === 200) {
         console.log("Cover image updated successfully!");
-        // Here you can do something with the updated album data, e.g. update the state
-        // setAlbum(response.data);
       }
     } catch (error) {
       console.error("Failed to update cover image", error);
@@ -180,7 +183,9 @@ const EditAlbum = () => {
           onChange={(e) => setTitle(e.target.value)}
           className={styles.albumEditInput}
         />
-        <button type="submit" className={styles.albumEditButton}>Update Title</button>
+        <button type="submit" className={styles.albumEditButton}>
+          Update Title
+        </button>
       </form>
 
       <form onSubmit={handleUpdateDescription} className={styles.albumEditForm}>
@@ -190,12 +195,14 @@ const EditAlbum = () => {
           onChange={(e) => setDescription(e.target.value)}
           className={styles.albumEditTextarea}
         />
-        <button type="submit" className={styles.albumEditButton}>Update Description</button>
+        <button type="submit" className={styles.albumEditButton}>
+          Update Description
+        </button>
       </form>
 
       <form onSubmit={handleUpdateCoverImage} className={styles.albumEditForm}>
         <label>Cover Image:</label>
-        <div className={styles.albumEditImageSelector}>
+        <div className={styles.albumEditImageSelector} ref={imageContainerRef}>
           {media.map((m) => (
             <img
               key={m._id}
@@ -211,13 +218,16 @@ const EditAlbum = () => {
             />
           ))}
         </div>
-        <button type="submit" className={styles.albumEditButton}>Update Cover Image</button>
+        <button type="submit" className={styles.albumEditButton}>
+          Update Cover Image
+        </button>
       </form>
 
-      <button onClick={handleDeleteAlbum} className={styles.albumEditButton}>Delete Album</button>
+      <button onClick={handleDeleteAlbum} className={styles.albumEditButton}>
+        Delete Album
+      </button>
     </div>
   );
-
 };
 
 export default EditAlbum;

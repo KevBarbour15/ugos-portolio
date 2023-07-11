@@ -13,26 +13,22 @@
 }
 
 .ownerLoginForm {
-  color: white;
-  width: 70%; 
-  max-width: 415px;
-  background-color: black;
+  width: 70%;
+  max-width: 425px;
   backdrop-filter: blur(10px);
-  border: 1px solid white;
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
   padding: 10vh 5vh;
-  margin: 10vh auto; 
+  margin: 10vh auto;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* other css rules remain unchanged */
-
 .ownerLoginForm * {
   font-family: "SEA";
-  color: white;
+  color: black;
   outline: none;
   border: none;
 }
@@ -42,7 +38,7 @@
   font-weight: 900;
   line-height: 42px;
   text-align: center;
-  color: white;
+  color: black;
   letter-spacing: 2.5px;
 }
 
@@ -51,7 +47,7 @@
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
-  color: white;
+  color: black;
   align-items: center;
 }
 
@@ -64,12 +60,13 @@
   margin-top: 8px;
   font-size: 14px;
   font-weight: 900;
-  color: white;
-  border: 1px solid white;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
 }
 
 ::placeholder {
-  color: white;
+  color: black;
 }
 
 .ownerLoginButton {
@@ -89,4 +86,5 @@
 .ownerLoginButton:hover {
   background-color: grey;
   color: #ffffff;
+  border: 0.5px solid black;
 }
