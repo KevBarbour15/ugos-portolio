@@ -2,10 +2,13 @@
   display: flex;
   justify-content: center;
   color: white;
-  background-color: black;
+  background-color: white;
   padding: 10px 0;
   margin-bottom: 20px;
   z-index: 1;
+  border-bottom: .5px solid black;
+  border-left: .5px solid black;
+  border-right: .5px solid black;
 }
 
 .dashboardHeaderNav {
@@ -18,34 +21,34 @@
 }
 
 .dashboardHeaderNavItem {
-  flex: 1;
   text-align: center;
 }
 
 .dashboardHeaderButton {
   background: none;
   border: none;
-  color: white;
+  color: black;
   text-align: center;
   display: block;
   font-size: 16px;
-  margin: 0;
+  margin-left: 5vh;
+  margin-right: 5vh;
   padding: 10px;
   cursor: pointer;
   outline: none;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "OstrichSans-Black";
+  font-size: 1.5em;
+  font-weight: 900;
+  letter-spacing: 0.15em;
 }
 
 .dashboardHeaderButtonActive {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
   font-weight: 900;
+  box-shadow: 0 0 0 1.5px grey;
 }
 
-.dashboardHeaderButton:hover {
-  background-color: #ffb6c1;
-}

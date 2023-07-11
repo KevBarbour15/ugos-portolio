@@ -7,7 +7,6 @@ const About = () => {
       <Header />
       <h1>About Page</h1>
       <h2>This is where you can write your bio and contact info.</h2>
-      <Footer />
     </div>
   );
 };

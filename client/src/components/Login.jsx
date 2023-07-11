@@ -60,7 +60,6 @@ const Login = () => {
           </button>
         </form>
       </div>
-      <Footer />
     </>
   );
 };
