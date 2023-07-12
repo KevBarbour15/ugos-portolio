@@ -1,140 +1,152 @@
-*, *:before, *:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: "OstrichSans-Black";
+  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
 }
 
-.albumEditContainer {
+.editContainer {
   display: flex;
-  flex-direction: column;
+  flex: 1;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 2.5vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "OstrichSans-Black";
 }
 
-.albumEditSelectContainer {
-  display: flex;
+.editForm {
+  width: 85%;
+  max-width: 650px;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: 5vh 5vh;
+  margin: 2.5vh auto;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  border: 0.5px solid black;
-  padding: 20px;
-  width: 70%;
-  max-width: 425px;
-  box-shadow: 0 0 2.5px grey;
-  margin-bottom: 20px;
 }
 
-.albumEditGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-  justify-items: center;
-  align-items: start;
-  width: 70%;
-  max-width: 425px;
-  margin-top: 20px;
-}
-
-.albumEditSection {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: start;
-  border: 0.5px solid black;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 0 0 2.5px grey;
-}
-
-.albumEditForm {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.albumEditForm * {
-  font-family: "SEA";
+.editForm * {
   color: black;
   outline: none;
   border: none;
 }
 
-.albumEditForm button, .albumEditForm textarea {
-  box-sizing: content-box;
-}
-
-.albumEditInput,
-.albumEditTextarea {
-  display: block;
+.selectContainer {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
+  max-width: 425px;
+  margin: 1.5vh auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.albumEditButton {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 10px 0;
-  border: none;
-  cursor: pointer;
+.editSelect {
+  width: 80%;
+  font-size: 14px;
+  font-weight: 900;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  margin-bottom: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editInput {
+  display: block;
+  height: 5vh;
+  width: 80%;
+  background-color: white;
+  font-size: 2vh;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: 0.5vh;
+  padding-left: 0.5vh;
+}
+
+.formButton {
   text-align: center;
   width: 50%;
-}
-
-.albumEditButton:hover {
-  background-color: #777;
-}
-
-.albumDeleteButton {
-  display: inline-block;
-  background-color: #ff0000;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 20px 0;
-  border: none;
+  background-color: #ffffff;
+  color: white;
+  padding: 15px 0;
+  font-size: 15px;
+  letter-spacing: 0.15em;
   cursor: pointer;
+  background-color: black;
+  border: 1px solid white;
+  margin-top: 2.5vh;
+}
+
+.formButton:hover {
+  background-color: grey;
+  color: #ffffff;
+  border: 0.5px solid black;
+}
+
+.editLabel {
+  display: block;
+  margin: 2vh 0;
+  font-size: 2.5vh;
+  font-weight: 900;
+  color: black;
+  align-items: left;
+}
+
+.editInput{
+  display: block;
+  height: 7.5vh;
+  width: 80%;
+  background-color: white;
+  font-size: 2vh;
+  font-weight: 900;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: .5vh;
+  padding-left: .5vh;
+}
+
+.editInput::placeholder {
+  color: black;
+}
+
+.deleteButton {
   text-align: center;
-  width: 70%;
-  max-width: 300px;
-}
-
-.albumDeleteButton:hover {
-  background-color: #ff7777;
-}
-
-.albumEditImageSelector {
-  display: flex;
-  overflow-x: scroll;
-  width: 100%;
-  height: 110px;
-  white-space: nowrap;
-  margin: 10px 0;
-}
-
-.albumEditImage {
-  max-width: 100px;
-  height: auto;
-  margin: 0 10px;
+  width: 50%;
+  background-color: red;
+  color: white;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 900;
   cursor: pointer;
+  border: .5px solid black;
+  letter-spacing: 0.25em;
+  margin-bottom: 2.5vh;
 }
 
-.albumEditImageSelector::-webkit-scrollbar {
-  width: 10px;
+.deleteButton:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
-.albumEditImageSelector::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.imageContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 15vh;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: grey lightgrey;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
 }
 
-.albumEditImageSelector::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.albumEditImageSelector::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.imageContainer img {
+  margin-right: 5px; 
 }

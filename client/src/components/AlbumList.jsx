@@ -3,11 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import styles from "../styles/AlbumList.module.css";
-import placeholderImg from "../images/gold-bars.png"; // import a placeholder image
+import placeholderImg from "../images/gold-bars.png";
 
 function AlbumList() {
   const [albums, setAlbums] = useState([]);
-
+  /*
+    an error we need to handle is that video's being the cover image are not supported by chrome
+  */
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
       let img = new Image();
@@ -55,7 +57,7 @@ function AlbumList() {
       <Masonry gutter="20px">
         {albums.map((album, index) => {
           const albumCover = album.albumCover.url;
-  
+
           return (
             <div className={styles.album} key={album._id}>
               <Link to={`/albums/${album._id}`} className={styles.albumLink}>

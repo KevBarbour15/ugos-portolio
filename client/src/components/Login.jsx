@@ -36,7 +36,6 @@ const Login = () => {
         <form className={styles.ownerLoginForm} onSubmit={handleSubmit}>
           <h3 className={styles.ownerLoginHeading}>Owner Login</h3>
 
-          <label htmlFor="username" className={styles.ownerLoginLabel}></label>
           <input
             type="text"
             value={username}
@@ -46,7 +45,6 @@ const Login = () => {
             className={styles.ownerLoginInput}
           />
 
-          <label htmlFor="password" className={styles.ownerLoginLabel}></label>
           <input
             type="password"
             value={password}

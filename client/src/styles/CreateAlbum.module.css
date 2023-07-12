@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "OstrichSans-Black";
+  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
+}
+
 *,
 *:before,
 *:after {
@@ -10,6 +15,7 @@
   display: flex;
   flex: 1;
   justify-content: center;
+  font-family: "OstrichSans-Black";
 }
 
 .createAlbumForm {
@@ -27,7 +33,6 @@
 }
 
 .createAlbumForm * {
-  font-family: "SEA";
   color: black;
   outline: none;
   border: none;

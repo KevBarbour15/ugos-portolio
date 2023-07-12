@@ -2,6 +2,9 @@ import React from "react";
 import styles from "../styles/DashboardHeader.module.css";
 
 const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
+  // need to make this sticky and so that the content does not go out of it to extend page
+  // how do i do this?
+  
   return (
     <header className={styles.dashboardHeader}>
       <nav>
