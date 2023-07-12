@@ -9,6 +9,7 @@ const EditAlbum = () => {
   const [description, setDescription] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [media, setMedia] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
   const imageContainerRef = useRef(null);
 
   useEffect(() => {
@@ -154,11 +155,35 @@ const EditAlbum = () => {
     }
   };
 
-  const handleDeleteImage = () => {
-    // Remove the image from the album's media array.
-    /* const newMedia = media.filter((m) => m._id !== selectedImage);
-    setMedia(newMedia);*/
-    // TODO: Delete the image on the server. This depends on how you are storing your images.
+  const handleDeleteImage = async (e) => {
+    e.preventDefault();
+    if (!selectedImage) return;
+
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this image?"
+    );
+    if (!confirmation) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+
+      const response = await axios.delete(
+        `/albums/${selectedAlbum._id}/media/${selectedImage}`,
+        config
+      );
+
+      if (response.status === 200) {
+        console.log("Image deleted successfully!");
+        setMedia(media.filter((m) => m._id !== selectedImage));
+        setSelectedImage(null);
+      }
+    } catch (error) {
+      console.error("Failed to delete image", error);
+    }
   };
 
   return (
@@ -231,13 +256,17 @@ const EditAlbum = () => {
               style={{
                 height: "75px",
                 margin: "5px",
-                //border: selectedImage === m._id ? "2px solid red" : "none",
+                border: selectedImage === m._id ? "2px solid red" : "none",
               }}
               onClick={() => setSelectedImage(m._id)}
             />
           ))}
         </div>
-        <button className={styles.formButton} onClick={handleDeleteImage}>
+        <button
+          type="button"
+          className={styles.formButton}
+          onClick={handleDeleteImage}
+        >
           Delete Image
         </button>
       </form>
