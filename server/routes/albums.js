@@ -1,5 +1,6 @@
 const express = require("express");
 const Album = require("../schemas/album");
+const Media = require("../schemas/media");
 const verifyToken = require("../middleware");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -58,6 +59,38 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
+router.delete("/:id/media/:mediaId", verifyToken, async (req, res) => {
+  console.log("DELETE MEDIA");
+  try {
+    const { id: albumId, mediaId } = req.params; 
+
+    const media = await Media.findByIdAndDelete(mediaId);
+    if (!media) {
+      console.error(`No media found with id: ${mediaId}`);
+      return res.status(404).send("No media found");
+    }
+
+    const album = await Album.findById(albumId);
+    if (!album) return res.status(404).send("No album found");
+
+    const mediaIndex = album.media.indexOf(mediaId);
+    if (mediaIndex !== -1) {
+      album.media.splice(mediaIndex, 1);
+      await album.save();
+    }
+
+    if (album.albumCover.toString() === mediaId) {
+      album.albumCover = null;
+      await album.save();
+    }
+
+    res.status(200).send("Media deleted");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const album = await Album.findByIdAndDelete(req.params.id);
@@ -67,7 +100,5 @@ router.delete("/:id", verifyToken, async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-
 
 module.exports = router;

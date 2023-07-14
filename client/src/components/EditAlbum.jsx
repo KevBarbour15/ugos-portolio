@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../styles/EditAlbum.module.css";
 
@@ -10,7 +10,6 @@ const EditAlbum = () => {
   const [coverImage, setCoverImage] = useState("");
   const [media, setMedia] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-  const imageContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -123,7 +122,9 @@ const EditAlbum = () => {
     }
   };
 
-  const handleDeleteAlbum = async () => {
+  const handleDeleteAlbum = async (e) => {
+    e.preventDefault();
+
     const confirmation = window.confirm(
       "Are you sure you want to delete this album?"
     );
@@ -157,32 +158,44 @@ const EditAlbum = () => {
 
   const handleDeleteImage = async (e) => {
     e.preventDefault();
-    if (!selectedImage) return;
+
+    if (!selectedImage) {
+      console.error("No image selected");
+      return;
+    }
 
     const confirmation = window.confirm(
       "Are you sure you want to delete this image?"
     );
+
     if (!confirmation) return;
 
     try {
+      console.log("selectedImage: ", selectedImage);
+      console.log("selectedAlbum: ", selectedAlbum._id);
       const token = localStorage.getItem("token");
 
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
-
+      console.log(`/albums/${selectedAlbum._id}/media/${selectedImage}`);
       const response = await axios.delete(
         `/albums/${selectedAlbum._id}/media/${selectedImage}`,
         config
       );
-
+      
+      console.log("Made it to here!");
       if (response.status === 200) {
         console.log("Image deleted successfully!");
         setMedia(media.filter((m) => m._id !== selectedImage));
         setSelectedImage(null);
       }
     } catch (error) {
-      console.error("Failed to delete image", error);
+      //console.error("Failed to delete image", error);
+      console.error("Server response status", error.response.status);
+      console.error("Server response data", error.response.data);
+      console.error("Server response headers", error.response.headers);
+      console.error("Server response text", error.response.statusText);
     }
   };
 
