@@ -15,12 +15,11 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  font-family: "OstrichSans-Black";
 }
 
 .createAlbumForm {
   width: 70%;
-  max-width: 425px;
+  max-width: 800px;
   backdrop-filter: blur(10px);
   border: 0.5px solid black;
   box-shadow: 0 0 2.5px grey;

@@ -15,13 +15,12 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  font-family: "OstrichSans-Black";
   letting-spacing: 0.5px;
 }
 
 .uploadForm {
   width: 70%;
-  max-width: 425px;
+  max-width: 800px;
   border: 0.5px solid black;
   box-shadow: 0 0 2.5px grey;
   padding: 5vh 5vh;
