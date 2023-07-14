@@ -32,37 +32,32 @@ const Login = () => {
   return (
     <>
       <Header />
-      <form className={styles.ownerLoginForm} onSubmit={handleSubmit}>
-        <h3 className={styles.ownerLoginHeading}>Owner Login</h3>
+      <div className={styles.loginContainer}>
+        <form className={styles.ownerLoginForm} onSubmit={handleSubmit}>
+          <h3 className={styles.ownerLoginHeading}>Owner Login</h3>
 
-        <label htmlFor="username" className={styles.ownerLoginLabel}>
-          Username:
-        </label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          id="username"
-          className={styles.ownerLoginInput}
-        />
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            id="username"
+            className={styles.ownerLoginInput}
+          />
 
-        <label htmlFor="password" className={styles.ownerLoginLabel}>
-          Password:
-        </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          id="password"
-          className={styles.ownerLoginInput}
-        />
-        <button type="submit" className={styles.ownerLoginButton}>
-          Log In
-        </button>
-      </form>
-      <Footer />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            id="password"
+            className={styles.ownerLoginInput}
+          />
+          <button type="submit" className={styles.ownerLoginButton}>
+            Log In
+          </button>
+        </form>
+      </div>
     </>
   );
 };

@@ -11,7 +11,6 @@ const Gallery = () => {
     <div>
       <Header />
       <AlbumDetails id={id} />
-      <Footer />
     </div>
   );
 }

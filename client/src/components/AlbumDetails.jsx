@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css"; 
+import "react-image-lightbox/style.css";
 import styles from "../styles/AlbumDetails.module.css";
 
 const AlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
-  const [photoIndex, setPhotoIndex] = useState(0); 
-  const [isOpen, setIsOpen] = useState(false); 
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchAlbum = async () => {
@@ -28,8 +28,9 @@ const AlbumDetails = ({ id }) => {
 
   return (
     <div className={styles.container}>
-      <h2>{album.title}</h2>
-      <p>{album.description}</p>
+      <h2 className={styles.albumTitle}>{album.title}</h2>
+      <p className={styles.albumInfo}>{album.description}</p>
+
       {album.media && album.media.length > 0 ? (
         <>
           <ResponsiveMasonry
@@ -45,7 +46,9 @@ const AlbumDetails = ({ id }) => {
                     setIsOpen(true);
                   }}
                 >
-                  <img src={media.url} alt="" />
+                  <div className={styles.galleryImage}>
+                    <img src={media.url} alt="" />
+                  </div>
                 </div>
               ))}
             </Masonry>

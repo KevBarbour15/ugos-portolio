@@ -6,95 +6,78 @@
   box-sizing: border-box;
 }
 
-.ownerLoginBackground {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+.loginContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }
 
-.ownerLoginShape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-.ownerLoginShape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-}
 .ownerLoginForm {
-  color: black;
-  height: 520px;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
+  width: 70%;
+  max-width: 425px;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 35px;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: 10vh 5vh;
+  margin: 5vh auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ownerLoginForm * {
-  font-family: "Poppins", sans-serif;
+  font-family: "OstrichSans-Black";
   color: black;
-  letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
+
 .ownerLoginHeading {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 42px;
   text-align: center;
   color: black;
+  letter-spacing: 2.5px;
+  text-shadow: 1px 1px 1px grey;
 }
-.ownerLoginLabel {
-  display: block;
-  margin-top: 30px;
-  font-size: 16px;
-  font-weight: 500;
-  color: black;
-  align-items: center;
-}
+
+
 .ownerLoginInput {
   display: block;
   height: 50px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  color: black;
-  border: 1px solid black;
+  width: 80%;
+  background-color: white;
+  padding: 0 8px;
+  margin:2.5vh;
+  color:red;
+  font-weight: 900;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
 }
-::placeholder {
+
+.ownerLoginInput::placeholder {
   color: black;
 }
 
 .ownerLoginButton {
-  margin-top: 50px;
-  width: 100%;
+  text-align: center;
+  margin-top: 2.55vh;
+  width: 50%;
   background-color: #ffffff;
   color: white;
   padding: 15px 0;
   font-size: 18px;
   font-weight: 600;
-  border-radius: 5px;
   cursor: pointer;
   background-color: black;
-  border: 1px solid black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
 }
 
 .ownerLoginButton:hover {
   background-color: grey;
   color: #ffffff;
+  border: 0.5px solid black;
 }

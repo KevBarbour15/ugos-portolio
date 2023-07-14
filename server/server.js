@@ -6,15 +6,25 @@ const app = express();
 
 app.use(cors());
 
-const albumRoutes = require("./routes/albums");
 const mediaRoutes = require("./routes/media");
+const albumRoutes = require("./routes/albums");
 const authRoutes = require("./routes/auth");
 
 app.use(bodyParser.json());
 
-app.use("/albums", albumRoutes);
 app.use("/media", mediaRoutes);
+app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);
+
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request to ${req.url}`);
+  next();
+});
 
 db.connect()
   .then(() => {

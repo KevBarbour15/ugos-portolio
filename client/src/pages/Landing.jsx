@@ -1,23 +1,23 @@
 import React from "react";
 import styles from "../styles/Landing.module.css";
 import { Link } from "react-router-dom";
-import landing from "../videos/landing.mp4";
+import landing from "../videos/landingSmall.mp4";
 
 const Landing = () => {
   return (
-    <div className={styles.maineContainer}>
+    <div className={styles.landingContainer}>
       <video
         autoPlay
         muted
         loop
-        className={styles.maineContainer__backgroundVideo}
+        className={styles.landingVideo}
       >
         <source src={landing} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className={styles.maineContainer__buttonEnter}>
-        <Link to="Home" className={styles.enterLink}>
-          <span className={styles.enterText}>enter</span>
+      <div className={styles.landingButtonEnter}>
+        <Link to="Home" className={styles.landingLink}>
+          <span className={styles.landingText}>enter</span>
         </Link>
       </div>
     </div>

@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "OstrichSans-Black";
+  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
+}
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.createAlbumContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.createAlbumForm {
+  width: 70%;
+  max-width: 800px;
+  backdrop-filter: blur(10px);
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: 5vh 5vh;
+  margin: 5vh auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAlbumForm * {
+  color: black;
+  outline: none;
+  border: none;
+}
+
+.createAlbumInput{
+  display: block;
+  height: 5vh;
+  width: 80%;
+  background-color: white;
+  font-size: 2vh;
+  font-weight: 900;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: .5vh;
+  padding-left: .5vh;
+  margin: 5vh;
+}
+
+::placeholder {
+  color: black;
+}
+
+.createAlbumText {
+  display: block;
+  height: 10vh;
+  width: 80%;
+  background-color: white;
+  font-size: 2vh;
+  font-weight: 900;
+  color: black;
+  border: 0.5px solid black;
+  box-shadow: 0 0 2.5px grey;
+  padding: .5vh;
+  padding-left: .5vh;
+  margin-bottom: 5vh;
+}
+
+.createAlbumButton {
+  text-align: center;
+  width: 50%;
+  background-color: #ffffff;
+  color: white;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: black;
+  border: 1px solid white;
+}
+
+.createAlbumButton:hover {
+  background-color: grey;
+  color: #ffffff;
+  border: 0.5px solid black;
+}

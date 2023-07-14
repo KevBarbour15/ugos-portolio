@@ -9,6 +9,7 @@ const EditAlbum = () => {
   const [description, setDescription] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [media, setMedia] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -98,12 +99,8 @@ const EditAlbum = () => {
     e.preventDefault();
 
     try {
-      console.log(`Updating albumCover with id: ${coverImage}`);
-
-      // Get the token from wherever you're storing it (localStorage, context, etc.)
       const token = localStorage.getItem("token");
 
-      // Add it to the headers of your request
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -114,20 +111,20 @@ const EditAlbum = () => {
           albumCover: coverImage,
         },
         config
-      ); // Don't forget to pass the config to the request
+      );
 
       console.log("response: ", response);
       if (response.status === 200) {
         console.log("Cover image updated successfully!");
-        // Here you can do something with the updated album data, e.g. update the state
-        // setAlbum(response.data);
       }
     } catch (error) {
       console.error("Failed to update cover image", error);
     }
   };
 
-  const handleDeleteAlbum = async () => {
+  const handleDeleteAlbum = async (e) => {
+    e.preventDefault();
+
     const confirmation = window.confirm(
       "Are you sure you want to delete this album?"
     );
@@ -147,9 +144,7 @@ const EditAlbum = () => {
 
       if (response.status === 200) {
         console.log("Album deleted successfully!");
-        // Remove the deleted album from the state
         setAlbums(albums.filter((album) => album._id !== selectedAlbum._id));
-        // Clear the selected album
         setSelectedAlbum(null);
         setTitle("");
         setDescription("");
@@ -161,63 +156,140 @@ const EditAlbum = () => {
     }
   };
 
-  return (
-    <div className={styles.albumEditContainer}>
-      <select onChange={handleSelectAlbum} className={styles.albumEditSelect}>
-        <option>Select an album...</option>
-        {albums.map((album) => (
-          <option key={album._id} value={album._id}>
-            {album.title}
-          </option>
-        ))}
-      </select>
+  const handleDeleteImage = async (e) => {
+    e.preventDefault();
 
-      <form onSubmit={handleUpdateTitle} className={styles.albumEditForm}>
-        <label>Title:</label>
+    if (!selectedImage) {
+      console.error("No image selected");
+      return;
+    }
+
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this image?"
+    );
+
+    if (!confirmation) return;
+
+    try {
+      console.log("selectedImage: ", selectedImage);
+      console.log("selectedAlbum: ", selectedAlbum._id);
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      console.log(`/albums/${selectedAlbum._id}/media/${selectedImage}`);
+      const response = await axios.delete(
+        `/albums/${selectedAlbum._id}/media/${selectedImage}`,
+        config
+      );
+      
+      console.log("Made it to here!");
+      if (response.status === 200) {
+        console.log("Image deleted successfully!");
+        setMedia(media.filter((m) => m._id !== selectedImage));
+        setSelectedImage(null);
+      }
+    } catch (error) {
+      //console.error("Failed to delete image", error);
+      console.error("Server response status", error.response.status);
+      console.error("Server response data", error.response.data);
+      console.error("Server response headers", error.response.headers);
+      console.error("Server response text", error.response.statusText);
+    }
+  };
+
+  return (
+    <div className={styles.editContainer}>
+      <div className={styles.selectContainer}>
+        <select onChange={handleSelectAlbum} className={styles.editSelect}>
+          <option>Select an album to edit...</option>
+          {albums.map((album) => (
+            <option key={album._id} value={album._id}>
+              {album.title}
+            </option>
+          ))}
+        </select>
+      </div>
+      <form onSubmit={handleUpdateTitle} className={styles.editForm}>
+        <label className={styles.editLabel}>Album Title:</label>
         <input
+          className={styles.editInput}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className={styles.albumEditInput}
         />
-        <button type="submit" className={styles.albumEditButton}>Update Title</button>
+        <button className={styles.formButton} type="submit">
+          Update Title
+        </button>
       </form>
 
-      <form onSubmit={handleUpdateDescription} className={styles.albumEditForm}>
-        <label>Description:</label>
+      <form onSubmit={handleUpdateDescription} className={styles.editForm}>
+        <label className={styles.editLabel}>Album Description:</label>
         <textarea
+          className={styles.editInput}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className={styles.albumEditTextarea}
         />
-        <button type="submit" className={styles.albumEditButton}>Update Description</button>
+        <button className={styles.formButton} type="submit">
+          Update Description
+        </button>
       </form>
 
-      <form onSubmit={handleUpdateCoverImage} className={styles.albumEditForm}>
-        <label>Cover Image:</label>
-        <div className={styles.albumEditImageSelector}>
+      <form onSubmit={handleUpdateCoverImage} className={styles.editForm}>
+        <label className={styles.editLabel}>Cover Image:</label>
+        <div className={styles.imageContainer}>
           {media.map((m) => (
             <img
               key={m._id}
               src={m.url}
               alt="thumbnail"
               style={{
-                height: "50px",
+                height: "75px",
                 margin: "5px",
                 border: coverImage === m._id ? "2px solid red" : "none",
               }}
               onClick={() => setCoverImage(m._id)}
-              className={styles.albumEditImage}
             />
           ))}
         </div>
-        <button type="submit" className={styles.albumEditButton}>Update Cover Image</button>
+        <button className={styles.formButton} type="submit">
+          Update Cover Image
+        </button>
       </form>
 
-      <button onClick={handleDeleteAlbum} className={styles.albumEditButton}>Delete Album</button>
+      <form className={styles.editForm}>
+        <label className={styles.editLabel}>Delete Image from Album:</label>
+        <div className={styles.imageContainer}>
+          {media.map((m) => (
+            <img
+              key={m._id}
+              src={m.url}
+              alt="thumbnail"
+              style={{
+                height: "75px",
+                margin: "5px",
+                border: selectedImage === m._id ? "2px solid red" : "none",
+              }}
+              onClick={() => setSelectedImage(m._id)}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          className={styles.formButton}
+          onClick={handleDeleteImage}
+        >
+          Delete Image
+        </button>
+      </form>
+      <div className={styles.selectContainer}>
+        <button className={styles.deleteButton} onClick={handleDeleteAlbum}>
+          Delete Album
+        </button>
+      </div>
     </div>
   );
-
 };
 
 export default EditAlbum;
