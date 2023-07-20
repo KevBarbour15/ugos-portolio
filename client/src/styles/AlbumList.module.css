@@ -12,7 +12,6 @@
 
 .albumImage {
   position: relative;
-  width: calc(100%-11px);
   overflow: hidden;
   box-sizing: border-box;
   padding: 5px;

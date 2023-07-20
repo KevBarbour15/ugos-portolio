@@ -34,7 +34,7 @@ const AlbumDetails = ({ id }) => {
       {album.media && album.media.length > 0 ? (
         <>
           <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+            rowsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
           >
             <Masonry gutter="20px">
               {album.media.map((media, index) => (

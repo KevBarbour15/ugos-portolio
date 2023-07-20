@@ -4,7 +4,6 @@
 }
 
 .album {
-  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -13,13 +12,21 @@
 }
 
 .container img {
-  max-width: 100%;
+  width: auto;     
+  height: 350px;   
+  max-width: 100%;  
 }
 
 .galleryImage {
+  display: inline-block;  
+  vertical-align: top;    
   border: 0.5px solid black;
   margin: 0.5vh;
-  box-shadow: 10px black;
+  overflow: hidden;  
+}
+
+.galleryImage:hover {
+  cursor: pointer;
 }
 
 .albumTitle {

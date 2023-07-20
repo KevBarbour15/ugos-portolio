@@ -23,17 +23,17 @@ function UploadPhoto() {
   }, []);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const file = e.target.files[0];
+    if (!file.type.startsWith("image/")) {
+      alert("Please upload an image file");
+      return;
+    }
+    setFile(file);
   };
 
   const handleSelectChange = (e) => {
     setSelectedAlbum(e.target.value);
   };
-
-  /// Thing to do:
-  /// 1. File Validation
-  /// 2. File Size Limit
-  /// 3. Server-Side Validation - currently, the server will accept any file type, we need to everntually restrict this to only accept images
 
   const handleSubmit = async (e) => {
     e.preventDefault();
