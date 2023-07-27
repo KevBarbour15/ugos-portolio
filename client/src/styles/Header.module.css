@@ -13,129 +13,66 @@
   top: 0;
   z-index: 2;
   background-color: white;
-  border-left: 0.5px solid grey;
-  border-top: 0.5px solid grey;
-  border-right: 0.5px solid grey;
-  border-bottom: 0.5px solid grey;
+  border: 0.5px solid grey;
   box-shadow: 0 1px 2.5px grey;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1vh;
+  flex-wrap: wrap;
 }
 
 .header__titleContainer {
-  display: flex;
   color: black;
   flex-direction: column;
   text-shadow: 0.25px 1px 1px grey;
   font-family: "OstrichSans-Black";
+  font-size: calc(1rem + 2vw);
+  letter-spacing: 0.25em;
+  font-weight: bold;
+  max-width: 50%;
 }
 
-.header__First {
-  font-weight: 750;
-  font-size: calc(1rem + 3vw);
-  letter-spacing: 0.75em;
+.header__nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 50%;
 }
 
-.header__Last{
-  color: black;
-  font-weight: 900;
-  font-size: calc(1rem + 3.25vw);
-  letter-spacing: 0.5em;
-}
-
-.header__dropdownBtn {
-  cursor: pointer;
-  height: 7.75vw;
-  display: block;
-  max-width: 100%;
-  padding-right: 2%;
-}
-
-.header__dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.header__dropdownContent {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: white;
-  min-width: 40vh;
-  z-index: 1;
-  transition: all 0.3s ease-out;
+.header__navLink,
+.header__navButton {
   font-family: "OstrichSans-Black";
   font-size: 1.95em;
   font-weight: bold;
   letter-spacing: 0.45em;
   text-align: center;
   text-shadow: 1px 1px 1px grey;
-  box-shadow: 0 1px 2.5px grey;
-  border: .5px solid black;
-}
-
-.header__dropdownContent a:hover,
-.header__dropdownContent button:hover {
-  color: white;
-  background-color: black;
-  text-shadow: 1px 1px 1px grey;
-}
-
-.header__dropdown:hover .header__dropdownContent {
-  display: block;
-}
-
-.header__dropdownContent button.header__dropdownButton {
-  background: none;
-  border: none;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  color: black;
-  cursor: pointer;
-  width: 100%;
-  margin: 0;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  outline: none;
-  text-align: center;
-  letter-spacing: inherit;
-  text-shadow: 1px 1px 1px grey;
-}
-
-.header__dropdownContent button.header__dropdownButton:hover {
-  color: white;
-  background-color: black;
-  text-shadow: 1px 1px 1px grey;
-}
-
-.header__dropdownContent a,
-.header__dropdownContent button {
   text-decoration: none;
   color: black;
-  padding: 12px 16px;
-  display: block;
+}
+
+.header__navButton {
   background: none;
   border: none;
   cursor: pointer;
-  width: 100%;
-  margin: 0;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
   outline: none;
-  text-align: center;
-  letter-spacing: inherit;
-  text-shadow: 1px 1px 1px grey;
 }
 
-.header__dropdownContent a:hover,
-.header__dropdownContent button:hover {
+.header__navLink:hover,
+.header__navButton:hover {
   color: white;
   background-color: black;
   text-shadow: 1px 1px 1px grey;
 }
 
+@media (max-width: 768px) {
+  .header__titleContainer {
+    font-size: calc(1rem + 2vw);
+  }
+
+  .header__navLink,
+  .header__navButton {
+    font-size: 1.75em;
+  }
+}
