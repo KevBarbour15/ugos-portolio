@@ -1,12 +1,12 @@
 import React from "react";
-import AlbumList from "../components/AlbumList";
+import PhotoAlbumList from "../components/PhotoAlbumList";
 import Header from "../components/Header";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <AlbumList />
+      <PhotoAlbumList />
     </div>
   );
 };

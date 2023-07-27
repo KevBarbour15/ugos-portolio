@@ -13,7 +13,6 @@ const upload = multer({
   },
 });
 
-
 router.post(
   "/upload",
   verifyToken,
@@ -21,6 +20,12 @@ router.post(
   async (req, res, next) => {
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
+    }
+
+    if (!req.file.mimetype.startsWith("image/")) {
+      return res
+        .status(400)
+        .send("Invalid file type. Please upload an image file.");
     }
 
     const blob = bucket.file(req.file.originalname);

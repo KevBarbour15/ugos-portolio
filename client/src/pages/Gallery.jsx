@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
-import AlbumDetails from "../components/AlbumDetails";
+import PhotoAlbumDetails from "../components/PhotoAlbumDetails";
 import Header from "../components/Header";
 import Footer from '../components/Footer';
 
@@ -10,7 +10,7 @@ const Gallery = () => {
   return (
     <div>
       <Header />
-      <AlbumDetails id={id} />
+      <PhotoAlbumDetails id={id} />
     </div>
   );
 }

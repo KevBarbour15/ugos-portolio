@@ -5,11 +5,8 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import styles from "../styles/AlbumList.module.css";
 import placeholderImg from "../images/gold-bars.png";
 
-function AlbumList() {
+function PhotoAlbumList() {
   const [albums, setAlbums] = useState([]);
-  /*
-    an error we need to handle is that video's being the cover image are not supported by chrome
-  */
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
       let img = new Image();
@@ -74,4 +71,4 @@ function AlbumList() {
   );
 }
 
-export default AlbumList;
+export default PhotoAlbumList;

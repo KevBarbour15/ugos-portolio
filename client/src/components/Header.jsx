@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import goldBars from "../images/gold-bars.png";
 import styles from "../styles/Header.module.css";
 
 const Header = () => {
   const { isAuthenticated } = useContext(AuthContext);
-  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
@@ -17,36 +15,23 @@ const Header = () => {
       navigate("/login");
     }
   };
-  // revisit sticky bar scroll later
+
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}
-    >
+    <header className={styles.header}>
       <div className={styles.header__titleContainer}>
-        <div className={styles.header__First}>Ugo</div>
-        <div className={styles.header__Last}>Mbakwe</div>
+        swellysensai
       </div>
-      <div className={styles.header__dropdown}>
-        <img
-          className={styles.header__dropdownBtn}
-          src={goldBars}
-          alt="gold-bars"
-        />
-        <div className={styles.header__dropdownContent}>
-          <Link className={styles.header__navLink} to="/home">
-            Galleries
-          </Link>
-          <Link className={styles.header__navLink} to="/about">
-            About
-          </Link>
-          <button
-            onClick={handleLoginClick}
-            className={styles.header__dropdownButton}
-          >
-            Owner
-          </button>
-        </div>
-      </div>
+      <nav className={styles.header__nav}>
+        <Link className={styles.header__navLink} to="/home">
+          Photo
+        </Link>
+        <Link className={styles.header__navLink} to="/about">
+          About
+        </Link>
+        <button onClick={handleLoginClick} className={styles.header__navButton}>
+          Owner
+        </button>
+      </nav>
     </header>
   );
 };
