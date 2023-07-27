@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const Gallery = () => { 
   const { id } = useParams();
-  
+  // test
   return (
     <div>
       <Header />
