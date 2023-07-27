@@ -5,7 +5,7 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "../styles/AlbumDetails.module.css";
 
-const AlbumDetails = ({ id }) => {
+const PhotoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -81,4 +81,4 @@ const AlbumDetails = ({ id }) => {
   );
 };
 
-export default AlbumDetails;
+export default PhotoAlbumDetails;

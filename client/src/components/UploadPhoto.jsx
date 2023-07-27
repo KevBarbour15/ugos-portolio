@@ -13,13 +13,15 @@ function UploadPhoto() {
   useEffect(() => {
     const fetchAlbums = async () => {
       const res = await axios.get("/albums");
-      setAlbums(res.data);
-      if (res.data.length > 0) {
-        setSelectedAlbum(res.data[0]._id);
-      }
+      const photoAlbums = res.data.filter(album => album.photo === true);
+      setAlbums(photoAlbums);
     };
 
     fetchAlbums();
+
+    return () => {
+      setSelectedAlbum("");  
+    };
   }, []);
 
   const handleFileChange = (e) => {
@@ -38,7 +40,7 @@ function UploadPhoto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!selectedAlbum) {
+    if (!selectedAlbum || selectedAlbum === "") {
       alert("Please select an album before uploading a photo.");
       return;
     }
@@ -88,6 +90,9 @@ function UploadPhoto() {
           onChange={handleSelectChange}
           className={styles.uploadSelect}
         >
+          <option value="" disabled>
+            No album selected
+          </option>
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
               {album.title}
@@ -101,8 +106,9 @@ function UploadPhoto() {
         <input
           className={styles.uploadInput}
           type="file"
-          id="photo"
+          id="media"
           onChange={handleFileChange}
+          accept="image/*"
         />
 
         <ProgressBar

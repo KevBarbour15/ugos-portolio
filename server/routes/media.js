@@ -9,7 +9,7 @@ const router = express.Router();
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: 75 * 1024 * 1024,
+    fileSize: 150 * 1024 * 1024,
   },
 });
 
@@ -21,11 +21,18 @@ router.post(
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
     }
+    const fileTypeModule = await import("file-type");
+    console.log(fileTypeModule);
+    const detectedType = await fileTypeModule.fileTypeFromBuffer(req.file.buffer);
 
-    if (!req.file.mimetype.startsWith("image/")) {
+    if (!detectedType) {
+      return res.status(400).send("Could not determine file type.");
+    }
+
+    if (!["image", "video"].includes(detectedType.mime.split("/")[0])) {
       return res
         .status(400)
-        .send("Invalid file type. Please upload an image file.");
+        .send("Invalid file type. Please upload an image or video file.");
     }
 
     const blob = bucket.file(req.file.originalname);
