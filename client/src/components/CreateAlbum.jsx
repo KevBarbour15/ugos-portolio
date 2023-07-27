@@ -5,13 +5,21 @@ import styles from "../styles/CreateAlbum.module.css";
 const CreateAlbum = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (selectedOption === null) {
+      alert("Please select either Photo or Video.");
+      return;
+    }
+
     title.toLowerCase();
     const album = {
       title,
       description,
+      photo: selectedOption === "photo",
     };
 
     try {
@@ -23,6 +31,7 @@ const CreateAlbum = () => {
 
       setTitle("");
       setDescription("");
+      setSelectedOption(null);
       alert("Album successfully created!");
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -51,8 +60,30 @@ const CreateAlbum = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Album Description:"
-          required
         />
+
+        <div className={styles.createAlbumSwitch}>
+          <label>
+            <input
+              type="radio"
+              value="photo"
+              checked={selectedOption === "photo"}
+              onChange={() => setSelectedOption("photo")}
+              required
+            />
+            Photo
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="video"
+              checked={selectedOption === "video"}
+              onChange={() => setSelectedOption("video")}
+              required
+            />
+            Video
+          </label>
+        </div>
 
         <button className={styles.createAlbumButton} type="submit">
           Create Album

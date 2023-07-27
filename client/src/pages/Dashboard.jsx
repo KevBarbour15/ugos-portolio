@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import CreateAlbum from "../components/CreateAlbum";
 import UploadPhoto from "../components/UploadPhoto";
+import UploadVideo from "../components/UploadVideo";
 import EditAlbum from "../components/EditAlbum";
 import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
-import styles from '../styles/Dashboard.module.css';
+import styles from "../styles/Dashboard.module.css";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -37,18 +38,21 @@ const Dashboard = () => {
     case "Upload Photo":
       CurrentComponent = UploadPhoto;
       break;
+    case "Upload Video":
+      CurrentComponent = UploadVideo;
+      break;
     default:
-      CurrentComponent = () => <div>Select an option</div>;
+      CurrentComponent = () => <div></div>;
   }
 
   return (
     <div className={styles.dashboardContainer}>
       <Header className={styles.dashboardHeader} />
-      <DashboardHeader 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        handleLogout={handleLogout} 
-        className={styles.dashboardSubHeader} 
+      <DashboardHeader
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        handleLogout={handleLogout}
+        className={styles.dashboardSubHeader}
       />
       <div className={styles.contentContainer}>
         <CurrentComponent />

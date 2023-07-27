@@ -2,9 +2,7 @@ import React from "react";
 import styles from "../styles/DashboardHeader.module.css";
 
 const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
-  // need to make this sticky and so that the content does not go out of it to extend page
-  // how do i do this?
-  
+
   return (
     <header className={styles.dashboardHeader}>
       <nav>
@@ -19,6 +17,18 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               onClick={() => setActiveTab("Upload Photo")}
             >
               Upload Photo
+            </button>
+          </li>
+          <li className={styles.dashboardHeaderNavItem}>
+            <button
+              className={`${styles.dashboardHeaderButton} ${
+                activeTab === "Upload Video"
+                  ? styles.dashboardHeaderButtonActive
+                  : ""
+              }`}
+              onClick={() => setActiveTab("Upload Video")}
+            >
+              Upload Video
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>

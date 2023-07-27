@@ -10,6 +10,10 @@ const AlbumSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  photo: {
+    type: Boolean,
+    required: true,
+  },
   media: [
     {
       type: mongoose.Schema.Types.ObjectId,
