@@ -5,10 +5,12 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import styles from "../styles/AlbumList.module.css";
 import placeholderImg from "../images/gold-bars.png";
 import Header from "../components/Header";
+
 import ReactPlayer from "react-player";
 
 function VideoAlbums() {
   const [albums, setAlbums] = useState([]);
+
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -19,6 +21,7 @@ function VideoAlbums() {
   }
 
   const fetchAlbums = async () => {
+
     try {
       const res = await axios.get("/albums");
       const videoAlbums = res.data.filter((album) => !album.photo);
@@ -36,9 +39,11 @@ function VideoAlbums() {
     }
   };
 
+
   useEffect(() => {
     fetchAlbums();
   }, []);
+
 
   const isVideo = (url) => {
     return [".mp4", ".webm", ".ogg"].some((extension) =>
@@ -52,6 +57,7 @@ function VideoAlbums() {
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 900: 1 }}>
         <Masonry>
           {albums.map((album) => {
+
             const albumCover = album.albumCover.url;
 
             return (
@@ -72,6 +78,7 @@ function VideoAlbums() {
                     ) : (
                       <img src={albumCover} alt={album.title} />
                     )}
+
                     <div className={styles.albumDescription}>{album.title}</div>
                   </div>
                 </Link>

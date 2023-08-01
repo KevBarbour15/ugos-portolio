@@ -28,6 +28,7 @@ function PhotoAlbums() {
 
   const fetchAlbums = async () => {
     const res = await axios.get("/albums");
+
     const photoAlbums = res.data.filter(album => album.photo);
       
     const preloadedImages = await Promise.all(
@@ -39,6 +40,7 @@ function PhotoAlbums() {
       })
     );
   
+
     const albumsWithDimensions = preloadedImages.map((img, index) => ({
       ...photoAlbums[index],
       albumCover: photoAlbums[index].albumCover
@@ -49,10 +51,11 @@ function PhotoAlbums() {
           }
         : { url: placeholderImg },
     }));
-  
+
     setAlbums(shuffleArray(albumsWithDimensions));
   };
   
+
 
   useEffect(() => {
     fetchAlbums();
@@ -63,12 +66,15 @@ function PhotoAlbums() {
       <Header />
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 900: 2 }}>
         <Masonry>
+
           {albums.map((album, index) => {
             const albumCover = album.albumCover.url;
 
             return (
               <div className={styles.album} key={album._id}>
+
                 <Link to={`/photo/${album._id}`} className={styles.albumLink}>
+
                   <div className={styles.albumImage}>
                     <img src={albumCover} alt={album.title} />
                     <div className={styles.albumDescription}>{album.title}</div>
