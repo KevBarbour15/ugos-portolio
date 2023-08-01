@@ -2,21 +2,20 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  margin: 5vh;
 }
 
 .albumLink {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
+  height: auto; 
 }
 
 .albumImage {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 5px;
-  border: .5px solid grey;
-  background-color: white;
 }
 
 .albumImage img {
@@ -34,16 +33,15 @@
   left: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "OstrichSans-Bold";
   font-size: calc(2.75vw);
   text-align: center;
   box-sizing: border-box;
-  padding: 15px;
+  font-family: "courier new";
 }
 
 .albumImage:hover .albumDescription {

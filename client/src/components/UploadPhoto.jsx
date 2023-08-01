@@ -13,14 +13,14 @@ function UploadPhoto() {
   useEffect(() => {
     const fetchAlbums = async () => {
       const res = await axios.get("/albums");
-      const photoAlbums = res.data.filter(album => album.photo === true);
+      const photoAlbums = res.data.filter((album) => album.photo === true);
       setAlbums(photoAlbums);
     };
 
     fetchAlbums();
 
     return () => {
-      setSelectedAlbum("");  
+      setSelectedAlbum("");
     };
   }, []);
 
@@ -58,7 +58,7 @@ function UploadPhoto() {
       },
     };
 
-    setProgress(30);
+    setProgress(50);
 
     try {
       const res = await axios.post("/media/upload", data, config);
@@ -82,7 +82,7 @@ function UploadPhoto() {
     <div className={styles.uploadContainer}>
       <form className={styles.uploadForm} onSubmit={handleSubmit}>
         <label htmlFor="album" className={styles.uploadLabel}>
-          Select Album To Upload To:
+          select album to upload to:
         </label>
         <select
           id="album"
@@ -91,7 +91,7 @@ function UploadPhoto() {
           className={styles.uploadSelect}
         >
           <option value="" disabled>
-            No album selected
+            no album selected
           </option>
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
@@ -101,7 +101,7 @@ function UploadPhoto() {
         </select>
 
         <label htmlFor="photo" className={styles.uploadLabel}>
-          Select Photo To Upload:
+          select photo to upload:
         </label>
         <input
           className={styles.uploadInput}
@@ -114,15 +114,14 @@ function UploadPhoto() {
         <ProgressBar
           className={styles.progressBar}
           now={progress}
-          placeholder="Upload Progress"
+          placeholder="upload progress"
           label={`${progress}%`}
           srOnly
-          striped
-          variant="info"
+          variant="danger"
         />
 
         <button type="submit" className={styles.uploadButton}>
-          Upload
+          <span>upload photo</span>
         </button>
       </form>
     </div>

@@ -4,7 +4,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/UploadPhoto.module.css";
 
-function UploadPhoto() {
+function UploadVideo() {
   const [albums, setAlbums] = useState([]);
   const [selectedAlbum, setSelectedAlbum] = useState("");
   const [file, setFile] = useState(null);
@@ -13,14 +13,14 @@ function UploadPhoto() {
   useEffect(() => {
     const fetchAlbums = async () => {
       const res = await axios.get("/albums");
-      const photoAlbums = res.data.filter(album => album.photo === false);
+      const photoAlbums = res.data.filter((album) => album.photo === false);
       setAlbums(photoAlbums);
     };
 
     fetchAlbums();
 
     return () => {
-      setSelectedAlbum("");  
+      setSelectedAlbum("");
     };
   }, []);
 
@@ -82,7 +82,7 @@ function UploadPhoto() {
     <div className={styles.uploadContainer}>
       <form className={styles.uploadForm} onSubmit={handleSubmit}>
         <label htmlFor="album" className={styles.uploadLabel}>
-          Select Album To Upload To:
+          select album to upload to:
         </label>
         <select
           id="album"
@@ -91,7 +91,7 @@ function UploadPhoto() {
           className={styles.uploadSelect}
         >
           <option value="" disabled>
-            No album selected
+            no album selected
           </option>
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
@@ -100,8 +100,8 @@ function UploadPhoto() {
           ))}
         </select>
 
-        <label htmlFor="photo" className={styles.uploadLabel}>
-          Select Photo To Upload:
+        <label htmlFor="media" className={styles.uploadLabel}>
+          select video to upload:
         </label>
         <input
           className={styles.uploadInput}
@@ -122,11 +122,11 @@ function UploadPhoto() {
         />
 
         <button type="submit" className={styles.uploadButton}>
-          Upload
+          <span>upload video</span>
         </button>
       </form>
     </div>
   );
 }
 
-export default UploadPhoto;
+export default UploadVideo;

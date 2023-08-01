@@ -5,13 +5,14 @@ import CreateAlbum from "../components/CreateAlbum";
 import UploadPhoto from "../components/UploadPhoto";
 import UploadVideo from "../components/UploadVideo";
 import EditAlbum from "../components/EditAlbum";
+import EditLanding from "../components/EditLanding"
 import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
 import styles from "../styles/Dashboard.module.css";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-  const [activeTab, setActiveTab] = useState("Upload Photo");
+  const [activeTab, setActiveTab] = useState("Create Album");
 
   const navigate = useNavigate();
 
@@ -40,6 +41,9 @@ const Dashboard = () => {
       break;
     case "Upload Video":
       CurrentComponent = UploadVideo;
+      break;
+    case "Edit Landing":
+      CurrentComponent = EditLanding;
       break;
     default:
       CurrentComponent = () => <div></div>;

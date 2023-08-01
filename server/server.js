@@ -1,29 +1,31 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const db = require("./db");
 const cors = require("cors");
 const app = express();
 
 app.use(cors());
 
-const mediaRoutes = require("./routes/media");
-const albumRoutes = require("./routes/albums");
-const authRoutes = require("./routes/auth");
-
-app.use(bodyParser.json());
-
-app.use("/media", mediaRoutes);
-app.use("/albums", albumRoutes);
-app.use("/auth", authRoutes);
-
+// Loggers
 app.use((req, res, next) => {
   console.log(`Incoming request: ${req.method} ${req.url}`);
   next();
 });
 
-app.use((req, res, next) => {
-  console.log(`Received ${req.method} request to ${req.url}`);
-  next();
+app.use(express.json()); 
+
+const mediaRoutes = require("./routes/media");
+const albumRoutes = require("./routes/albums");
+const authRoutes = require("./routes/auth");
+const landingRoutes = require("./routes/landing");
+
+app.use("/media", mediaRoutes);
+app.use("/albums", albumRoutes);
+app.use("/auth", authRoutes);
+app.use("/landing", landingRoutes);
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
 });
 
 db.connect()

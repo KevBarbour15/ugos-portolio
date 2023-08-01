@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
-import Gallery from "./pages/Gallery"; 
+import PhotoGallery from "./pages/Gallery"; 
+import VideoGallery from "./pages/VideoGallery";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
@@ -28,7 +29,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<PhotoAlbums/>} />
-            <Route path="/albums/:id" element={<Gallery />} />
+            <Route path="/photo/:id" element={<PhotoGallery />} />
+            <Route path="/video/:id" element={<VideoGallery />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/about" element={<About />} />

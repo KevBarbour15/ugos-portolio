@@ -1,46 +1,24 @@
-@font-face {
-  font-family: "OstrichSans-Black";
-  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
-}
-
-
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .uploadContainer {
   display: flex;
   flex: 1;
   justify-content: center;
-  letting-spacing: 0.5px;
+  font-family: "courier new";
 }
 
 .uploadForm {
-  width: 70%;
-  max-width: 800px;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: 5vh 5vh;
-  margin: 5vh auto;
-  justify-content: center;
+  position: relative;
+  padding: 15px 0 0;
+  margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.uploadForm * {
-  color: black;
-  outline: none;
-  border: none;
-}
-
 .uploadSelect {
-  width: 80%;
-  font-size: 14px;
-  font-weight: 900;
+  width: 30%;
+  font-size: 2.5vh;
+  height: 5vh;
   color: black;
   border: 0.5px solid black;
   box-shadow: 0 0 2.5px grey;
@@ -50,56 +28,76 @@
 .uploadInput {
   display: block;
   height: 5vh;
-  width: 80%;
-  background-color: white;
-  font-size: 2vh;
-  font-weight: 900;
-  color: black;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: .5vh;
-  padding-left: .5vh;
-}
-
-
-::placeholder {
-  color: black;
+  width: 40%;
+  color: white;
 }
 
 .uploadLabel {
   display: block;
-  margin: 2vh 0;
-  font-size: 2.5vh;
-  font-weight: 900;
-  color: black;
-  align-items: left;
+  margin: 3vh;
+  width: 35%;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
 }
 
 .uploadButton {
-  text-align: center;
-  width: 50%;
-  background-color: #ffffff;
+  align-items: center;
+  background-image: linear-gradient(to right, #11998e, #38ef7d);
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
   color: white;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
   cursor: pointer;
-  background-color: black;
-  border: 1px solid white;
 }
 
+.uploadButton:active,
 .uploadButton:hover {
-  background-color: grey;
-  color: #ffffff;
-  border: 0.5px solid black;
+  outline: 0;
+}
+
+.uploadButton span {
+  background-color: #9b9b9b;
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.uploadButton:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .uploadButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }
 
 .progressBar {
-  width: 85%;
+  font-family: "courier new";
+  background: black;
+  border: 2px solid white;
+  width: 40%;
   height: 5vh;
-  background-color: white;
   margin: 5vh;
-  border: 0.5px solid black;
+  border-radius: 8px;
   overflow: hidden;
-  label: black;
 }

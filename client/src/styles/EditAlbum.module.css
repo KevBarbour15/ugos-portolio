@@ -1,151 +1,214 @@
-@font-face {
-  font-family: "OstrichSans-Black";
-  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
-}
-
 .editContainer {
   display: flex;
   flex: 1;
   justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.editForm {
-  width: 85%;
-  max-width: 800px;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: 5vh 5vh;
-  margin: 2.5vh auto;
-  justify-content: center;
+  font-family: "courier new";
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.editForm * {
-  color: black;
-  outline: none;
-  border: none;
-}
-
-.selectContainer {
+.editAlbumForm {
+  position: relative;
+  margin: 0;
   width: 100%;
-  max-width: 525px;
-  margin: 1.5vh auto;
-  justify-content: center;
+  padding: 15px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.inputWrapper {
+  position: relative;
+  margin: 25px;
+  width: 55%;
+}
+.editTitle{
+  margin: 3vh;
+  width: 80%;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
 }
 
 .editSelect {
-  width: 80%;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 2.5vh;
+  height: 5vh;
   color: black;
   border: 0.5px solid black;
   box-shadow: 0 0 2.5px grey;
   margin-bottom: 1vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.editInput {
-  display: block;
-  height: 5vh;
-  width: 80%;
-  background-color: white;
-  font-size: 2vh;
-  color: black;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: 0.5vh;
-  padding-left: 0.5vh;
-}
-
-.formButton {
-  text-align: center;
-  width: 50%;
-  background-color: #ffffff;
+.editAlbumInput {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: 0;
+  font-size: 1.3rem;
   color: white;
-  padding: 15px 0;
-  font-size: 15px;
-  letter-spacing: 0.15em;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 15px;
+}
+
+.editAlbumInput::placeholder {
+  color: transparent;
+}
+
+.editAlbumInput:placeholder-shown ~ .editAlbumLabel {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.editAlbumInput:not(:placeholder-shown) ~ .editAlbumLabel {
+  top: -15px;
+}
+
+.editAlbumInput:focus {
+  padding-bottom: 6px;
+  font-weight: 600;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+
+  ~ .editAlbumLabel {
+    color: #11998e;
+  }
+}
+
+.editAlbumInput:required,
+.editAlbumInput:invalid {
+  box-shadow: none;
+}
+
+.editAlbumLabel {
+  font-family: "courier new";
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: white;
+}
+
+.editAlbumButton {
+  align-items: center;
+  background-image: linear-gradient(to right, #11998e, #38ef7d);
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
   cursor: pointer;
-  background-color: black;
-  border: 1px solid white;
-  margin-top: 2.5vh;
 }
 
-.formButton:hover {
-  background-color: grey;
-  color: #ffffff;
-  border: 0.5px solid black;
+.editAlbumButton:active,
+.editAlbumButton:hover {
+  outline: 0;
 }
 
-.editLabel {
-  display: block;
-  margin: 2vh 0;
-  font-size: 2.5vh;
-  font-weight: 900;
-  color: black;
-  align-items: left;
+.editAlbumButton span {
+  background-color: #9b9b9b;
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
 }
 
-.editInput{
-  display: block;
-  height: 7.5vh;
-  width: 80%;
-  background-color: white;
-  font-size: 2vh;
-  font-weight: 900;
-  color: black;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: .5vh;
-  padding-left: .5vh;
+.editAlbumButton:hover span {
+  background: none;
 }
 
-.editInput::placeholder {
-  color: black;
+@media (min-width: 768px) {
+  .editAlbumButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }
 
 .deleteButton {
-  text-align: center;
-  width: 50%;
-  background-color: red;
+  align-items: center;
+  background-image: linear-gradient(to right, #11998e, #38ef7d);
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
   color: white;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 900;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 180px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
   cursor: pointer;
-  border: .5px solid black;
-  letter-spacing: 0.25em;
-  margin-bottom: 2.5vh;
+  margin: 5vh;
 }
 
+.deleteButton:active,
 .deleteButton:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
+  outline: 0;
+}
+
+.deleteButton span {
+  background-color: red;
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.deleteButton:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .deleteButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+.imageContainerLabel {
+  color: white;
+  margin-top:5vh;
+  font-size: 1.3rem;
 }
 
 .imageContainer {
-  width: 90%;
+  width: 75%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 15vh;
+  height: 35vh;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: thick;
   scrollbar-color: grey lightgrey;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin: 5vh;
 }
 
-.imageContainer img {
-  margin-right: 5px; 
-}

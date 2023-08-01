@@ -18,19 +18,19 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__titleContainer}>swellysensai</div>
+      <div className={styles.header__titleContainer}>swellysensei</div>
       <nav className={styles.header__nav}>
         <Link className={styles.header__navLink} to="/home">
-          Photo
+          photo
         </Link>
         <Link className={styles.header__navLink} to="/videos">
-          Video
+          video
         </Link>
         <Link className={styles.header__navLink} to="/about">
-          About
+          about
         </Link>
         <button onClick={handleLoginClick} className={styles.header__navButton}>
-          Owner
+          owner
         </button>
       </nav>
     </header>
