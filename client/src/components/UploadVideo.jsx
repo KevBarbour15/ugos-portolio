@@ -13,8 +13,8 @@ function UploadVideo() {
   useEffect(() => {
     const fetchAlbums = async () => {
       const res = await axios.get("/albums");
-      const videoAlbums = res.data.filter((album) => album.photo === false);
-      setAlbums(videoAlbums);
+      const photoAlbums = res.data.filter((album) => album.photo === false);
+      setAlbums(photoAlbums);
     };
 
     fetchAlbums();
@@ -83,7 +83,9 @@ function UploadVideo() {
     <div className={styles.uploadContainer}>
       <form className={styles.uploadForm} onSubmit={handleSubmit}>
         <label htmlFor="album" className={styles.uploadLabel}>
-          Select Album To Upload To:
+
+          select album to upload to:
+
         </label>
         <select
           id="album"
@@ -92,7 +94,9 @@ function UploadVideo() {
           className={styles.uploadSelect}
         >
           <option value="" disabled>
-            No album selected
+
+            no album selected
+
           </option>
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
@@ -100,9 +104,9 @@ function UploadVideo() {
             </option>
           ))}
         </select>
+        <label htmlFor="media" className={styles.uploadLabel}>
+          select video to upload:
 
-        <label htmlFor="photo" className={styles.uploadLabel}>
-          Select Video To Upload:
         </label>
         <input
           className={styles.uploadInput}
@@ -123,7 +127,9 @@ function UploadVideo() {
         />
 
         <button type="submit" className={styles.uploadButton}>
-          Upload
+
+          <span>upload video</span>
+
         </button>
       </form>
     </div>

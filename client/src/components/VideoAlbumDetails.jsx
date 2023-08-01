@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import ReactPlayer from "react-player";
 import styles from "../styles/AlbumDetails.module.css";
 
-const PhotoAlbumDetails = ({ id }) => {
+const VideoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchAlbum = async () => {
@@ -26,6 +24,12 @@ const PhotoAlbumDetails = ({ id }) => {
     return <div>Loading...</div>;
   }
 
+  const isVideo = (url) => {
+    return [".mp4", ".webm", ".ogg"].some((extension) =>
+      url.endsWith(extension)
+    );
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.albumTitle}>{album.title}</h2>
@@ -33,46 +37,33 @@ const PhotoAlbumDetails = ({ id }) => {
 
       {album.media && album.media.length > 0 ? (
         <>
-          <ResponsiveMasonry
-            rowsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
-          >
+          <ResponsiveMasonry rowsCountBreakPoints={{ 350: 1, 750: 2, 900: 2 }}>
             <Masonry>
               {album.media.map((media, index) => (
                 <div
                   key={index}
                   className={styles.album}
-                  onClick={() => {
-                    setPhotoIndex(index);
-                    setIsOpen(true);
-                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
                   <div className={styles.galleryImage}>
-                    <img src={media.url} alt="" />
+                    {isVideo(media.url) ? (
+                      <ReactPlayer
+                        url={media.url}
+                        width="100%"
+                        controls={isHovered}
+                        playing
+                        loop
+                        muted
+                      />
+                    ) : (
+                      <img src={media.url} alt="" />
+                    )}
                   </div>
                 </div>
               ))}
             </Masonry>
           </ResponsiveMasonry>
-          {isOpen && (
-            <Lightbox
-              mainSrc={album.media[photoIndex].url}
-              nextSrc={album.media[(photoIndex + 1) % album.media.length].url}
-              prevSrc={
-                album.media[
-                  (photoIndex + album.media.length - 1) % album.media.length
-                ].url
-              }
-              onCloseRequest={() => setIsOpen(false)}
-              onMovePrevRequest={() =>
-                setPhotoIndex(
-                  (photoIndex + album.media.length - 1) % album.media.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setPhotoIndex((photoIndex + 1) % album.media.length)
-              }
-            />
-          )}
         </>
       ) : (
         <p>No media in this album.</p>
@@ -81,4 +72,4 @@ const PhotoAlbumDetails = ({ id }) => {
   );
 };
 
-export default PhotoAlbumDetails;
+export default VideoAlbumDetails;

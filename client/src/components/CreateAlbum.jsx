@@ -5,15 +5,10 @@ import styles from "../styles/CreateAlbum.module.css";
 const CreateAlbum = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("photo");
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (selectedOption === null) {
-      alert("Please select either Photo or Video.");
-      return;
-    }
 
     title.toLowerCase();
     const album = {
@@ -31,7 +26,7 @@ const CreateAlbum = () => {
 
       setTitle("");
       setDescription("");
-      setSelectedOption(null);
+      setSelectedOption("photo");
       alert("Album successfully created!");
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -46,47 +41,55 @@ const CreateAlbum = () => {
   return (
     <div className={styles.createAlbumContainer}>
       <form className={styles.createAlbumForm} onSubmit={onSubmit}>
-        <input
-          className={styles.createAlbumInput}
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Album Title:"
-          required
-        />
+        <div className={styles.photoVideoSwitch}>
+          <span className={styles.labelText}>photo</span>
+          <input
+            id="photoVideoSwitch"
+            type="checkbox"
+            checked={selectedOption === "video"}
+            onChange={() =>
+              setSelectedOption((prev) =>
+                prev === "photo" ? "video" : "photo"
+              )
+            }
+          />
+          <label
+            htmlFor="photoVideoSwitch"
+            className={styles.switchLabel}
+          ></label>
+          <span className={styles.labelText}>video</span>
+        </div>
 
-        <textarea
-          className={styles.createAlbumText}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Album Description:"
-        />
-
-        <div className={styles.createAlbumSwitch}>
-          <label>
-            <input
-              type="radio"
-              value="photo"
-              checked={selectedOption === "photo"}
-              onChange={() => setSelectedOption("photo")}
-              required
-            />
-            Photo
+        <div className={styles.inputWrapper}>
+          <input
+            className={styles.createAlbumField}
+            id="albumTitle"
+            type="text"
+            placeholder="album title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <label className={styles.createAlbumLabel} htmlFor="albumTitle">
+            album title
           </label>
-          <label>
-            <input
-              type="radio"
-              value="video"
-              checked={selectedOption === "video"}
-              onChange={() => setSelectedOption("video")}
-              required
-            />
-            Video
+        </div>
+
+        <div className={styles.inputWrapper}>
+          <input
+            className={styles.createAlbumField}
+            id="albumDescription"
+            placeholder="album description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <label className={styles.createAlbumLabel} htmlFor="albumDescription">
+            album description
           </label>
         </div>
 
         <button className={styles.createAlbumButton} type="submit">
-          Create Album
+          <span>create album</span>
         </button>
       </form>
     </div>

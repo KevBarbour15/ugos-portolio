@@ -4,9 +4,9 @@ import PhotoAlbumDetails from "../components/PhotoAlbumDetails";
 import Header from "../components/Header";
 import Footer from '../components/Footer';
 
-const Gallery = () => { 
+const PhotoGallery = () => { 
   const { id } = useParams();
-  
+  // test
   return (
     <div>
       <Header />
@@ -15,4 +15,4 @@ const Gallery = () => {
   );
 }
 
-export default Gallery;
+export default PhotoGallery;

@@ -1,91 +1,188 @@
-@font-face {
-  font-family: "OstrichSans-Black";
-  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
-}
-
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .createAlbumContainer {
   display: flex;
   flex: 1;
   justify-content: center;
+  font-family: "courier new";
 }
 
 .createAlbumForm {
-  width: 70%;
-  max-width: 800px;
-  backdrop-filter: blur(10px);
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: 5vh 5vh;
-  margin: 5vh auto;
-  justify-content: center;
+  position: relative;
+  padding: 15px 0 0;
+  margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.createAlbumForm * {
-  color: black;
-  outline: none;
-  border: none;
+.inputWrapper {
+  position: relative;
+  margin: 25px;
+  width: 50%;
 }
 
-.createAlbumInput{
+.createAlbumField {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 15px;
+}
+
+.createAlbumField::placeholder {
+  color: transparent;
+}
+
+.createAlbumField:placeholder-shown ~ .createAlbumLabel {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.createAlbumField:not(:placeholder-shown) ~ .createAlbumLabel {
+  top: -15px;
+}
+
+.createAlbumField:focus {
+  padding-bottom: 6px;
+  font-weight: 600;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+
+  ~ .createAlbumLabel {
+    color: #11998e;
+  }
+}
+
+.createAlbumField:required,
+.createAlbumField:invalid {
+  box-shadow: none;
+}
+
+.createAlbumLabel {
+  font-family: "courier new";
+  position: absolute;
+  top: 0;
   display: block;
-  height: 5vh;
-  width: 80%;
-  background-color: white;
-  font-size: 2vh;
-  font-weight: 900;
-  color: black;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: .5vh;
-  padding-left: .5vh;
-  margin: 5vh;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: white;
 }
 
-::placeholder {
-  color: black;
+.photoVideoSwitch input[type="checkbox"] {
+  display: none;
+  visibility: hidden;
 }
 
-.createAlbumText {
-  display: block;
-  height: 10vh;
-  width: 80%;
-  background-color: white;
-  font-size: 2vh;
-  font-weight: 900;
-  color: black;
-  border: 0.5px solid black;
-  box-shadow: 0 0 2.5px grey;
-  padding: .5vh;
-  padding-left: .5vh;
-  margin-bottom: 5vh;
+.photoVideoSwitch {
+  --size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.labelText {
+  color: white;
+  font-family: "courier new";
+  font-size: 1.75em;
+  letter-spacing: 0.1em;
+}
+
+.photoVideoSwitch .switchBlock {
+  position: relative;
+  clear: both;
+  float: left;
+}
+
+.photoVideoSwitch label {
+  display: inline-block;
+  width: var(--size);
+  height: calc(var(--size) / 2);
+  box-sizing: border-box;
+  border: 3px solid;
+  float: left;
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.75s ease;
+  color: white;
+}
+
+.photoVideoSwitch input[type="checkbox"]:checked + label {
+  background: linear-gradient(to right, #11998e, #38ef7d);
+}
+
+.photoVideoSwitch input[type="checkbox"]:checked + label:before {
+  left: calc(var(--size) / 2);
+}
+
+.photoVideoSwitch label:before {
+  transition: 0.3s ease;
+  content: "";
+  width: calc((var(--size) / 2) - 10px);
+  height: calc((var(--size) / 2) - 10px);
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background:white;
+  border-radius: 50%;
+}
+
+.switchLabel {
+  display: inline-block;
+  margin: 15px;
 }
 
 .createAlbumButton {
-  text-align: center;
-  width: 50%;
-  background-color: #ffffff;
+  align-items: center;
+  background-image: linear-gradient(to right, #11998e, #38ef7d);
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
   color: white;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
   cursor: pointer;
-  background-color: black;
-  border: 1px solid white;
 }
 
+.createAlbumButton:active,
 .createAlbumButton:hover {
-  background-color: grey;
-  color: #ffffff;
-  border: 0.5px solid black;
+  outline: 0;
+}
+
+.createAlbumButton span {
+  background-color:  #9b9b9b;
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.createAlbumButton:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .createAlbumButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }

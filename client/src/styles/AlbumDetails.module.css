@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "OstrichSans-Black";
-  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
-}
-
 .album {
   margin: 0 auto;
 }
@@ -13,14 +8,13 @@
 
 .container img {
   width: auto;     
-  height: 350px;   
+  height: auto;
   max-width: 100%;  
 }
 
 .galleryImage {
   display: inline-block;  
   vertical-align: top;    
-  border: 0.5px solid black;
   margin: 0.5vh;
   overflow: hidden;  
 }
@@ -30,15 +24,13 @@
 }
 
 .albumTitle {
-  font-family: "OstrichSans-Black";
-  color: black;
+  color: white;
   font-size: 3em;
   text-shadow: 0.35px 1.25px 1.25px grey;
   letter-spacing: 0.05em;
 }
 
 .albumInfo {
-  font-family: "OstrichSans-Black";
   color: grey;
   font-size: 2em;
 }

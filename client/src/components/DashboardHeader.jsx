@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/DashboardHeader.module.css";
 
 const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
-
   return (
     <header className={styles.dashboardHeader}>
       <nav>
@@ -16,7 +15,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Upload Photo")}
             >
-              Upload Photo
+              <span>upload photo</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -28,7 +27,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Upload Video")}
             >
-              Upload Video
+              <span>upload video</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -40,7 +39,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Create Album")}
             >
-              Create Album
+              <span>create new album</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -52,7 +51,19 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Edit Album")}
             >
-              Edit Album
+              <span>edit album</span>
+            </button>
+          </li>
+          <li className={styles.dashboardHeaderNavItem}>
+            <button
+              className={`${styles.dashboardHeaderButton} ${
+                activeTab === "Edit Landing"
+                  ? styles.dashboardHeaderButtonActive
+                  : ""
+              }`}
+              onClick={() => setActiveTab("Edit Landing")}
+            >
+              <span>edit landing page</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -60,7 +71,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               className={styles.dashboardHeaderButton}
               onClick={handleLogout}
             >
-              Logout
+              <span>logout</span>
             </button>
           </li>
         </ul>

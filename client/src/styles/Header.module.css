@@ -1,35 +1,23 @@
-@font-face {
-  font-family: "OstrichSans-Black";
-  src: url("../fonts/OstrichSans-Black.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "OstrichSans-Bold";
-  src: url("../fonts/OstrichSans-Bold.otf") format("opentype");
-}
-
 .header {
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: white;
-  border: 0.5px solid grey;
-  box-shadow: 0 1px 2.5px grey;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1vh;
   flex-wrap: wrap;
+  border: 2px solid white;
 }
 
 .header__titleContainer {
-  color: black;
+  color: white;
   flex-direction: column;
   text-shadow: 0.25px 1px 1px grey;
-  font-family: "OstrichSans-Black";
+  font-family: "courier new";
   font-size: calc(1rem + 2vw);
   letter-spacing: 0.25em;
-  font-weight: bold;
   max-width: 50%;
 }
 
@@ -42,14 +30,13 @@
 
 .header__navLink,
 .header__navButton {
-  font-family: "OstrichSans-Black";
-  font-size: 1.95em;
-  font-weight: bold;
-  letter-spacing: 0.45em;
+  font-family: "courier new";
+  font-size: 1.5em;
+  letter-spacing: 0.15em;
   text-align: center;
   text-shadow: 1px 1px 1px grey;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .header__navButton {
@@ -57,13 +44,6 @@
   border: none;
   cursor: pointer;
   outline: none;
-}
-
-.header__navLink:hover,
-.header__navButton:hover {
-  color: white;
-  background-color: black;
-  text-shadow: 1px 1px 1px grey;
 }
 
 @media (max-width: 768px) {

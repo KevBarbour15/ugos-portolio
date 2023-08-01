@@ -7,7 +7,7 @@ import styles from "../styles/Login.module.css";
 import Footer from "./Footer";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const username = "ugo";
   const [password, setPassword] = useState("");
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -33,28 +33,20 @@ const Login = () => {
     <>
       <Header />
       <div className={styles.loginContainer}>
-        <form className={styles.ownerLoginForm} onSubmit={handleSubmit}>
-          <h3 className={styles.ownerLoginHeading}>Owner Login</h3>
-
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-            id="username"
-            className={styles.ownerLoginInput}
-          />
-
+        <form className={styles.formGroup} onSubmit={handleSubmit}>     
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             id="password"
-            className={styles.ownerLoginInput}
+            className={styles.formField}
+            required
           />
-          <button type="submit" className={styles.ownerLoginButton}>
-            Log In
+          <label htmlFor="password" className={styles.formLabel}>owner password</label>
+
+          <button type="submit" className={styles.loginButton}>
+          <span>login</span>
           </button>
         </form>
       </div>
