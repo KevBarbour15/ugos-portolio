@@ -5,7 +5,6 @@ const app = express();
 
 app.use(cors());
 
-// Loggers
 app.use((req, res, next) => {
   console.log(`Incoming request: ${req.method} ${req.url}`);
   next();
@@ -18,10 +17,10 @@ const albumRoutes = require("./routes/albums");
 const authRoutes = require("./routes/auth");
 const landingRoutes = require("./routes/landing");
 
+app.use("/landing", landingRoutes);
 app.use("/media", mediaRoutes);
 app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);
-app.use("/landing", landingRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

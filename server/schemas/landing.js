@@ -9,11 +9,7 @@ const LandingSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  videos: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-    },
-  ],
+  videos: [String],
 });
 
 module.exports = mongoose.model("Landing", LandingSchema);

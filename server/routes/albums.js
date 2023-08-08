@@ -60,7 +60,6 @@ router.put("/:id", verifyToken, async (req, res) => {
 });
 
 router.delete("/:id/media/:mediaId", verifyToken, async (req, res) => {
-  console.log("DELETE MEDIA");
   try {
     const { id: albumId, mediaId } = req.params; 
 

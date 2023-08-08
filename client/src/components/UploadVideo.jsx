@@ -26,7 +26,12 @@ function UploadVideo() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    const validTypes = ["video/mp4", "video/webm", "video/ogg"];
+    const validTypes = [
+      "video/mp4",
+      "video/webm",
+      "video/ogg",
+      "video/quicktime",
+    ];
     if (validTypes.includes(file.type)) {
       setFile(file);
     } else {
@@ -83,9 +88,7 @@ function UploadVideo() {
     <div className={styles.uploadContainer}>
       <form className={styles.uploadForm} onSubmit={handleSubmit}>
         <label htmlFor="album" className={styles.uploadLabel}>
-
           select album to upload to:
-
         </label>
         <select
           id="album"
@@ -94,9 +97,7 @@ function UploadVideo() {
           className={styles.uploadSelect}
         >
           <option value="" disabled>
-
             no album selected
-
           </option>
           {albums.map((album) => (
             <option value={album._id} key={album._id}>
@@ -106,7 +107,6 @@ function UploadVideo() {
         </select>
         <label htmlFor="media" className={styles.uploadLabel}>
           select video to upload:
-
         </label>
         <input
           className={styles.uploadInput}
@@ -127,9 +127,7 @@ function UploadVideo() {
         />
 
         <button type="submit" className={styles.uploadButton}>
-
           <span>upload video</span>
-
         </button>
       </form>
     </div>

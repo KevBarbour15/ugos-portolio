@@ -94,7 +94,7 @@
   letter-spacing: 0.1em;
 }
 
-.photoVideoSwitch .switchBlock {
+.photoVideoSwitch{
   position: relative;
   clear: both;
   float: left;

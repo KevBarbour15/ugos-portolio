@@ -30,8 +30,8 @@ const EditAlbum = () => {
       setCoverImage(selectedAlbum.coverImage);
 
       const fetchMedia = async () => {
-        const response = await axios.get(`/albums/${selectedAlbum._id}`);
-        setMedia(response.data.media);
+        const res = await axios.get(`/albums/${selectedAlbum._id}`);
+        setMedia(res.data.media);
       };
 
       fetchMedia();
@@ -270,6 +270,9 @@ const EditAlbum = () => {
                 <video
                   key={m._id}
                   src={m.url}
+                  autoPlay
+                  loop
+                  muted
                   style={{
                     margin: "1px",
                     border: selectedCover === m._id ? "4px solid red" : "none",
@@ -321,6 +324,9 @@ const EditAlbum = () => {
                 <video
                   key={m._id}
                   src={m.url}
+                  autoPlay
+                  loop
+                  muted
                   style={{
                     margin: "1px",
                     border: selectedImage === m._id ? "4px solid red" : "none",
