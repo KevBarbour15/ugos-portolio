@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../styles/EditAlbum.module.css";
+import {
+  successNotification,
+  imageSuccessNotification,
+  errorNotification,
+} from "../helpers/notifications";
 /* 
   we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
 */
@@ -13,6 +18,7 @@ const EditAlbum = () => {
   const [media, setMedia] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedCover, setSelectedCover] = useState("");
+  const [selectedUrl, setSelectedUrl] = useState("");
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -63,8 +69,9 @@ const EditAlbum = () => {
       );
 
       if (response.status === 200) {
-        console.log("Title updated successfully!");
         setSelectedAlbum(response.data);
+        let message = "Title updated to '" + title + "'";
+        successNotification("Title updated successfully.", message);
       }
     } catch (error) {
       console.error("Failed to update title", error);
@@ -90,11 +97,12 @@ const EditAlbum = () => {
       );
 
       if (response.status === 200) {
-        console.log("Description updated successfully!");
         setSelectedAlbum(response.data);
+        let message = "Description updated to '" + description + "'";
+        successNotification("Description updated successfully.", message);
       }
     } catch (error) {
-      console.error("Failed to update description", error);
+      errorNotification("Failed to update description.", error);
     }
   };
 
@@ -118,10 +126,13 @@ const EditAlbum = () => {
 
       console.log("response: ", response);
       if (response.status === 200) {
-        console.log("Cover image updated successfully!");
+        imageSuccessNotification(
+          "Cover image successfully updated.",
+          selectedUrl
+        );
       }
     } catch (error) {
-      console.error("Failed to update cover image", error);
+      errorNotification("Failed to update cover image.", error);
     }
   };
 
@@ -154,6 +165,7 @@ const EditAlbum = () => {
         setCoverImage("");
         setMedia([]);
         setSelectedCover("");
+        setSelectedUrl("");
       }
     } catch (error) {
       console.error("Failed to delete album", error);
@@ -192,7 +204,7 @@ const EditAlbum = () => {
       if (response.status === 200) {
         console.log("Image deleted successfully!");
         setMedia(media.filter((m) => m._id !== selectedImage));
-        setSelectedImage(null);
+        setSelectedImage("");
       }
     } catch (error) {
       console.error("Server response status", error.response.status);
@@ -280,6 +292,7 @@ const EditAlbum = () => {
                   onClick={() => {
                     setCoverImage(m._id);
                     setSelectedCover(m._id);
+                    setSelectedUrl(m.url);
                   }}
                 />
               );
@@ -296,6 +309,7 @@ const EditAlbum = () => {
                   onClick={() => {
                     setCoverImage(m._id);
                     setSelectedCover(m._id);
+                    setSelectedUrl(m.url);
                   }}
                 />
               );
@@ -331,7 +345,10 @@ const EditAlbum = () => {
                     margin: "1px",
                     border: selectedImage === m._id ? "4px solid red" : "none",
                   }}
-                  onClick={() => setSelectedImage(m._id)}
+                  onClick={() => {
+                    setSelectedImage(m._id);
+                    setSelectedUrl(m.url);
+                  }}
                 />
               );
             } else {
@@ -344,7 +361,10 @@ const EditAlbum = () => {
                     margin: "1px",
                     border: selectedImage === m._id ? "4px solid red" : "none",
                   }}
-                  onClick={() => setSelectedImage(m._id)}
+                  onClick={() => {
+                    setSelectedImage(m._id);
+                    setSelectedUrl(m.url);
+                  }}
                 />
               );
             }

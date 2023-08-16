@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "../styles/CreateAlbum.module.css";
+import { successNotification } from "../helpers/notifications";
 
 const CreateAlbum = () => {
   const [title, setTitle] = useState("");
@@ -9,13 +10,19 @@ const CreateAlbum = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    title.toLowerCase();
+    let option;
+    
     const album = {
       title,
       description,
       photo: selectedOption === "photo",
     };
+
+    if (selectedOption === "photo") {
+      option = "photo";
+    } else {
+      option = "video";
+    }
 
     try {
       const response = await axios.post("/albums", album, {
@@ -27,7 +34,7 @@ const CreateAlbum = () => {
       setTitle("");
       setDescription("");
       setSelectedOption("photo");
-      alert("Album successfully created!");
+      successNotification("Successfully created " + option + " album: ", title);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         alert(error.response.data);

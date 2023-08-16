@@ -3,6 +3,7 @@ import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/EditLanding.module.css";
+import { imageSuccessNotification } from "../helpers/notifications";
 
 function EditLanding() {
   const [file, setFile] = useState(null);
@@ -54,11 +55,13 @@ function EditLanding() {
     setProgress(30);
 
     try {
+      setProgress(50);
       const res = await axios.post("/landing/upload", data, config);
 
       console.log("File uploaded successfully. Response: ", res.data);
       setProgress(100);
 
+      imageSuccessNotification("Video uploaded successfully.", null);
       setTimeout(() => {
         setProgress(0);
       }, 1000);
@@ -86,6 +89,7 @@ function EditLanding() {
           },
         }
       );
+      imageSuccessNotification("Current video set successfully.", videoUrl);
       fetchLandingVideos();
     } catch (error) {
       console.error("Error setting current video:", error);

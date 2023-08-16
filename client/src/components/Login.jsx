@@ -5,6 +5,7 @@ import Header from "./Header";
 import AuthContext from "../context/AuthContext";
 import styles from "../styles/Login.module.css";
 import Footer from "./Footer";
+import { successNotification, errorNotification } from "../helpers/notifications";
 
 const Login = () => {
   const username = "ugo";
@@ -23,9 +24,13 @@ const Login = () => {
 
       localStorage.setItem("token", response.data.token);
       setIsAuthenticated(true);
-      navigate("/dashboard");
+      successNotification("Successfully logged in.", null);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     } catch (error) {
       console.log("Failed to login");
+      errorNotification("Failed to login. Try again.", null);
     }
   };
 
@@ -33,7 +38,7 @@ const Login = () => {
     <>
       <Header />
       <div className={styles.loginContainer}>
-        <form className={styles.formGroup} onSubmit={handleSubmit}>     
+        <form className={styles.formGroup} onSubmit={handleSubmit}>
           <input
             type="password"
             value={password}
@@ -43,10 +48,12 @@ const Login = () => {
             className={styles.formField}
             required
           />
-          <label htmlFor="password" className={styles.formLabel}>owner password</label>
+          <label htmlFor="password" className={styles.formLabel}>
+            owner password
+          </label>
 
           <button type="submit" className={styles.loginButton}>
-          <span>login</span>
+            <span>login</span>
           </button>
         </form>
       </div>

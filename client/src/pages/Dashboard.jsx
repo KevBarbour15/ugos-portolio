@@ -5,10 +5,11 @@ import CreateAlbum from "../components/CreateAlbum";
 import UploadPhoto from "../components/UploadPhoto";
 import UploadVideo from "../components/UploadVideo";
 import EditAlbum from "../components/EditAlbum";
-import EditLanding from "../components/EditLanding"
+import EditLanding from "../components/EditLanding";
 import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
 import styles from "../styles/Dashboard.module.css";
+import { successNotification } from "../helpers/notifications";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -23,9 +24,10 @@ const Dashboard = () => {
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
+    navigate("/home");
+    successNotification("Successfully logged out.", null);
     localStorage.removeItem("token");
     setIsAuthenticated(false);
-    navigate("/home");
   };
 
   let CurrentComponent;
