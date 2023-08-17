@@ -3,6 +3,7 @@ import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/UploadPhoto.module.css";
+import { imageSuccessNotification } from "../helpers/notifications";
 
 function UploadPhoto() {
   const [albums, setAlbums] = useState([]);
@@ -63,12 +64,11 @@ function UploadPhoto() {
     try {
       const res = await axios.post("/media/upload", data, config);
 
-      console.log("File uploaded successfully. Response: ", res.data);
       setProgress(100);
-
+      imageSuccessNotification("Successfully uploaded photo.", null);
       setTimeout(() => {
         setProgress(0);
-      }, 1000);
+      }, 1500);
     } catch (error) {
       console.error(
         "An error occurred while uploading the file. Error: ",
