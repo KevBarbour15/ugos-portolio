@@ -53,6 +53,11 @@ const EditAlbum = () => {
   const handleUpdateTitle = async (e) => {
     e.preventDefault();
 
+    if (!selectedAlbum) {
+      errorNotification("No album selected.", "Please select an album.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
 
@@ -81,6 +86,11 @@ const EditAlbum = () => {
   const handleUpdateDescription = async (e) => {
     e.preventDefault();
 
+    if (!selectedAlbum) {
+      errorNotification("No album selected.", "Please select an album.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
 
@@ -108,6 +118,11 @@ const EditAlbum = () => {
 
   const handleUpdateCoverImage = async (e) => {
     e.preventDefault();
+
+    if (!selectedAlbum) {
+      errorNotification("No album selected.", "Please select an album.");
+      return;
+    }
 
     try {
       const token = localStorage.getItem("token");
@@ -138,6 +153,11 @@ const EditAlbum = () => {
 
   const handleDeleteAlbum = async (e) => {
     e.preventDefault();
+
+    if (!selectedAlbum) {
+      errorNotification("No album selected.", "Please select an album.");
+      return;
+    }
 
     const confirmation = window.confirm(
       "Are you sure you want to delete this album?"
@@ -174,6 +194,11 @@ const EditAlbum = () => {
 
   const handleDeleteImage = async (e) => {
     e.preventDefault();
+
+    if (!selectedAlbum) {
+      errorNotification("No album selected.", "Please select an album.");
+      return;
+    }
 
     if (!selectedImage) {
       console.error("No image selected");

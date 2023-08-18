@@ -90,7 +90,12 @@ router.post(
         .send("Invalid file type. Please upload a video file.");
     }
 
-    const blob = bucket.file(req.file.originalname);
+    let safeFilename = req.file.originalname.replace(/\s+/g, "_");
+
+    const timestamp = Date.now();
+    safeFilename = `${timestamp}_${safeFilename}`;
+
+    const blob = bucket.file(safeFilename);
 
     const blobStream = blob.createWriteStream({
       resumable: false,
@@ -122,5 +127,31 @@ router.post(
     blobStream.end(req.file.buffer);
   }
 );
+
+router.post("/delete", verifyToken, async (req, res) => {
+  try {
+    const landing = await Landing.findOne();
+
+    if (landing) {
+      const index = landing.videos.indexOf(req.body.toDeleteVideo);
+
+      if (index > -1) {
+        landing.videos.splice(index, 1);
+        await landing.save();
+        res.json({
+          message: "Video deleted successfully",
+          videos: landing.videos,
+        });
+      } else {
+        res.status(404).json({ error: "Video not found." });
+      }
+    } else {
+      res.status(404).json({ error: "Landing page configuration not found." });
+    }
+  } catch (error) {
+    console.error("Error deleting video:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+});
 
 module.exports = router;

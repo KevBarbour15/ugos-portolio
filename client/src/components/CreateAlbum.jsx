@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "../styles/CreateAlbum.module.css";
-import { successNotification } from "../helpers/notifications";
+import {
+  successNotification,
+  errorNotification,
+} from "../helpers/notifications";
 
 const CreateAlbum = () => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(null);
   const [description, setDescription] = useState("");
   const [selectedOption, setSelectedOption] = useState("photo");
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (!title) {
+      errorNotification("Please enter a title for the album.");
+      return;
+    }
+
     let option;
-    
     const album = {
       title,
       description,
@@ -31,7 +39,7 @@ const CreateAlbum = () => {
         },
       });
 
-      setTitle("");
+      setTitle(null);
       setDescription("");
       setSelectedOption("photo");
       successNotification("Successfully created " + option + " album: ", title);
@@ -75,7 +83,6 @@ const CreateAlbum = () => {
             placeholder="album title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
           />
           <label className={styles.createAlbumLabel} htmlFor="albumTitle">
             album title

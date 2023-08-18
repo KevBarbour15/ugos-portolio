@@ -6,11 +6,10 @@ const app = express();
 app.use(cors());
 
 app.use((req, res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.url}`);
   next();
 });
 
-app.use(express.json()); 
+app.use(express.json());
 
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");
@@ -29,7 +28,6 @@ app.use((err, req, res, next) => {
 
 db.connect()
   .then(() => {
-    console.log("Connected to MongoDB");
     app.listen(3001, () => {
       console.log("Server started on port 3001");
     });
