@@ -85,7 +85,7 @@ const CreateAlbum = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <label className={styles.createAlbumLabel} htmlFor="albumTitle">
-            album title
+            album title:
           </label>
         </div>
 
@@ -98,7 +98,7 @@ const CreateAlbum = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
           <label className={styles.createAlbumLabel} htmlFor="albumDescription">
-            album description
+            album description:
           </label>
         </div>
 

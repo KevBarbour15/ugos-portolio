@@ -5,6 +5,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import styles from "../styles/AlbumList.module.css";
 import placeholderImg from "../images/gold-bars.png";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 import ReactPlayer from "react-player";
 
@@ -81,6 +82,7 @@ function VideoAlbums() {
           })}
         </Masonry>
       </ResponsiveMasonry>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-
+import MJ from "/Users/kevinbarbour/ugos/client/src/images/crying-mj.png";
 function successNotification(title, text) {
   Swal.fire({
     position: "center",
@@ -28,7 +28,8 @@ function errorNotification(title, text) {
     position: "center",
     title: title,
     text: text,
-    icon: "error",
+    imageUrl: MJ,
+    imageHeight: 200,
     showConfirmButton: false,
     timer: 1500,
   });

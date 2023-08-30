@@ -1,5 +1,6 @@
 .header {
   position: sticky;
+  height: 10vh;
   top: 0;
   z-index: 2;
   background-color: black;
@@ -8,10 +9,9 @@
   align-items: center;
   padding: 0 1vh;
   flex-wrap: wrap;
-  border: 2px solid white;
 }
 
-.header__titleContainer {
+.headerTitleContainer {
   color: white;
   flex-direction: column;
   text-shadow: 0.25px 1px 1px grey;
@@ -21,15 +21,15 @@
   max-width: 50%;
 }
 
-.header__nav {
+.headerNav {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   max-width: 50%;
 }
 
-.header__navLink,
-.header__navButton {
+.headerNavLink,
+.headerNavButton {
   font-family: "courier new";
   font-size: 1.5em;
   letter-spacing: 0.15em;
@@ -39,7 +39,7 @@
   color: white;
 }
 
-.header__navButton {
+.headerNavButton {
   background: none;
   border: none;
   cursor: pointer;
@@ -47,12 +47,12 @@
 }
 
 @media (max-width: 768px) {
-  .header__titleContainer {
+  .headerTitleContainer {
     font-size: calc(1rem + 2vw);
   }
 
-  .header__navLink,
-  .header__navButton {
+  .headerNavLink,
+  .headerNavButton {
     font-size: 1.75em;
   }
 }
