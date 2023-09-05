@@ -1,12 +1,18 @@
-.aboutContainer {
-  width: 75%%;
-  padding: 10%;
+.aboutContainer{
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 10vh);
 }
 
-.aboutContainer p {
+.aboutContent {
+  padding-left: 10vh;
+  padding-right: 10vh;
+  padding-top: 5vh;
+}
+
+.aboutContent p {
   font-family: "courier new";
   color: white;
-  margin-bottom: 2em;
   font-size: 1.5em;
-  margin-bottom: 0.5em;
+  line-height: 2;
 }

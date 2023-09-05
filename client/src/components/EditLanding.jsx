@@ -3,7 +3,10 @@ import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/EditLanding.module.css";
-import { imageSuccessNotification } from "../helpers/notifications";
+import {
+  imageSuccessNotification,
+  errorNotification,
+} from "../helpers/notifications";
 
 function EditLanding() {
   const [file, setFile] = useState(null);
@@ -11,15 +14,15 @@ function EditLanding() {
   const [landingVideos, setLandingVideos] = useState([]);
   const [isRandom, setIsRandom] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [toDeleteVideo, setToDeleteVideo] = useState(null);
 
   useEffect(() => {
     fetchLandingVideos();
   }, []);
 
   const fetchLandingVideos = async () => {
-    console.log("fetching landing videos");
     const res = await axios.get("/landing/videos");
-    console.log("res.data: ", res.data);
+
     setLandingVideos(res.data.videos);
     setIsRandom(res.data.random);
   };
@@ -65,6 +68,7 @@ function EditLanding() {
       setTimeout(() => {
         setProgress(0);
       }, 1000);
+      fetchLandingVideos();
     } catch (error) {
       console.error(
         "An error occurred while uploading the file. Error: ",
@@ -74,14 +78,22 @@ function EditLanding() {
     }
   };
 
-  const handleSetCurrentVideo = async (e, videoUrl) => {
+  const handleSetCurrentVideo = async (e) => {
     e.preventDefault();
+    
+    if (!selectedVideo) {
+      errorNotification(
+        "Please select a video to set as current landing page."
+      );
+      return;
+    }
+
     const token = localStorage.getItem("token");
     try {
       await axios.post(
         "/landing/setCurrent",
         {
-          current: videoUrl,
+          current: selectedVideo,
         },
         {
           headers: {
@@ -89,21 +101,23 @@ function EditLanding() {
           },
         }
       );
-      imageSuccessNotification("Current video set successfully.", videoUrl);
+
+      imageSuccessNotification(
+        "Current video set successfully.",
+        selectedVideo
+      );
+
+      setSelectedVideo(null);
       fetchLandingVideos();
     } catch (error) {
-      console.error("Error setting current video:", error);
+      errorNotification("Error setting current video.", null);
     }
   };
 
   const handleToggleRandom = async () => {
-    console.log("Switch clicked");
     const newRandomState = !isRandom;
-    console.log("New random state:", newRandomState);
     const token = localStorage.getItem("token");
-
     try {
-      console.log("Sending request to server");
       const response = await axios.post(
         "/landing/setRandom",
         {
@@ -127,8 +141,33 @@ function EditLanding() {
     }
   };
 
-  const handleVideoClick = (videoUrl) => {
-    setSelectedVideo(videoUrl);
+  const handleDeleteVideo = async (e) => {
+    e.preventDefault();
+
+    if (!toDeleteVideo) {
+      errorNotification("Please select a video to delete.");
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    try {
+      await axios.post(
+        "/landing/delete",
+        { toDeleteVideo },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      imageSuccessNotification("Video deleted successfully.", null);
+      setToDeleteVideo(null);
+      fetchLandingVideos();
+    } catch (error) {
+      console.log("Error deleting video: ", error);
+      errorNotification("Error deleting video.", error);
+    }
   };
 
   return (
@@ -165,9 +204,9 @@ function EditLanding() {
               muted
               style={{
                 margin: "1px",
-                border: selectedVideo === video ? "4px solid red" : "none",
+                border: selectedVideo === video ? "4px solid green" : "none",
               }}
-              onClick={() => handleVideoClick(video)}
+              onClick={() => setSelectedVideo(video)}
             />
           ))}
         </div>
@@ -175,9 +214,40 @@ function EditLanding() {
         <button
           type="button"
           className={styles.editLandingButton}
-          onClick={(e) => handleSetCurrentVideo(e, selectedVideo)}
+          onClick={handleSetCurrentVideo}
         >
           <span>set as current</span>
+        </button>
+
+        <div className={styles.inputWrapper}>
+          <label className={styles.editLandingLabel}>
+            delete landing page video:
+          </label>
+        </div>
+
+        <div className={styles.videoContainer}>
+          {landingVideos.map((video) => (
+            <video
+              key={video}
+              src={video}
+              autoPlay
+              loop
+              muted
+              style={{
+                margin: "1px",
+                border: toDeleteVideo === video ? "4px solid red" : "none",
+              }}
+              onClick={() => setToDeleteVideo(video)}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={styles.editLandingButton}
+          onClick={handleDeleteVideo}
+        >
+          <span>delete video</span>
         </button>
       </form>
 

@@ -42,13 +42,6 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", verifyToken, async (req, res) => {
   try {
-    console.log(
-      `Is albumCover id valid? ${mongoose.Types.ObjectId.isValid(
-        req.body.albumCover
-      )}`
-    );
-    console.log("ID: ", req.params.id);
-    console.log("Body: ", req.body);
     const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     }).populate("albumCover");

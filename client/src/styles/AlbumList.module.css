@@ -2,7 +2,9 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 5vh;
+  margin-bottom: 5vh;
+  margin-right: 2.5vh;
+  margin-left: 2.5vh;
 }
 
 .albumLink {

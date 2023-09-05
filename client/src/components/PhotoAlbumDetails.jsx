@@ -4,6 +4,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "../styles/AlbumDetails.module.css";
+import Footer from "../components/Footer";
 
 const PhotoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);

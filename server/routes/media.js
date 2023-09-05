@@ -21,9 +21,11 @@ router.post(
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
     }
+
     const fileTypeModule = await import("file-type");
-    console.log(fileTypeModule);
-    const detectedType = await fileTypeModule.fileTypeFromBuffer(req.file.buffer);
+    const detectedType = await fileTypeModule.fileTypeFromBuffer(
+      req.file.buffer
+    );
 
     if (!detectedType) {
       return res.status(400).send("Could not determine file type.");
@@ -35,7 +37,8 @@ router.post(
         .send("Invalid file type. Please upload an image or video file.");
     }
 
-    const blob = bucket.file(req.file.originalname);
+    const formattedFilename = req.file.originalname.replace(/\s+/g, "_");
+    const blob = bucket.file(formattedFilename);
 
     const blobStream = blob.createWriteStream({
       resumable: false,
