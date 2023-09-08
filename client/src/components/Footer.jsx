@@ -21,7 +21,6 @@ const Footer = () => {
         owner login
       </button>
       <div className={styles.contactContainer}>
-        <span className={styles.contactLabel}>Contact:</span>
         <ul className={styles.list}>
           <li className={styles.item}>
             <a href="https://www.instagram.com/swellysensei/">

@@ -14,11 +14,13 @@
 .headerTitleContainer {
   color: white;
   flex-direction: column;
-  text-shadow: 0.25px 1px 1px grey;
-  font-family: "courier new";
-  font-size: calc(1rem + 2vw);
+  font-family: "times new roman";
+  text-shadow: 1.35px 1.35px 0.85px grey;
   letter-spacing: 0.25em;
+  -webkit-text-stroke: 0.5px black;
+  font-size: calc(1rem + 2vw);
   max-width: 50%;
+  margin-left: 3.5vw;
 }
 
 .headerNav {
@@ -26,13 +28,15 @@
   gap: 20px;
   flex-wrap: wrap;
   max-width: 50%;
+  margin-right: 3.5vw;
 }
 
 .headerNavLink,
 .headerNavButton {
-  font-family: "courier new";
-  font-size: 1.5em;
+  font-family: "times new roman";
   letter-spacing: 0.15em;
+  -webkit-text-stroke: 0.5px black;
+  font-size: 1.75em;
   text-align: center;
   text-shadow: 1px 1px 1px grey;
   text-decoration: none;

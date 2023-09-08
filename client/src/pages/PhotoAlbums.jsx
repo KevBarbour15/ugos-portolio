@@ -45,7 +45,7 @@ function PhotoAlbums() {
         return preloadImage(album.albumCover.url).catch((err) => {
           console.error("Failed to load an image", err);
           let dummyImage = new Image();
-          dummyImage.src = placeholderImg; // default to the placeholder image
+          dummyImage.src = placeholderImg; 
           return dummyImage;
         });
       })
@@ -57,6 +57,7 @@ function PhotoAlbums() {
 
       return {
         ...photoAlbums[index],
+        title: photoAlbums[index].title.toLowerCase(),
         orientation,
         albumCover: photoAlbums[index].albumCover
           ? {

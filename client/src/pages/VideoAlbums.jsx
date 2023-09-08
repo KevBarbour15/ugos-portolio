@@ -50,11 +50,10 @@ function VideoAlbums() {
   return (
     <div>
       <Header />
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 900: 1 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 900: 2 }}>
         <Masonry>
           {albums.map((album) => {
             const albumCover = album.albumCover.url;
-
             return (
               <div className={styles.album} key={album._id}>
                 <Link to={`/video/${album._id}`} className={styles.albumLink}>
@@ -73,7 +72,6 @@ function VideoAlbums() {
                     ) : (
                       <img src={albumCover} alt={album.title} />
                     )}
-
                     <div className={styles.albumDescription}>{album.title}</div>
                   </div>
                 </Link>
