@@ -9,7 +9,34 @@
 }
 
 .loginButton {
-  margin-left: 5vh;
+  margin-left:5vh;
+  font-size: 1.5em;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "times new roman";
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border: none;
+  outline: none;
+}
+
+.loginButton a,
+.loginButton a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.loginButton span {
+  color: white;
+  text-shadow: 1.35px 1.35px 0.85px black;
+  -webkit-text-stroke: .5px black;
+}
+
+.loginButton:hover {
+  color: black;
+  background-color: white;
+  transition: 0.4s;
 }
 
 .contactContainer {

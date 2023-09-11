@@ -1,10 +1,12 @@
 .album {
   box-sizing: border-box;
-  display: flex;
   flex-direction: column;
   margin-bottom: 5vh;
-  margin-right: 2.5vh;
-  margin-left: 2.5vh;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 2.5vh;
+  padding-left: 12.5vh;
+  padding-right: 12.5vh;
 }
 
 .albumLink {
@@ -18,6 +20,10 @@
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  border-radius: 10%;
+  width: 34.75vw;   
+  height: 34.75vw; 
+  border: 0.25vh solid black;
 }
 
 .albumImage img {
@@ -34,8 +40,8 @@
   bottom: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.85);
+  transition: opacity 0.35s ease;
+  background-color: rgba(0, 0, 0, 0.55);
   color: white;
   display: flex;
   justify-content: center;
@@ -43,7 +49,10 @@
   font-size: calc(2.75vw);
   text-align: center;
   box-sizing: border-box;
-  font-family: "courier new";
+  font-family: "times new roman";
+  text-shadow: 1.35px 1.35px 0.85px black;
+  letter-spacing: 0.15em;
+  -webkit-text-stroke: 0.55px black;
 }
 
 .albumImage:hover .albumDescription {

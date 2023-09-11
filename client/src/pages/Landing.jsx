@@ -39,18 +39,8 @@ const Landing = () => {
 
   if (loading) {
     return (
-      <div className={styles.Center}>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-        <div className={styles.Wave}></div>
-      </div>
+      <h1></h1>
+        
     );
   }
 

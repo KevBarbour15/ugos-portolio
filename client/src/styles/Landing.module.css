@@ -4,11 +4,8 @@ body {
 
 .landingContainer {
   position: relative;
-  width: calc(100% - 20px);
-  height: calc(100vh - 20px);
-  border: 2.5px solid black;
+  height: 100vh;
   box-sizing: border-box;
-  margin: 10px;
 }
 
 .landingVideo {
@@ -20,6 +17,7 @@ body {
   object-fit: cover;
   
 }
+
 .landingButtonEnter {
   position: absolute;
   top: 50%;
@@ -31,11 +29,7 @@ body {
   cursor: pointer;
   font-family: "times new roman";
   text-decoration: none;
-  letter-spacing: 0.15em;
-}
-
-.landingButtonEnter:hover {
-  color: white;
+  letter-spacing: 0.2em;
 }
 
 .landingButtonEnter a,
@@ -46,8 +40,8 @@ body {
 
 .landingButtonEnter span {
   color: white;
-
-  text-shadow: 1.35px 1.35px 0.75px black;
+  text-shadow: 1.35px 1.35px 0.85px black;
+  -webkit-text-stroke: .5px black;
 }
 
 .center {
@@ -57,6 +51,7 @@ body {
   align-items: center;
   background: #000;
 }
+
 .wave {
   width: 5px;
   height: 100px;
