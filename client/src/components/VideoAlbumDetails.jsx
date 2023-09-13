@@ -3,6 +3,7 @@ import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ReactPlayer from "react-player";
 import styles from "../styles/AlbumDetails.module.css";
+import isVideo from "../helpers/video";
 
 const VideoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
@@ -24,12 +25,6 @@ const VideoAlbumDetails = ({ id }) => {
     return <div>Loading...</div>;
   }
 
-  const isVideo = (url) => {
-    return [".mp4", ".webm", ".ogg"].some((extension) =>
-      url.endsWith(extension)
-    );
-  };
-
   return (
     <div className={styles.container}>
       <h2 className={styles.albumTitle}>{album.title}</h2>
@@ -47,10 +42,10 @@ const VideoAlbumDetails = ({ id }) => {
                   onMouseLeave={() => setIsHovered(false)}
                 >
                   <div className={styles.galleryImage}>
+                    {console.log(isVideo(media.url))}
                     {isVideo(media.url) ? (
                       <ReactPlayer
                         url={media.url}
-                        width="100%"
                         controls={isHovered}
                         playing
                         loop
