@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Header.module.css";
+import bars from "../images/gold-bars.png";
 
 const Header = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerTitleContainer}>swellysensei</div>
@@ -17,6 +20,27 @@ const Header = () => {
           about
         </Link>
       </nav>
+
+      <button
+        className={styles.dropdownButton}
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+      >
+        <img src={bars} alt="dropdown"/>
+      </button>
+      <div
+        className={styles.dropdownContent}
+        style={{ display: dropdownOpen ? "flex" : "none" }}
+      >
+        <Link to="/home" onClick={() => setDropdownOpen(false)}>
+          photo
+        </Link>
+        <Link to="/videos" onClick={() => setDropdownOpen(false)}>
+          video
+        </Link>
+        <Link to="/about" onClick={() => setDropdownOpen(false)}>
+          about
+        </Link>
+      </div>
     </header>
   );
 };

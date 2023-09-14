@@ -1,6 +1,6 @@
 .albumGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 1fr)); 
+  grid-template-columns: repeat(2, minmax(auto, 1fr)); 
   gap: 16px; 
 }
 
@@ -25,7 +25,7 @@
   height: 34.75vw;
   width: 100%; 
   padding-bottom: 100%; 
-  border: 0.0001vh solid white;
+  border: 0.25px solid grey;
 }
 
 .albumImage img {
