@@ -14,7 +14,7 @@ const Footer = () => {
       navigate("/login");
     }
   };
-
+  
   return (
     <footer className={styles.footer}>
       <button onClick={handleLoginClick} className={styles.loginButton}>

@@ -13,7 +13,6 @@ const upload = multer({
 });
 
 router.get("/videos", async (req, res) => {
-  console.log("Got here");
   const landing = await Landing.findOne();
   if (landing) {
     res.json(landing);
@@ -23,7 +22,6 @@ router.get("/videos", async (req, res) => {
 });
 
 router.post("/setRandom", verifyToken, async (req, res) => {
-  console.log("Got here!");
   try {
     if (typeof req.body.random !== "boolean") {
       return res.status(400).json({ error: "Invalid input." });
@@ -47,7 +45,7 @@ router.post("/setRandom", verifyToken, async (req, res) => {
 });
 
 router.post("/setCurrent", verifyToken, async (req, res) => {
-  console.log("Got here!");
+
   try {
     if (!req.body.current) {
       return res.status(400).json({ error: "Invalid input." });

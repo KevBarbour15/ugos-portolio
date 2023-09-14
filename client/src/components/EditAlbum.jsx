@@ -6,6 +6,7 @@ import {
   imageSuccessNotification,
   errorNotification,
 } from "../helpers/notifications";
+import isVideo from "../helpers/video";
 /* 
   we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
 */
@@ -297,12 +298,7 @@ const EditAlbum = () => {
         </label>
         <div className={styles.imageContainer}>
           {media.map((m) => {
-            const isVideo =
-              m.url.includes(".mp4") ||
-              m.url.includes(".webm") ||
-              m.url.includes(".ogg");
-
-            if (isVideo) {
+            if (isVideo(m.url)) {
               return (
                 <video
                   key={m._id}
@@ -353,12 +349,7 @@ const EditAlbum = () => {
         </label>
         <div className={styles.imageContainer}>
           {media.map((m) => {
-            const isVideo =
-              m.url.includes(".mp4") ||
-              m.url.includes(".webm") ||
-              m.url.includes(".ogg");
-
-            if (isVideo) {
+            if (isVideo(m.url)) {
               return (
                 <video
                   key={m._id}
