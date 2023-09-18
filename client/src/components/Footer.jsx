@@ -1,25 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 import styles from "../styles/Footer.module.css";
 
 const Footer = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleLoginClick = () => {
     if (isAuthenticated) {
       navigate("/dashboard");
     } else {
-      navigate("/login");
+      setShowLoginModal(true);
     }
   };
-  
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
   return (
     <footer className={styles.footer}>
       <button onClick={handleLoginClick} className={styles.loginButton}>
         owner login
       </button>
+      {showLoginModal && <Login onClose={handleCloseLoginModal} />}
       <div className={styles.contactContainer}>
         <ul className={styles.list}>
           <li className={styles.item}>

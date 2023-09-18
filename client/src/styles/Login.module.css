@@ -1,9 +1,44 @@
-.loginContainer {
+.modalBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
-  flex: 1;
   justify-content: center;
-  font-family: "courier new";
-  margin-top: 10vh;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  padding: 40px 20px 20px;
+  background-color: #333;
+  border: 2px solid white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 10%;
+}
+
+.closeButton:hover {
+  color: #11998e;
 }
 
 .formGroup {
@@ -14,7 +49,8 @@
 }
 
 .formField {
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   border: 0;
   border-bottom: 2px solid white;
   outline: 0;
@@ -23,7 +59,8 @@
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
-  margin-bottom: 15px;  
+  margin-bottom: 15px;
+  width: 75%;
 }
 
 .formField::placeholder {
@@ -39,6 +76,7 @@
   top: -15px;
 }
 .formLabel {
+  align-items: center;
   font-family: "courier new";
   position: absolute;
   top: 0;
@@ -46,11 +84,11 @@
   transition: 0.2s;
   font-size: 1rem;
   color: white;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
 }
 
 .formField:focus {
-  padding-bottom: 6px;  
+  padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
   border-image: linear-gradient(to right, #11998e, #38ef7d);
@@ -61,12 +99,14 @@
   }
 }
 
-.formField:required, .formField:invalid {
+.formField:required,
+.formField:invalid {
   box-shadow: none;
 }
 
 .loginButton {
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   background-image: linear-gradient(to right, #11998e, #38ef7d);
   border: 0;
   border-radius: 8px;
@@ -76,7 +116,7 @@
   font-size: 20px;
   justify-content: center;
   line-height: 1em;
-  max-width: 100%;
+  max-width: 40%;
   min-width: 140px;
   padding: 3px;
   text-decoration: none;
@@ -93,7 +133,7 @@
 }
 
 .loginButton span {
-  background-color:  #9b9b9b;
+  background-color: #9b9b9b;
   padding: 16px 24px;
   border-radius: 6px;
   width: 100%;

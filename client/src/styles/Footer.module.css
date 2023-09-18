@@ -9,7 +9,7 @@
 }
 
 .loginButton {
-  margin-left:5vh;
+  margin-left: 5vh;
   font-size: 1.5em;
   color: white;
   background-color: transparent;
@@ -30,7 +30,7 @@
 .loginButton span {
   color: white;
   text-shadow: 1.35px 1.35px 0.85px black;
-  -webkit-text-stroke: .5px black;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .loginButton:hover {
@@ -43,11 +43,6 @@
   display: flex;
   align-items: center;
   margin-right: 2.5vh;
-}
-
-.contactLabel {
-  margin-right: 0.1vh;
-  color: white;
 }
 
 ul {
