@@ -8,7 +8,7 @@ import EditAlbum from "../components/EditAlbum";
 import EditLanding from "../components/EditLanding";
 import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
-import styles from "../styles/Dashboard.module.css";
+import styles from "../styles/Dashboard.module.scss";
 import { successNotification } from "../helpers/notifications";
 
 const Dashboard = () => {

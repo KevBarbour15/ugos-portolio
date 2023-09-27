@@ -1,15 +1,15 @@
 .footer {
   position: relative;
   margin-top: auto;
-  height: 9vh;
+  min-height: 9vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.loginButton {
-  margin-left:5vh;
+.ownerButton {
+  margin-left: 4vh;
   font-size: 1.5em;
   color: white;
   background-color: transparent;
@@ -21,16 +21,14 @@
   outline: none;
 }
 
-.loginButton a,
-.loginButton a:visited {
-  color: white;
+.ownerButton a,
+.ownerButton a:visited {
   text-decoration: none;
 }
 
 .loginButton span {
   color: white;
-  text-shadow: 1.35px 1.35px 0.85px black;
-  -webkit-text-stroke: .5px black;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .loginButton:hover {
@@ -42,32 +40,17 @@
 .contactContainer {
   display: flex;
   align-items: center;
-  margin-right: 2.5vh;
+  margin-right: 2vh;
 }
 
-.contactLabel {
-  margin-right: 0.1vh;
-  color: white;
-}
-
-ul {
-  display: flex;
-}
-
-ul li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul li a {
-  width: 6vh;
-  height: 6vh;
+.item {
+  width: 5.5vh;
+  height: 5.5vh;
   background-color: white;
   text-align: center;
-  line-height: 6vh;
   font-size: 3.5vh;
-  margin-right: 2.5vh;
+  margin-right: 2vh;
+  margin-left: 2vh;
   display: flex;
   border-radius: 50%;
   position: relative;
@@ -76,23 +59,24 @@ ul li a {
   z-index: 1;
   justify-content: center;
   align-items: center;
-  line-height: normal;
   text-decoration: none;
 }
 
-ul li a .icon {
+.icon {
+  margin: 0;
+  padding: 0;
   position: relative;
   color: black;
   transition: 0.5s;
   z-index: 3;
 }
 
-ul li a:hover .icon {
+.item:hover .icon {
   color: white;
   transform: rotateY(360deg);
 }
 
-ul li a:before {
+.item:before {
   content: "";
   position: absolute;
   top: 100%;
@@ -104,14 +88,14 @@ ul li a:before {
   z-index: 2;
 }
 
-ul li a:hover:before {
+.item:hover:before {
   top: 0;
 }
 
-ul li:nth-child(1) a:before {
-  background: pink;
+.item:nth-child(1):before {
+  background: black;
 }
 
-ul li:nth-child(2) a:before {
-  background: pink;
+.item:nth-child(2):before {
+  background: black;
 }

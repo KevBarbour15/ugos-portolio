@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/UploadPhoto.module.css";
+import styles from "../styles/UploadPhoto.module.scss";
 
 function UploadVideo() {
   const [albums, setAlbums] = useState([]);

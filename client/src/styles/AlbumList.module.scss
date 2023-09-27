@@ -1,7 +1,8 @@
 .albumGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(auto, 1fr)); 
-  gap: 16px; 
+  gap: 15px; 
+  flex: 1 0 auto;
 }
 
 .album {

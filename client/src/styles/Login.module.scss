@@ -1,0 +1,205 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  padding: 40px 20px 20px;
+  background-color: white;
+  border: 2px solid black;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+@mixin cross($size: 10px, $color: currentColor, $thickness: 1px) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: $size;
+  height: $size;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: ($size - $thickness) / 2;
+    left: 0;
+    right: 0;
+    height: $thickness;
+    background: $color;
+    border-radius: $thickness;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  background: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+
+  .iconCross {
+    @include cross(20px, #fff, 3px);
+  }
+
+  &:hover,
+  &:focus {
+    transform: rotateZ(90deg);
+    background: black;
+  }
+}
+
+.formGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.formField {
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  border: 2px solid black;
+  outline: 0;
+  font-size: 1.3rem;
+  padding: 6px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 15px;
+  width: 65%;
+  text-align: center;
+}
+
+.formField::placeholder {
+  color: transparent;
+}
+
+.formField:placeholder-shown ~ .formLabel {
+  font-size: 1.5rem;
+  cursor: text;
+  top: 20px;
+}
+
+.formField:focus ~ .formLabel,
+.formField:not(:placeholder-shown) ~ .formLabel {
+  top: -15px;
+}
+
+.formLabel {
+  align-items: center;
+  font-family: "times new roman";
+  letter-spacing: 0.15em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  transition: 0.2s;
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 50px;
+}
+
+.formField:focus {
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: black;
+  border-image-slice: 1;
+}
+
+.formField:required,
+.formField:invalid {
+  box-shadow: none;
+}
+
+.loginButton {
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, black, rgb(240, 234, 214));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 40%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.loginButton:active,
+.loginButton:hover {
+  outline: 0;
+}
+
+.loginButton span {
+  font-family: "times new roman";
+  letter-spacing: 0.15em;
+  background-color: white;
+  color: black;
+  padding: 16px 24px;
+  border-radius: 2px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.loginButton:hover span {
+  background: none;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .loginButton {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}

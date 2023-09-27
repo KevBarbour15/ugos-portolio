@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/DashboardHeader.module.css";
+import styles from "../styles/DashboardHeader.module.scss";
 
 const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
   return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/EditLanding.module.css";
+import styles from "../styles/EditLanding.module.scss";
 import {
   imageSuccessNotification,
   errorNotification,

@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
 import AuthContext from "../context/AuthContext";
-import styles from "../styles/Login.module.css";
-import Footer from "./Footer";
-import { successNotification, errorNotification } from "../helpers/notifications";
+import styles from "../styles/Login.module.scss";
+import {
+  successNotification,
+  errorNotification,
+} from "../helpers/notifications";
 
-const Login = () => {
+const Login = ({ onClose }) => {
   const username = "ugo";
   const [password, setPassword] = useState("");
   const { setIsAuthenticated } = useContext(AuthContext);
@@ -35,9 +36,11 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className={styles.loginContainer}>
+    <div className={styles.modalBackground}>
+      <div className={styles.modalContent}>
+        <button className={styles.closeButton} onClick={onClose}>
+          <span className={styles.iconCross}></span>
+        </button>
         <form className={styles.formGroup} onSubmit={handleSubmit}>
           <input
             type="password"
@@ -49,15 +52,15 @@ const Login = () => {
             required
           />
           <label htmlFor="password" className={styles.formLabel}>
-            owner password
+            Password:
           </label>
 
           <button type="submit" className={styles.loginButton}>
-            <span>login</span>
+            <span>Login</span>
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
