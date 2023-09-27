@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import styles from "../styles/Login.module.css";
+import styles from "../styles/Login.module.scss";
 import {
   successNotification,
   errorNotification,
@@ -39,7 +39,7 @@ const Login = ({ onClose }) => {
     <div className={styles.modalBackground}>
       <div className={styles.modalContent}>
         <button className={styles.closeButton} onClick={onClose}>
-          <span>X</span>
+          <span className={styles.iconCross}></span>
         </button>
         <form className={styles.formGroup} onSubmit={handleSubmit}>
           <input
@@ -52,11 +52,11 @@ const Login = ({ onClose }) => {
             required
           />
           <label htmlFor="password" className={styles.formLabel}>
-            owner password
+            Password:
           </label>
 
           <button type="submit" className={styles.loginButton}>
-            <span>login</span>
+            <span>Login</span>
           </button>
         </form>
       </div>

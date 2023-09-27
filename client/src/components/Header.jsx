@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/Header.module.css";
+import styles from "../styles/Header.module.scss";
 import bars from "../images/gold-bars.png";
 
 const Header = () => {

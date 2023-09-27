@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../styles/EditAlbum.module.css";
+import styles from "../styles/EditAlbum.module.scss";
 import {
   successNotification,
   imageSuccessNotification,
