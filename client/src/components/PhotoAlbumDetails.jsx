@@ -4,8 +4,6 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "../styles/AlbumDetails.module.scss";
-import Footer from "../components/Footer";
-// TODO: fit the Footer correctly
 
 const PhotoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);

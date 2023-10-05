@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
-import PhotoGallery from "./pages/Gallery"; 
+import PhotoGallery from "./pages/PhotoGallery"; 
 import VideoGallery from "./pages/VideoGallery";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";

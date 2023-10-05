@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 import { useParams } from "react-router-dom";
 import PhotoAlbumDetails from "../components/PhotoAlbumDetails";
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 
-const PhotoGallery = () => { 
+const PhotoGallery = () => {
   const { id } = useParams();
-  // test
   return (
     <div>
-      <Header />
-      <PhotoAlbumDetails id={id} />
+      <Layout>
+        <PhotoAlbumDetails id={id} />
+      </Layout>
     </div>
   );
-}
+};
 
 export default PhotoGallery;

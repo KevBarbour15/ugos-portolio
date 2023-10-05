@@ -85,7 +85,7 @@ const CreateAlbum = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <label className={styles.createAlbumLabel} htmlFor="albumTitle">
-            album title:
+            Album title:
           </label>
         </div>
 
@@ -98,12 +98,12 @@ const CreateAlbum = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
           <label className={styles.createAlbumLabel} htmlFor="albumDescription">
-            album description:
+            Album description:
           </label>
         </div>
 
         <button className={styles.createAlbumButton} type="submit">
-          <span>create album</span>
+          <span>Create album</span>
         </button>
       </form>
     </div>

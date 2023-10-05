@@ -3,8 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "../styles/AlbumList.module.scss";
 import placeholderImg from "../images/gold-bars.png";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 
 function PhotoAlbums() {
   const [albums, setAlbums] = useState([]);
@@ -50,20 +49,20 @@ function PhotoAlbums() {
 
   return (
     <div>
-      <Header />
-      <div className={styles.albumGrid}>
-        {albums.map((album) => (
-          <div className={styles.album} key={album._id}>
-            <Link to={`/photo/${album._id}`} className={styles.albumLink}>
-              <div className={styles.albumImage}>
-                <img src={album.albumCover.url} alt={album.title} />
-                <div className={styles.albumDescription}>{album.title}</div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-      <Footer />
+      <Layout>
+        <div className={styles.albumGrid}>
+          {albums.map((album) => (
+            <div className={styles.album} key={album._id}>
+              <Link to={`/photo/${album._id}`} className={styles.albumLink}>
+                <div className={styles.albumImage}>
+                  <img src={album.albumCover.url} alt={album.title} />
+                  <div className={styles.albumDescription}>{album.title}</div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </Layout>
     </div>
   );
 }

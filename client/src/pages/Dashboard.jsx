@@ -6,9 +6,8 @@ import UploadPhoto from "../components/UploadPhoto";
 import UploadVideo from "../components/UploadVideo";
 import EditAlbum from "../components/EditAlbum";
 import EditLanding from "../components/EditLanding";
-import Header from "../components/Header";
 import DashboardHeader from "../components/DashboardHeader";
-import styles from "../styles/Dashboard.module.scss";
+import Layout from "../components/Layout";
 import { successNotification } from "../helpers/notifications";
 
 const Dashboard = () => {
@@ -52,17 +51,17 @@ const Dashboard = () => {
   }
 
   return (
-    <div className={styles.dashboardContainer}>
-      <Header className={styles.dashboardHeader} />
-      <DashboardHeader
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        handleLogout={handleLogout}
-        className={styles.dashboardSubHeader}
-      />
-      <div className={styles.contentContainer}>
-        <CurrentComponent />
-      </div>
+    <div>
+      <Layout>
+        <DashboardHeader
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          handleLogout={handleLogout}
+        />
+        <div>
+          <CurrentComponent />
+        </div>
+      </Layout>
     </div>
   );
 };

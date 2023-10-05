@@ -29,35 +29,31 @@
   color: white;
   text-align: center;
   display: block;
-  margin-left: 1.75vw;
-  margin-right: 1.75vw;
+  margin-left: .75vw;
+  margin-right: .75vw;
   cursor: pointer;
   outline: none;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  font-family: "courier new";
-  font-size: 1em;
+  font-family: "times new roman";
+  font-size: 1.3em;
+  letter-spacing: 0.15em;
 }
 
 .dashboardHeaderButtonActive {
   align-items: center;
-  background-image: linear-gradient(to right, #11998e, #38ef7d);
+  color: black;
+  background-color: white;
   border: 0;
   border-radius: 8px;
   box-sizing: border-box;
-  color: #ffffff;
   display: flex;
-  font-size: 1.15em;
   justify-content: center;
-  line-height: 1em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  white-space: nowrap;
   cursor: pointer;
 }
 

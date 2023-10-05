@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 import { useParams } from "react-router-dom";
 import VideoAlbumDetails from "../components/VideoAlbumDetails";
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 
-const VideoGallery = () => { 
+const VideoGallery = () => {
   const { id } = useParams();
 
   return (
     <div>
-      <Header />
-      <VideoAlbumDetails id={id} />
+      <Layout>
+        <VideoAlbumDetails id={id} />
+      </Layout>
     </div>
   );
-}
+};
 
 export default VideoGallery;
