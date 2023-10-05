@@ -3,11 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "../styles/AlbumList.module.scss";
 import placeholderImg from "../images/gold-bars.png";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 import ReactPlayer from "react-player";
 import isVideo from "../helpers/video";
-
 
 function VideoAlbums() {
   const [albums, setAlbums] = useState([]);
@@ -35,36 +33,38 @@ function VideoAlbums() {
 
   return (
     <div>
-      <Header />
-      <div className={styles.albumGrid}> 
-        {albums.map((album) => {
-          const albumCover = album.albumCover.url;
-          console.log("albumCover " + albumCover);
-          {console.log(isVideo(albumCover))}
-          return (
-            <div className={styles.album} key={album._id}>
-              <Link to={`/video/${album._id}`} className={styles.albumLink}>
-                <div className={styles.albumImage}>
-                  {isVideo(albumCover) ? (
-                    <ReactPlayer
-                      url={albumCover}
-                      playing
-                      muted
-                      loop
-                      playsinline
-                      style={{ pointerEvents: "none" }}
-                    />
-                  ) : (
-                    <img src={albumCover} alt={album.title} />
-                  )}
-                  <div className={styles.albumDescription}>{album.title}</div>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-      <Footer />
+      <Layout>
+        <div className={styles.albumGrid}>
+          {albums.map((album) => {
+            const albumCover = album.albumCover.url;
+            console.log("albumCover " + albumCover);
+            {
+              console.log(isVideo(albumCover));
+            }
+            return (
+              <div className={styles.album} key={album._id}>
+                <Link to={`/video/${album._id}`} className={styles.albumLink}>
+                  <div className={styles.albumImage}>
+                    {isVideo(albumCover) ? (
+                      <ReactPlayer
+                        url={albumCover}
+                        playing
+                        muted
+                        loop
+                        playsinline
+                        style={{ pointerEvents: "none" }}
+                      />
+                    ) : (
+                      <img src={albumCover} alt={album.title} />
+                    )}
+                    <div className={styles.albumDescription}>{album.title}</div>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </Layout>
     </div>
   );
 }

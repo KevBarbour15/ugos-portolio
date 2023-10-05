@@ -26,21 +26,20 @@
   text-decoration: none;
 }
 
-.loginButton span {
-  color: white;
-  -webkit-text-stroke: 0.5px black;
-}
-
-.loginButton:hover {
-  color: black;
-  background-color: white;
-  transition: 0.4s;
-}
-
 .contactContainer {
   display: flex;
   align-items: center;
   margin-right: 2vh;
+}
+
+.contactLabel {
+  font-size: 1.5em;
+  color: white;
+  font-family: "times new roman";
+  letter-spacing: 0.1em;
+  @media (max-width: 768px) {
+    font-size: .75em;
+  }
 }
 
 .item {
@@ -72,7 +71,6 @@
 }
 
 .item:hover .icon {
-  color: white;
   transform: rotateY(360deg);
 }
 
@@ -90,12 +88,4 @@
 
 .item:hover:before {
   top: 0;
-}
-
-.item:nth-child(1):before {
-  background: black;
-}
-
-.item:nth-child(2):before {
-  background: black;
 }

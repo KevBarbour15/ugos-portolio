@@ -2,7 +2,7 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  font-family: "courier new";
+  font-family: "times new roman";
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
   margin: 25px;
   width: 55%;
 }
-.editTitle{
+.editTitle {
   margin: 3vh;
   width: 80%;
   border: 0;
@@ -88,7 +88,7 @@
 }
 
 .editAlbumLabel {
-  font-family: "courier new";
+  font-family: "times new roman";
   position: absolute;
   top: 0;
   display: block;
@@ -194,7 +194,7 @@
 
 .imageContainerLabel {
   color: white;
-  margin-top:5vh;
+  margin-top: 5vh;
   font-size: 1.3rem;
 }
 
@@ -211,4 +211,3 @@
   border-radius: 8px;
   margin: 5vh;
 }
-
