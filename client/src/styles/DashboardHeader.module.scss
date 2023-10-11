@@ -8,6 +8,7 @@
   z-index: 1;
   width: 100%;
   box-sizing: border-box;
+  border-top: 1px solid white;
 }
 
 .dashboardHeaderNav {
@@ -36,9 +37,9 @@
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  font-family: "times new roman";
-  font-size: 1.3em;
-  letter-spacing: 0.15em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .dashboardHeaderButtonActive {

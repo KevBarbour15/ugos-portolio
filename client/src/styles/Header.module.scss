@@ -14,10 +14,9 @@
 .headerTitleContainer {
   color: white;
   flex-direction: column;
-  font-family: "times new roman";
-  text-shadow: 1.35px 1.35px 0.85px grey;
+  letter-spacing: 2px;
+  font-weight: 700;
   letter-spacing: 0.25em;
-  -webkit-text-stroke: 0.5px black;
   font-size: calc(1rem + 2vw);
   max-width: 50%;
   margin-left: 3.5vw;
@@ -32,12 +31,9 @@
 }
 
 .headerNavLink {
-  font-family: "times new roman";
-  letter-spacing: 0.15em;
-  -webkit-text-stroke: 0.5px black;
-  font-size: 1.75em;
-  text-align: center;
-  text-shadow: 1px 1px 1px grey;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
   text-decoration: none;
   color: white;
 }
@@ -46,16 +42,14 @@
   display: none;
   background-color: transparent;
   border: none;
-  color: white;
   cursor: pointer;
-  text-shadow: 1px 1px 1px grey;
   -webkit-text-stroke: 0.5px black;
-  padding: 0.5em 1em;
+  padding: 0.4em 1em;
 }
 
 .dropdownButton img {
-  width: 3.75em;
-  height: 3.75em;
+  width: 3.85em;
+  height: 3.85em;
 }
 
 .dropdownContent {
@@ -70,11 +64,17 @@
   border: 0.5px solid white;
 }
 
+.dropdownContent a:hover {
+  background-color: #616467;
+}
+
 .dropdownContent a {
   text-decoration: none;
   color: white;
   padding: 1.75em 3em;
-  letter-spacing: 0.15em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
   border: 0.5px solid white;
   display: flex;
   align-items: center;

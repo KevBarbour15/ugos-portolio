@@ -24,11 +24,10 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <button onClick={handleLoginClick} className={styles.ownerButton}>
-        Owner Login
+        login
       </button>
       {showLoginModal && <Login onClose={handleCloseLoginModal} />}
       <div className={styles.contactContainer}>
-        <span className={styles.contactLabel}>Contact:</span>{" "}
         <a
           href="https://www.instagram.com/swellysensei/"
           className={styles.item}

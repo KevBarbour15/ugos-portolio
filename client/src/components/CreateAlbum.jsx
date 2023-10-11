@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "../styles/CreateAlbum.module.scss";
+import styles from "../styles/Dashboard.module.scss";
 import {
   successNotification,
   errorNotification,
@@ -54,8 +54,8 @@ const CreateAlbum = () => {
   };
 
   return (
-    <div className={styles.createAlbumContainer}>
-      <form className={styles.createAlbumForm} onSubmit={onSubmit}>
+    <div className={styles.dashContainer}>
+      <form className={styles.dashForm} onSubmit={onSubmit}>
         <div className={styles.photoVideoSwitch}>
           <span className={styles.labelText}>photo</span>
           <input
@@ -77,33 +77,33 @@ const CreateAlbum = () => {
 
         <div className={styles.inputWrapper}>
           <input
-            className={styles.createAlbumField}
+            className={styles.dashInputField}
             id="albumTitle"
             type="text"
             placeholder="album title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <label className={styles.createAlbumLabel} htmlFor="albumTitle">
+          <label className={styles.dashInputLabel} htmlFor="albumTitle">
             Album title:
           </label>
         </div>
 
         <div className={styles.inputWrapper}>
           <input
-            className={styles.createAlbumField}
+            className={styles.dashInputField}
             id="albumDescription"
             placeholder="album description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <label className={styles.createAlbumLabel} htmlFor="albumDescription">
+          <label className={styles.dashInputLabel} htmlFor="albumDescription">
             Album description:
           </label>
         </div>
 
-        <button className={styles.createAlbumButton} type="submit">
-          <span>Create album</span>
+        <button className={styles.dashButton} type="submit">
+          Create album
         </button>
       </form>
     </div>

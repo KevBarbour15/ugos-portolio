@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/UploadPhoto.module.scss";
+import styles from "../styles/Dashboard.module.scss";
 import { imageSuccessNotification } from "../helpers/notifications";
 
 function UploadPhoto() {
@@ -79,16 +79,14 @@ function UploadPhoto() {
   };
 
   return (
-    <div className={styles.uploadContainer}>
-      <form className={styles.uploadForm} onSubmit={handleSubmit}>
-        <label htmlFor="album" className={styles.uploadLabel}>
-          select album to upload to:
-        </label>
+    <div className={styles.dashContainer}>
+      <form className={styles.dashForm} onSubmit={handleSubmit}>
+        <label className={styles.dashLabel}>select album to upload to:</label>
         <select
           id="album"
           value={selectedAlbum}
           onChange={handleSelectChange}
-          className={styles.uploadSelect}
+          className={styles.dashSelect}
         >
           <option value="" disabled>
             no album selected
@@ -100,11 +98,11 @@ function UploadPhoto() {
           ))}
         </select>
 
-        <label htmlFor="photo" className={styles.uploadLabel}>
+        <label htmlFor="photo" className={styles.dashLabel}>
           select photo to upload:
         </label>
         <input
-          className={styles.uploadInput}
+          className={styles.dashUploadInput}
           type="file"
           id="media"
           onChange={handleFileChange}
@@ -120,7 +118,7 @@ function UploadPhoto() {
           variant="danger"
         />
 
-        <button type="submit" className={styles.uploadButton}>
+        <button type="submit" className={styles.dashButton}>
           <span>upload photo</span>
         </button>
       </form>

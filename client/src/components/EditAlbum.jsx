@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../styles/EditAlbum.module.scss";
+import styles from "../styles/Dashboard.module.scss";
 import {
   successNotification,
   imageSuccessNotification,
   errorNotification,
 } from "../helpers/notifications";
 import isVideo from "../helpers/video";
-/* 
-  we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
-*/
+
+// TO:DO we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
+
 const EditAlbum = () => {
   const [albums, setAlbums] = useState([]);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -234,69 +234,57 @@ const EditAlbum = () => {
       }
     } catch (error) {
       console.error("Server response status", error.response.status);
-      console.error("Server response data", error.response.data);
-      console.error("Server response headers", error.response.headers);
-      console.error("Server response text", error.response.statusText);
     }
   };
 
   return (
-    <div className={styles.editContainer}>
-      <form onSubmit={handleUpdateTitle} className={styles.editAlbumForm}>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="album" className={styles.editTitle}>
-            select album to edit:
-          </label>
-        </div>
-
-        <div className={styles.selectContainer}>
-          <select onChange={handleSelectAlbum} className={styles.editSelect}>
-            <option>no album selected...</option>
-            {albums.map((album) => (
-              <option key={album._id} value={album._id}>
-                {album.title}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div className={styles.dashContainer}>
+      <form onSubmit={handleUpdateTitle} className={styles.dashForm}>
+        <label className={styles.dashLabel}>select album to edit:</label>
+        <select onChange={handleSelectAlbum} className={styles.dashSelect}>
+          <option>no album selected...</option>
+          {albums.map((album) => (
+            <option key={album._id} value={album._id}>
+              {album.title}
+            </option>
+          ))}
+        </select>
         <div className={styles.inputWrapper}>
           <input
-            className={styles.editAlbumInput}
+            className={styles.dashInputField}
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder=" "
           />
-          <label className={styles.editAlbumLabel} htmlFor="albumTitle">
+          <label className={styles.dashInputLabel} htmlFor="albumTitle">
             album title:
           </label>
         </div>
-        <button className={styles.editAlbumButton} type="submit">
+        <button className={styles.dashButton} type="submit">
           <span>edit title</span>
         </button>
       </form>
 
-      <form onSubmit={handleUpdateDescription} className={styles.editAlbumForm}>
+      <form onSubmit={handleUpdateDescription} className={styles.dashForm}>
         <div className={styles.inputWrapper}>
           <input
-            className={styles.editAlbumInput}
+            className={styles.dashInputField}
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder=" "
           />
-          <label className={styles.editAlbumLabel}>album description:</label>
+          <label className={styles.dashInputLabel}>album description:</label>
         </div>
-        <button className={styles.editAlbumButton} type="submit">
+        <button className={styles.dashButton} type="submit">
           <span>edit description</span>
         </button>
       </form>
 
-      <form onSubmit={handleUpdateCoverImage} className={styles.editAlbumForm}>
-        <label className={styles.imageContainerLabel}>
-          update cover image/video:
-        </label>
-        <div className={styles.imageContainer}>
+      <form onSubmit={handleUpdateCoverImage} className={styles.dashForm}>
+        <label className={styles.dashLabel}>update cover image/video:</label>
+        <div className={styles.dashImageContainer}>
           {media.map((m) => {
             if (isVideo(m.url)) {
               return (
@@ -308,7 +296,8 @@ const EditAlbum = () => {
                   muted
                   style={{
                     margin: "1px",
-                    border: selectedCover === m._id ? "4px solid red" : "none",
+                    border:
+                      selectedCover === m._id ? "3px solid green" : "none",
                   }}
                   onClick={() => {
                     setCoverImage(m._id);
@@ -325,7 +314,8 @@ const EditAlbum = () => {
                   alt="thumbnail"
                   style={{
                     margin: "1px",
-                    border: selectedCover === m._id ? "4px solid red" : "none",
+                    border:
+                      selectedCover === m._id ? "3px solid green" : "none",
                   }}
                   onClick={() => {
                     setCoverImage(m._id);
@@ -338,16 +328,16 @@ const EditAlbum = () => {
           })}
         </div>
 
-        <button className={styles.editAlbumButton} type="submit">
+        <button className={styles.dashButton} type="submit">
           <span>update cover</span>
         </button>
       </form>
 
-      <form className={styles.editAlbumForm}>
-        <label className={styles.imageContainerLabel}>
+      <form className={styles.dashForm}>
+        <label className={styles.dashLabel}>
           delete image/video from album:
         </label>
-        <div className={styles.imageContainer}>
+        <div className={styles.dashImageContainer}>
           {media.map((m) => {
             if (isVideo(m.url)) {
               return (
@@ -359,7 +349,7 @@ const EditAlbum = () => {
                   muted
                   style={{
                     margin: "1px",
-                    border: selectedImage === m._id ? "4px solid red" : "none",
+                    border: selectedImage === m._id ? "3px solid red" : "none",
                   }}
                   onClick={() => {
                     setSelectedImage(m._id);
@@ -375,7 +365,7 @@ const EditAlbum = () => {
                   alt="thumbnail"
                   style={{
                     margin: "1px",
-                    border: selectedImage === m._id ? "4px solid red" : "none",
+                    border: selectedImage === m._id ? "3px solid red" : "none",
                   }}
                   onClick={() => {
                     setSelectedImage(m._id);
@@ -389,7 +379,7 @@ const EditAlbum = () => {
 
         <button
           type="button"
-          className={styles.editAlbumButton}
+          className={styles.dashButton}
           onClick={handleDeleteImage}
         >
           <span>delete image</span>
