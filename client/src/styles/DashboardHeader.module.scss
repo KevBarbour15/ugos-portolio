@@ -26,7 +26,8 @@
 
 .dashboardHeaderButton {
   background: none;
-  border: none;
+  border: 1px black solid;
+  border-radius: 8px;
   color: white;
   text-align: center;
   display: block;
@@ -42,11 +43,18 @@
   font-weight: 700;
 }
 
+.dashboardHeaderButton:hover{
+  border: 1px white solid;
+  border-radius: 8px;
+  color:black;
+  background-color: #e0e0e0;
+}
+
 .dashboardHeaderButtonActive {
   align-items: center;
   color: black;
   background-color: white;
-  border: 0;
+  border: 1px white solid;
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
@@ -56,6 +64,10 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   cursor: pointer;
+}
+
+.dashboardHeaderButtonActive:hover {
+  background-color: white;
 }
 
 .dashboardHeaderButtonActive span {

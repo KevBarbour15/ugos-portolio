@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/EditLanding.module.scss";
+import styles from "../styles/Dashboard.module.scss"
 
 import {
   imageSuccessNotification,
@@ -82,7 +82,7 @@ function EditLanding() {
 
   const handleSetCurrentVideo = async (e) => {
     e.preventDefault();
-    
+
     if (!selectedVideo) {
       errorNotification(
         "Please select a video to set as current landing page."
@@ -173,30 +173,27 @@ function EditLanding() {
   };
 
   return (
-    <div className={styles.editLandingContainer}>
-      <div className={styles.randomSwitch}>
+    <div className={styles.dashContainer}>
+      <div className={styles.photoVideoSwitch}>
         <span className={styles.labelText}>random video disabled</span>
-
         <input
           id="randomSwitch"
           type="checkbox"
           checked={isRandom}
           onChange={handleToggleRandom}
         />
-
         <label htmlFor="randomSwitch" className={styles.switchLabel}></label>
-
         <span className={styles.labelText}>random video enabled</span>
       </div>
 
-      <form className={styles.editLandingForm}>
+      <form className={styles.dashForm}>
         <div className={styles.inputWrapper}>
-          <label className={styles.editLandingLabel}>
+          <label className={styles.dashLabel}>
             set current landing page video:
           </label>
         </div>
 
-        <div className={styles.videoContainer}>
+        <div className={styles.dashImageContainer}>
           {landingVideos.map((video) => (
             <video
               key={video}
@@ -206,7 +203,7 @@ function EditLanding() {
               muted
               style={{
                 margin: "1px",
-                border: selectedVideo === video ? "4px solid green" : "none",
+                border: selectedVideo === video ? "3px solid green" : "none",
               }}
               onClick={() => setSelectedVideo(video)}
             />
@@ -215,19 +212,17 @@ function EditLanding() {
 
         <button
           type="button"
-          className={styles.editLandingButton}
+          className={styles.dashButton}
           onClick={handleSetCurrentVideo}
         >
           <span>set as current</span>
         </button>
 
         <div className={styles.inputWrapper}>
-          <label className={styles.editLandingLabel}>
-            delete landing page video:
-          </label>
+          <label className={styles.dashLabel}>delete landing page video:</label>
         </div>
 
-        <div className={styles.videoContainer}>
+        <div className={styles.dashImageContainer}>
           {landingVideos.map((video) => (
             <video
               key={video}
@@ -237,7 +232,7 @@ function EditLanding() {
               muted
               style={{
                 margin: "1px",
-                border: toDeleteVideo === video ? "4px solid red" : "none",
+                border: toDeleteVideo === video ? "3px solid red" : "none",
               }}
               onClick={() => setToDeleteVideo(video)}
             />
@@ -246,22 +241,22 @@ function EditLanding() {
 
         <button
           type="button"
-          className={styles.editLandingButton}
+          className={styles.dashButton}
           onClick={handleDeleteVideo}
         >
           <span>delete video</span>
         </button>
       </form>
 
-      <form className={styles.editLandingForm} onSubmit={handleSubmit}>
+      <form className={styles.dashForm} onSubmit={handleSubmit}>
         <div className={styles.inputWrapper}>
-          <label htmlFor="video" className={styles.editLandingLabel}>
+          <label htmlFor="video" className={styles.dashLabel}>
             upload new video for landing page:
           </label>
         </div>
 
         <input
-          className={styles.editLandingInput}
+          className={styles.dashUploadInput}
           type="file"
           id="video"
           onChange={handleFileChange}
@@ -274,7 +269,7 @@ function EditLanding() {
           label={`${progress}%`}
         />
 
-        <button type="submit" className={styles.editLandingButton}>
+        <button type="submit" className={styles.dashButton}>
           <span>upload video</span>
         </button>
       </form>

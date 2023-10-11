@@ -9,25 +9,13 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
           <li className={styles.dashboardHeaderNavItem}>
             <button
               className={`${styles.dashboardHeaderButton} ${
-                activeTab === "Upload Photo"
+                activeTab === "Upload Media"
                   ? styles.dashboardHeaderButtonActive
                   : ""
               }`}
-              onClick={() => setActiveTab("Upload Photo")}
+              onClick={() => setActiveTab("Upload Media")}
             >
-              <span>upload photo</span>
-            </button>
-          </li>
-          <li className={styles.dashboardHeaderNavItem}>
-            <button
-              className={`${styles.dashboardHeaderButton} ${
-                activeTab === "Upload Video"
-                  ? styles.dashboardHeaderButtonActive
-                  : ""
-              }`}
-              onClick={() => setActiveTab("Upload Video")}
-            >
-              <span>upload video</span>
+              <span>upload</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>

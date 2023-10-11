@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import CreateAlbum from "../components/CreateAlbum";
 import UploadPhoto from "../components/UploadPhoto";
 import UploadVideo from "../components/UploadVideo";
+import UploadMedia from "../components/UploadMedia";
 import EditAlbum from "../components/EditAlbum";
 import EditLanding from "../components/EditLanding";
 import DashboardHeader from "../components/DashboardHeader";
@@ -43,6 +44,9 @@ const Dashboard = () => {
       break;
     case "Upload Video":
       CurrentComponent = UploadVideo;
+      break;
+    case "Upload Media":
+      CurrentComponent = UploadMedia;
       break;
     case "Edit Landing":
       CurrentComponent = EditLanding;
