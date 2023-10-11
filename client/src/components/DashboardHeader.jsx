@@ -15,7 +15,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Upload Photo")}
             >
-              <span>~upload photo~</span>
+              <span>upload photo</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -27,7 +27,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Upload Video")}
             >
-              <span>~upload video~</span>
+              <span>upload video</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -39,7 +39,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Create Album")}
             >
-              <span>~create new album~</span>
+              <span>create album</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -51,7 +51,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Edit Album")}
             >
-              <span>~edit album~</span>
+              <span>edit album</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -63,7 +63,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               }`}
               onClick={() => setActiveTab("Edit Landing")}
             >
-              <span>~edit landing page~</span>
+              <span>edit landing</span>
             </button>
           </li>
           <li className={styles.dashboardHeaderNavItem}>
@@ -71,7 +71,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               className={styles.dashboardHeaderButton}
               onClick={handleLogout}
             >
-              <span>~logout~</span>
+              <span>logout</span>
             </button>
           </li>
         </ul>

@@ -52,6 +52,8 @@ function VideoAlbums() {
                         muted
                         loop
                         playsinline
+                        width="100%"
+                        height="100%"
                         style={{ pointerEvents: "none" }}
                       />
                     ) : (

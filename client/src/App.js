@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
-import PhotoGallery from "./pages/PhotoGallery"; 
+import PhotoGallery from "./pages/PhotoGallery";
 import VideoGallery from "./pages/VideoGallery";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
@@ -9,7 +9,7 @@ import About from "./pages/About";
 import PhotoAlbums from "./pages/PhotoAlbums";
 import VideoAlbums from "./pages/VideoAlbums";
 import AuthContext from "./context/AuthContext";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +28,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/home" element={<PhotoAlbums/>} />
+            <Route path="/home" element={<PhotoAlbums />} />
             <Route path="/photo/:id" element={<PhotoGallery />} />
             <Route path="/video/:id" element={<VideoGallery />} />
             <Route path="/login" element={<Login />} />

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/Dashboard.module.scss";
 import AuthContext from "../context/AuthContext";
 import CreateAlbum from "../components/CreateAlbum";
 import UploadPhoto from "../components/UploadPhoto";
@@ -51,7 +52,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Layout>
         <DashboardHeader
           activeTab={activeTab}

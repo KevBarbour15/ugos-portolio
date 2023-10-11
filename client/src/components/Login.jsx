@@ -56,7 +56,7 @@ const Login = ({ onClose }) => {
           </label>
 
           <button type="submit" className={styles.loginButton}>
-            <span>Login</span>
+            Login
           </button>
         </form>
       </div>

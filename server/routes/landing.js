@@ -22,6 +22,7 @@ router.get("/videos", async (req, res) => {
 });
 
 router.post("/setRandom", verifyToken, async (req, res) => {
+  console.log("Attempting to set random");
   try {
     if (typeof req.body.random !== "boolean") {
       return res.status(400).json({ error: "Invalid input." });

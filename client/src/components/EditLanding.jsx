@@ -3,11 +3,13 @@ import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/EditLanding.module.scss";
+
 import {
   imageSuccessNotification,
   errorNotification,
 } from "../helpers/notifications";
 
+// TODO: clean up the CSS styles in this component and incorporate them into the global styles in Dashboard.module.scss
 function EditLanding() {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/UploadPhoto.module.scss";
+import styles from "../styles/Dashboard.module.scss";
 
 function UploadVideo() {
   const [albums, setAlbums] = useState([]);
@@ -85,16 +85,16 @@ function UploadVideo() {
   };
 
   return (
-    <div className={styles.uploadContainer}>
-      <form className={styles.uploadForm} onSubmit={handleSubmit}>
-        <label htmlFor="album" className={styles.uploadLabel}>
+    <div className={styles.dashContainer}>
+      <form className={styles.dashForm} onSubmit={handleSubmit}>
+        <label htmlFor="album" className={styles.dashLabel}>
           select album to upload to:
         </label>
         <select
           id="album"
           value={selectedAlbum}
           onChange={handleSelectChange}
-          className={styles.uploadSelect}
+          className={styles.dashSelect}
         >
           <option value="" disabled>
             no album selected
@@ -105,11 +105,11 @@ function UploadVideo() {
             </option>
           ))}
         </select>
-        <label htmlFor="media" className={styles.uploadLabel}>
+        <label htmlFor="media" className={styles.dashLabel}>
           select video to upload:
         </label>
         <input
-          className={styles.uploadInput}
+          className={styles.dashUploadInput}
           type="file"
           id="media"
           onChange={handleFileChange}
@@ -126,7 +126,7 @@ function UploadVideo() {
           variant="info"
         />
 
-        <button type="submit" className={styles.uploadButton}>
+        <button type="submit" className={styles.dashButton}>
           <span>upload video</span>
         </button>
       </form>
