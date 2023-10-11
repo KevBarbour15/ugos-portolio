@@ -13,7 +13,6 @@
 
 .dashForm {
   position: relative;
-  padding: 15px 0 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,26 +24,26 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 25px;
   width: 75%;
+  margin: 3vh;
 }
 
 .dashUploadInput {
   display: block;
   width: 475px;
   color: black;
+  margin-top:2.5vh;
 }
 
 .dashLabel {
   display: block;
-  margin: 3vh;
+  margin: 2.5vh;
   width: 475px;
   border: 0;
   border-bottom: 2px solid black;
   outline: 0;
   font-size: 1.3rem;
   color: black;
-  padding: 7px 0;
 }
 
 .dashSelect {
@@ -254,11 +253,11 @@
 }
 
 .dashImageContainer {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 25vh;
+  height: 20vh;
   overflow-x: auto;
   scrollbar-width: thick;
   scrollbar-color: grey #616467;
@@ -266,3 +265,60 @@
   border-radius: 8px;
   margin-bottom: 3vh;
 }
+
+
+@media (max-width: 768px) {
+  /* Adjustments for tablets and smaller devices */
+  .dashButton, .deleteButton {
+      width: 100%;
+      max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjustments for mobile devices */
+  
+  .dashInputLabel, .labelText, .dashLabel {
+      font-size: 1rem;
+  }
+  
+  .dashInputField {
+      padding: 0.5rem;
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashUploadInput, .dashLabel, .progressBar {
+      width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashButton, .deleteButton {
+      width: 100%;
+      max-width: 250px;
+  }
+  .inputWrapper, .dashSelect, .dashImageContainer {
+      width: 90%;
+  }
+}
+
+// mobile
+@media (max-width: 480px) {
+  .dashInputLabel, .labelText, .dashLabel {
+      font-size: 1rem;
+  }
+  .dashInputField {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 95%;
+  }
+  .dashUploadInput, .dashLabel, .progressBar {
+      width: 95%;
+  }
+  .photoVideoSwitch {
+      --size: 65px;
+  }
+}
+

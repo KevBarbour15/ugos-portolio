@@ -175,7 +175,7 @@ function EditLanding() {
   return (
     <div className={styles.dashContainer}>
       <div className={styles.photoVideoSwitch}>
-        <span className={styles.labelText}>random video disabled</span>
+        <span className={styles.labelText}>current</span>
         <input
           id="randomSwitch"
           type="checkbox"
@@ -183,7 +183,7 @@ function EditLanding() {
           onChange={handleToggleRandom}
         />
         <label htmlFor="randomSwitch" className={styles.switchLabel}></label>
-        <span className={styles.labelText}>random video enabled</span>
+        <span className={styles.labelText}>random</span>
       </div>
 
       <form className={styles.dashForm}>

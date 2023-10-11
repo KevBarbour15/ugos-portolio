@@ -258,7 +258,7 @@ const EditAlbum = () => {
             placeholder=" "
           />
           <label className={styles.dashInputLabel} htmlFor="albumTitle">
-            album title:
+            title:
           </label>
         </div>
         <button className={styles.dashButton} type="submit">
@@ -275,7 +275,7 @@ const EditAlbum = () => {
             onChange={(e) => setDescription(e.target.value)}
             placeholder=" "
           />
-          <label className={styles.dashInputLabel}>album description:</label>
+          <label className={styles.dashInputLabel}>description:</label>
         </div>
         <button className={styles.dashButton} type="submit">
           <span>edit description</span>

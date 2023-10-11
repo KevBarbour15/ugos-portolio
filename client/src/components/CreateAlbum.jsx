@@ -55,26 +55,23 @@ const CreateAlbum = () => {
 
   return (
     <div className={styles.dashContainer}>
+      <div className={styles.photoVideoSwitch}>
+        <span className={styles.labelText}>photo</span>
+        <input
+          id="photoVideoSwitch"
+          type="checkbox"
+          checked={selectedOption === "video"}
+          onChange={() =>
+            setSelectedOption((prev) => (prev === "photo" ? "video" : "photo"))
+          }
+        />
+        <label
+          htmlFor="photoVideoSwitch"
+          className={styles.switchLabel}
+        ></label>
+        <span className={styles.labelText}>video</span>
+      </div>
       <form className={styles.dashForm} onSubmit={onSubmit}>
-        <div className={styles.photoVideoSwitch}>
-          <span className={styles.labelText}>photo</span>
-          <input
-            id="photoVideoSwitch"
-            type="checkbox"
-            checked={selectedOption === "video"}
-            onChange={() =>
-              setSelectedOption((prev) =>
-                prev === "photo" ? "video" : "photo"
-              )
-            }
-          />
-          <label
-            htmlFor="photoVideoSwitch"
-            className={styles.switchLabel}
-          ></label>
-          <span className={styles.labelText}>video</span>
-        </div>
-
         <div className={styles.inputWrapper}>
           <input
             className={styles.dashInputField}
@@ -85,7 +82,7 @@ const CreateAlbum = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <label className={styles.dashInputLabel} htmlFor="albumTitle">
-            Album title:
+           title:
           </label>
         </div>
 
@@ -98,7 +95,7 @@ const CreateAlbum = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
           <label className={styles.dashInputLabel} htmlFor="albumDescription">
-            Album description:
+           description:
           </label>
         </div>
 
