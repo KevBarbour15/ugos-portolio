@@ -31,35 +31,30 @@ const VideoAlbumDetails = ({ id }) => {
       <p className={styles.albumInfo}>{album.description}</p>
 
       {album.media && album.media.length > 0 ? (
-        <>
-          <ResponsiveMasonry rowsCountBreakPoints={{ 350: 1, 750: 2, 900: 2 }}>
-            <Masonry>
-              {album.media.map((media, index) => (
-                <div
-                  key={index}
-                  className={styles.album}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <div className={styles.galleryImage}>
-                    {console.log(isVideo(media.url))}
-                    {isVideo(media.url) ? (
-                      <ReactPlayer
-                        url={media.url}
-                        controls={isHovered}
-                        playing
-                        loop
-                        muted
-                      />
-                    ) : (
-                      <img src={media.url} alt="" />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </Masonry>
-          </ResponsiveMasonry>
-        </>
+        album.media.map((media, index) => (
+          <div
+            key={index}
+            className={styles.galleryImage}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <div className={styles.album}>
+              {isVideo(media.url) ? (
+                <ReactPlayer
+                  url={media.url}
+                  controls={isHovered}
+                  playing
+                  loop
+                  muted
+                  width="100%" /* Added this */
+                  height="auto" /* Added this */
+                />
+              ) : (
+                <img src={media.url} alt="" />
+              )}
+            </div>
+          </div>
+        ))
       ) : (
         <p>No media in this album.</p>
       )}
