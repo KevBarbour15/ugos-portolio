@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ReactPlayer from "react-player";
 import styles from "../styles/AlbumDetails.module.scss";
 import isVideo from "../helpers/video";
@@ -46,8 +45,8 @@ const VideoAlbumDetails = ({ id }) => {
                   playing
                   loop
                   muted
-                  width="100%" /* Added this */
-                  height="auto" /* Added this */
+                  width="100%" 
+                  height="auto"
                 />
               ) : (
                 <img src={media.url} alt="" />

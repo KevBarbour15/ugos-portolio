@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "../styles/AlbumDetails.module.scss";
