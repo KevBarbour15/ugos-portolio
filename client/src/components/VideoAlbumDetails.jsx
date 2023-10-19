@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../axiosConfig";
 import ReactPlayer from "react-player";
 import styles from "../styles/AlbumDetails.module.scss";
 import isVideo from "../helpers/video";

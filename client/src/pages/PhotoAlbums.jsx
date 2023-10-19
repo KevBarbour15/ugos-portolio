@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../axiosConfig";
 import { Link } from "react-router-dom";
 import styles from "../styles/AlbumList.module.scss";
 import placeholderImg from "../images/gold-bars.png";

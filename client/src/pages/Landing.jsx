@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Landing.module.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../axiosConfig";
 import defaultLandingVideo from "../videos/landingSmall.mp4";
 
 const Landing = () => {

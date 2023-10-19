@@ -3,6 +3,8 @@ const db = require("./db");
 const cors = require("cors");
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 app.use(cors());
 
 app.use((req, res, next) => {
@@ -10,6 +12,10 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send("Hello from the server!");
+});
 
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");
@@ -28,8 +34,12 @@ app.use((err, req, res, next) => {
 
 db.connect()
   .then(() => {
-    app.listen(3001, () => {
-      console.log("Server started on port 3001");
+    app.listen(PORT, () => {
+      if (PORT === 3001) {
+        console.log("Server started on port 3001");
+      } else {
+        console.log("Server started on port ", PORT);
+      }
     });
   })
   .catch((err) => {
