@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6ddf0eec.css",
+    "main.js": "/static/js/main.15ed7af0.js",
+    "static/media/landingSmall.mp4": "/static/media/landingSmall.d4340e29d456ebd50f6b.mp4",
+    "static/media/gold-bars.png": "/static/media/gold-bars.9a4fae478e4fe83d6b03.png",
+    "static/media/crying-mj.png": "/static/media/crying-mj.af0b497d3350b2ab0872.png",
+    "static/media/JB.ttf": "/static/media/JB.cd6995f916f20eadaa28.ttf",
+    "static/media/SEA.ttf": "/static/media/SEA.93d18d00e29bc39e9505.ttf",
+    "index.html": "/index.html",
+    "main.6ddf0eec.css.map": "/static/css/main.6ddf0eec.css.map",
+    "main.15ed7af0.js.map": "/static/js/main.15ed7af0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ddf0eec.css",
+    "static/js/main.15ed7af0.js"
+  ]
+}
