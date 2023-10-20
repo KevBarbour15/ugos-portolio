@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.a50c291e.css",
-    "main.js": "./static/js/main.e9a6d9ba.js",
-    "static/media/landingSmall.mp4": "./static/media/landingSmall.d4340e29d456ebd50f6b.mp4",
-    "static/media/gold-bars.png": "./static/media/gold-bars.9a4fae478e4fe83d6b03.png",
-    "static/media/crying-mj.png": "./static/media/crying-mj.af0b497d3350b2ab0872.png",
-    "static/media/JB.ttf": "./static/media/JB.cd6995f916f20eadaa28.ttf",
-    "static/media/SEA.ttf": "./static/media/SEA.93d18d00e29bc39e9505.ttf",
-    "index.html": "./index.html",
-    "main.a50c291e.css.map": "./static/css/main.a50c291e.css.map",
-    "main.e9a6d9ba.js.map": "./static/js/main.e9a6d9ba.js.map"
+    "main.css": "/ugos-portfolio/static/css/main.a50c291e.css",
+    "main.js": "/ugos-portfolio/static/js/main.bedce8d4.js",
+    "static/media/landingSmall.mp4": "/ugos-portfolio/static/media/landingSmall.d4340e29d456ebd50f6b.mp4",
+    "static/media/gold-bars.png": "/ugos-portfolio/static/media/gold-bars.9a4fae478e4fe83d6b03.png",
+    "static/media/crying-mj.png": "/ugos-portfolio/static/media/crying-mj.af0b497d3350b2ab0872.png",
+    "static/media/JB.ttf": "/ugos-portfolio/static/media/JB.cd6995f916f20eadaa28.ttf",
+    "static/media/SEA.ttf": "/ugos-portfolio/static/media/SEA.93d18d00e29bc39e9505.ttf",
+    "index.html": "/ugos-portfolio/index.html",
+    "main.a50c291e.css.map": "/ugos-portfolio/static/css/main.a50c291e.css.map",
+    "main.bedce8d4.js.map": "/ugos-portfolio/static/js/main.bedce8d4.js.map"
   },
   "entrypoints": [
     "static/css/main.a50c291e.css",
-    "static/js/main.e9a6d9ba.js"
+    "static/js/main.bedce8d4.js"
   ]
 }
