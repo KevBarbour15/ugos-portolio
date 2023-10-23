@@ -2,8 +2,6 @@
   "name": "ugos-portfolio-client",
   "version": "0.1.0",
   "private": true,
-  "-homepage": "./",
-  "homepage": "https://kevbarbour15.github.io/ugos-portfolio",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

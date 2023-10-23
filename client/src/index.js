@@ -4,7 +4,7 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  <Router basename="/ugos-portfolio">
+  <Router>
     <p>Hello, this is a test in the index!</p>
     <App />
   </Router>,
