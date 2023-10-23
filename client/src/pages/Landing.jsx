@@ -3,6 +3,7 @@ import styles from "../styles/Landing.module.scss";
 import { Link } from "react-router-dom";
 import axios from "../axiosConfig";
 import defaultLandingVideo from "../videos/landingSmall.mp4";
+import ReactPlayer from "react-player";
 
 const Landing = () => {
   const [videoUrl, setVideoUrl] = useState(null);
@@ -42,19 +43,24 @@ const Landing = () => {
   }
 
   return (
-    <>
-      <div className={styles.landingContainer}>
-        <video autoPlay muted loop playsInline className={styles.landingVideo}>
-          <source src={videoUrl} />
-          Your browser does not support the video tag.
-        </video>
-        <div className={styles.landingButtonEnter}>
-          <Link to="Home" className={styles.landingLink}>
-            <span className={styles.landingText}>enter</span>
-          </Link>
-        </div>
+    <div className={styles.landingContainer}>
+      <div className={styles.videoWrapper}>
+        <ReactPlayer
+          url={videoUrl}
+          playing
+          muted
+          loop
+          width="110%"
+          height="110%"
+          className={styles.reactPlayer}
+        />
       </div>
-    </>
+      <div className={styles.landingButtonEnter}>
+        <Link to="Home" className={styles.landingLink}>
+          <span className={styles.landingText}>enter</span>
+        </Link>
+      </div>
+    </div>
   );
 };
 
