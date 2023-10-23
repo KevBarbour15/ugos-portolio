@@ -43,7 +43,6 @@ const Landing = () => {
 
   return (
     <>
-      <h1>Landing Page</h1>
       <div className={styles.landingContainer}>
         <video autoPlay muted loop className={styles.landingVideo}>
           <source src={videoUrl} />
