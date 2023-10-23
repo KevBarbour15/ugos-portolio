@@ -26,6 +26,7 @@ function App() {
         }}
       >
         <div>
+          <p>Hello, this is a test!</p>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<PhotoAlbums />} />

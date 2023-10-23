@@ -38,24 +38,24 @@ const Landing = () => {
   }, []);
 
   if (loading) {
-    return (
-      <h1></h1>
-        
-    );
+    return <h1></h1>;
   }
 
   return (
-    <div className={styles.landingContainer}>
-      <video autoPlay muted loop className={styles.landingVideo}>
-        <source src={videoUrl} />
-        Your browser does not support the video tag.
-      </video>
-      <div className={styles.landingButtonEnter}>
-        <Link to="Home" className={styles.landingLink}>
-          <span className={styles.landingText}>enter</span>
-        </Link>
+    <>
+      <h1>Landing Page</h1>
+      <div className={styles.landingContainer}>
+        <video autoPlay muted loop className={styles.landingVideo}>
+          <source src={videoUrl} />
+          Your browser does not support the video tag.
+        </video>
+        <div className={styles.landingButtonEnter}>
+          <Link to="Home" className={styles.landingLink}>
+            <span className={styles.landingText}>enter</span>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
