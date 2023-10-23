@@ -10,13 +10,13 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerTitleContainer}>swellysensei</div>
       <nav className={styles.headerNav}>
-        <Link className={styles.headerNavLink} to="/home">
+        <Link className={styles.headerNavLink} to="/Home">
           photo
         </Link>
-        <Link className={styles.headerNavLink} to="/videos">
+        <Link className={styles.headerNavLink} to="/Videos">
           video
         </Link>
-        <Link className={styles.headerNavLink} to="/about">
+        <Link className={styles.headerNavLink} to="/About">
           about
         </Link>
       </nav>
@@ -31,13 +31,13 @@ const Header = () => {
         className={styles.dropdownContent}
         style={{ display: dropdownOpen ? "flex" : "none" }}
       >
-        <Link to="/home" onClick={() => setDropdownOpen(false)}>
+        <Link to="/Home" onClick={() => setDropdownOpen(false)}>
           photo
         </Link>
-        <Link to="/videos" onClick={() => setDropdownOpen(false)}>
+        <Link to="/Videos" onClick={() => setDropdownOpen(false)}>
           video
         </Link>
-        <Link to="/about" onClick={() => setDropdownOpen(false)}>
+        <Link to="/About" onClick={() => setDropdownOpen(false)}>
           about
         </Link>
       </div>

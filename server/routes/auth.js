@@ -5,7 +5,7 @@ const router = express.Router();
 
 const SECRET_KEY = "verysecretkey";
 
-router.post("/login", (req, res) => {
+router.post("/Login", (req, res) => {
   const { username, password } = req.body;
 
   if (username === "ugo" && password === "ugo") {

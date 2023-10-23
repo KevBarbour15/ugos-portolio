@@ -20,12 +20,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/login");
+      navigate("/Login");
     }
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
-    navigate("/home");
+    navigate("/Home");
     successNotification("Successfully logged out.", null);
     localStorage.removeItem("token");
     setIsAuthenticated(false);

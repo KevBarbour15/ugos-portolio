@@ -43,7 +43,7 @@ function VideoAlbums() {
             }
             return (
               <div className={styles.album} key={album._id}>
-                <Link to={`/video/${album._id}`} className={styles.albumLink}>
+                <Link to={`/Video/${album._id}`} className={styles.albumLink}>
                   <div className={styles.albumImage}>
                     {isVideo(albumCover) ? (
                       <ReactPlayer

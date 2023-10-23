@@ -53,7 +53,7 @@ function PhotoAlbums() {
         <div className={styles.albumGrid}>
           {albums.map((album) => (
             <div className={styles.album} key={album._id}>
-              <Link to={`/photo/${album._id}`} className={styles.albumLink}>
+              <Link to={`/Photo/${album._id}`} className={styles.albumLink}>
                 <div className={styles.albumImage}>
                   <img src={album.albumCover.url} alt={album.title} />
                   <div className={styles.albumDescription}>{album.title}</div>

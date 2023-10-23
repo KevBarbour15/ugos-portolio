@@ -28,13 +28,13 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/home" element={<PhotoAlbums />} />
-            <Route path="/photo/:id" element={<PhotoGallery />} />
-            <Route path="/video/:id" element={<VideoGallery />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/videos" element={<VideoAlbums />} />
+            <Route path="/Home" element={<PhotoAlbums />} />
+            <Route path="/Photo/:id" element={<PhotoGallery />} />
+            <Route path="/Video/:id" element={<VideoGallery />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Videos" element={<VideoAlbums />} />
           </Routes>
         </div>
       </AuthContext.Provider>
