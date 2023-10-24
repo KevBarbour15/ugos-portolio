@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("./db");
 const cors = require("cors");
 const app = express();
+const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 
@@ -22,9 +23,9 @@ app.use("/media", mediaRoutes);
 app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+app.get('*', function (req, res) {
+  res.send('client/public/index.html')
+})
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
