@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Landing.module.scss";
 import { Link } from "react-router-dom";
 import axios from "../axiosConfig";
 import defaultLandingVideo from "../videos/landingSmall.mp4";
-import ReactPlayer from "react-player";
 
 const Landing = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [loading, setLoading] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const fetchLandingVideo = async () => {
@@ -38,23 +38,23 @@ const Landing = () => {
     fetchLandingVideo();
   }, []);
 
+  useEffect(() => {
+    if (!loading && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [loading]);
+
   if (loading) {
-    return <h1></h1>;
+    return <h1>Loading...</h1>;
   }
 
   return (
     <div className={styles.landingContainer}>
-      <div className={styles.videoWrapper}>
-        <ReactPlayer
-          url={videoUrl}
-          playing
-          muted
-          loop
-          width="110%"
-          height="110%"
-          className={styles.reactPlayer}
-        />
-      </div>
+      <video ref={videoRef} autoPlay muted loop className={styles.video}>
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <div className={styles.landingButtonEnter}>
         <Link to="Home" className={styles.landingLink}>
           <span className={styles.landingText}>enter</span>
