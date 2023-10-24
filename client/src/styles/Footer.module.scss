@@ -11,15 +11,15 @@
 
 .ownerButton {
   margin-left: 4vh;
-  font-size: 1.5em;
   color: white;
   background-color: transparent;
-  cursor: pointer;
   letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
+  cursor: pointer;
   border: none;
   outline: none;
+  @media (max-width: 768px) {
+    font-size: 1.25em;
+  }
 }
 
 .ownerButton a,
@@ -41,7 +41,7 @@
   font-weight: 700;
   @media (max-width: 768px) {
     color: black;
-    font-size: .25em;
+    font-size: .75em;
   }
 }
 

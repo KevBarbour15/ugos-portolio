@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <button onClick={handleLoginClick} className={styles.ownerButton}>
-        login
+        Login
       </button>
       {showLoginModal && <Login onClose={handleCloseLoginModal} />}
       <div className={styles.contactContainer}>
