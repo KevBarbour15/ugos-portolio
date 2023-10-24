@@ -10,12 +10,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-/*
-app.get("/", (req, res) => {
-  res.send("Server properly loaded.");
-});
-*/
-
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");
 const authRoutes = require("./routes/auth");
@@ -32,7 +26,7 @@ app.get("*", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something went wrong!");
+  res.status(500).send("Something went wrong.");
 });
 
 db.connect()
