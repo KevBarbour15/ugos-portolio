@@ -77,7 +77,7 @@ function UploadMedia() {
       },
     };
 
-    console.log(data.album);
+    console.log(data.get('album'));
 
     setProgress(50);
     try {
@@ -95,27 +95,13 @@ function UploadMedia() {
         setFile(null);
       }, 1500);
     } catch (error) {
-      /*
       errorNotification("An error occurred while uploading the file.", null);
       console.error(
         `An error occurred while uploading the file. Error: `,
         error
       );
-      */
-      if (!selectedAlbum) {
-        errorNotification("Please select an album.", null);
-      } else if (!file) {
-        errorNotification("Please select a file.", null);
-      } else {
-        errorNotification("An error occurred while uploading the file.", error);
-        console.error(
-          `An error occurred while uploading the file. Error: `,
-          error
-        );
-      }
 
       setProgress(0);
-      setFile(null);
     }
   };
 

@@ -32,10 +32,6 @@ function errorNotification(title, text) {
     imageHeight: 200,
     showConfirmButton: false,
     timer: 1500,
-    background: "#f7f0ee",
-    letterSpacing: "25px",
-    textTransform: "uppercase",
-    fontWeight: 700
   });
 }
 
