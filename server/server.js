@@ -6,14 +6,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
-
-app.use((req, res, next) => {
-  next();
-});
-
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello from the server!");
 });
 
@@ -26,6 +21,10 @@ app.use("/landing", landingRoutes);
 app.use("/media", mediaRoutes);
 app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
