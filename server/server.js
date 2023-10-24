@@ -10,9 +10,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
+/*
 app.get("/", (req, res) => {
   res.send("Server properly loaded.");
 });
+*/
 
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");

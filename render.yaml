@@ -1,4 +1,0 @@
-redirects:
-  - source: /.*
-    destination: /client/public/index.html
-    type: 200
