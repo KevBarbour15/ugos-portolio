@@ -50,7 +50,7 @@ const Landing = () => {
 
   return (
     <div className={styles.landingContainer}>
-      <video ref={videoRef} autoPlay muted loop className={styles.video}>
+      <video ref={videoRef} autoplay muted loop inline className={styles.video}>
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
