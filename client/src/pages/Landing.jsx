@@ -20,11 +20,14 @@ const Landing = () => {
         if (videos && videos.length) {
           if (isRandom) {
             const randomIndex = Math.floor(Math.random() * videos.length);
+            console.log("Random video picked.");
             setVideoUrl(videos[randomIndex]);
           } else {
+            console.log("Current video picked.");
             setVideoUrl(currentVideo);
           }
         } else {
+          console.log("No landing videos found.");
           setVideoUrl(defaultLandingVideo);
         }
       } catch (error) {
@@ -50,7 +53,7 @@ const Landing = () => {
 
   return (
     <div className={styles.landingContainer}>
-      <video ref={videoRef} autoplay muted loop inline className={styles.video}>
+      <video ref={videoRef} autoPlay muted loop inline="true" className={styles.video}>
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
