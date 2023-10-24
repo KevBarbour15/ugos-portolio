@@ -1,8 +1,4 @@
-staticSites:
-  - name: my-static-site
-    buildCommand: npm run build
-    publishDir: build
-    redirects:
-      - source: /* 
-        destination: /index.html 
-        type: rewrite 
+redirects:
+  - source: /.*
+    destination: /index.html
+    type: 200
