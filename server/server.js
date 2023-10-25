@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../client/build")));
+//app.use(express.static(path.join(__dirname, "../client/build")));
 
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");
@@ -19,10 +19,6 @@ app.use("/landing", landingRoutes);
 app.use("/media", mediaRoutes);
 app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

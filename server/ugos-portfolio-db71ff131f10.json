@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ugos-portfolio",
+  "private_key_id": "db71ff131f10392f147ee11be1a1eee31b631aba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLquP5e4DMwfI2\nTFkpGED72+fVKz/ynGVIQKOvYorIhl9jqVjQqMfzHqmwSC9Bg1nikXncUsN0CqI7\nLtd9uqSbdluSpXPZtkj72c8QlGknrdnRolnYyoDsGbvI5jWS9D453z/CP5Rb5Z07\nft+edcNV718tlm9EbRDHGNLLnP/iJTavuGIFEdEM04eBz5vX8iZpVIqpblKg6qoN\n/QQj1osM7PDP+9nHz9GAT/BvhF+bWIxy2oh6fZEa3Ua2/kQTasG+ihgyw/FEuCyA\n9Ugs+2Kx1345uFvY+KaO6Mc6twJFL97DcALNoo03IkCcwLGCAVN+6ehQ4ueKvHw8\nGnLO5HcjAgMBAAECggEAAqZZ36MVt+mbZyLIfi+3Q2Txt+T0016UNW5x3WmgzfRs\nRUsCFs+Qr78UYhtuUfc4MinGYMbK4uBIirs/SSl71BykGweqtt3CRqnndxsXNdGd\n5eEA3kCJkN4ngqOhdXoBXUC5qaNTdiafTGjdgUhISalFnxLipmHs4p+WDoQfvXzM\neyZBSaTDrg+aIpl5CRBe2GDZdI54cDbrGJRGxQq/VUSDIHrNxz9BGAIf430kRD7N\nuxgSzBOA7XldsaRKK0Ub5HHKynAVrtsCdCkWaH14nnfZK0bHDXOOc1FTeSBToLDY\nP+zVuOqh+c5pzHyP4b51vIy4Ykl0m+88Qxs0FypeAQKBgQD/whzOhZN2yxZCpil4\nUNhirytnQuTuCtew9Z9w38bhZEJInZBRN53q9BrTPSWvAo+SM3KuMxxgjYtlCk7E\neU6ee98telpKNI9Wn/lFI7pqxTzvLh76XSjVdI9ylcvcf9yuES2uElUNQHXk2bMz\n5NgjJPNsPe980NAxbAXqZhmCowKBgQDL3Cxbr1C4SFwiXt5+CZSwFlMFWvMtVmrZ\nOJQ2mRKNbqrwWxKWKJquH/UYTxVOTc4wUhQ4TrHznHGOTp3xBc+HeQE2tfK5Mfpo\nCsEx/+H2JBteRQ9f0EuK/GSAivVUTUoZ2PbHGHgQvrZ8HgP5BL1CqbAmTguRI6b6\npc64Is0BgQKBgQCaBSDp8iEzGexm6L/yl+Un0Mu3nN5WyCrKg7Cn/es8Eu+j4Vdm\nwbKVKrn42ksWUNl7NwZqB5egQb1fdMyon1EMOhbVwWgcZfioNyCbVX/PCsa+Vy0K\now2TNmWooLMrL8kK/ode2+ViXJ5i2gOETd0nlPoPBmFx7iJikOYjGadlNwKBgGap\nnn0dsNzdM+jrNcjrMkHrPCv6PXSbjHuQDrPgKoOnM9aPRrDwCdWeqmNvkB8695dF\n/oDMwLkaE+XCma+DaZujyISw5Gd3T8+NevWfE0BNtqqmxLNPxntb15EUaa/mrGaP\n6Nci73QfVu7yfrWtOVKU+eyQaSrSdYjMb2ozvGIBAoGAFZtKKnUJltwKoYvp9kar\nVH72XOfzpuboylrtvL1HNDTcTn21z7dWtvc8N3C1vZ+wWf0XHn6uZp1/eY1dkKu6\npekHDb8QPPhmR1IxKV/yup5xq3UV801ZmY6Z4mGCCxuKVwQ1s4F81o/l0+jYeAdi\nDDfazEs1PKdUguBJXyyyXr0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ugo-portfolio@ugos-portfolio.iam.gserviceaccount.com",
+  "client_id": "109782363229744566519",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ugo-portfolio%40ugos-portfolio.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

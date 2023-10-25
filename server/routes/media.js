@@ -21,7 +21,8 @@ router.post(
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
     }
-
+    console.log("Trying to upload file");
+    
     const fileTypeModule = await import("file-type");
     const detectedType = await fileTypeModule.fileTypeFromBuffer(
       req.file.buffer

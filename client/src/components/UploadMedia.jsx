@@ -23,9 +23,7 @@ function UploadMedia() {
       );
       setAlbums(filteredAlbums);
     };
-
     fetchAlbums();
-
     return () => {
       setSelectedAlbum("");
     };
@@ -82,13 +80,11 @@ function UploadMedia() {
     setProgress(50);
     try {
       const res = await axios.post("/media/upload", data, config);
-
       if (isPhoto) {
         imageSuccessNotification("Successfully uploaded photo.", null);
       } else {
         imageSuccessNotification("Successfully uploaded video.", null);
       }
-
       setProgress(100);
       setTimeout(() => {
         setProgress(0);
@@ -100,7 +96,6 @@ function UploadMedia() {
         `An error occurred while uploading the file. Error: `,
         error
       );
-
       setProgress(0);
     }
   };

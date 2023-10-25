@@ -1,25 +1,24 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Landing.module.scss";
 import { Link } from "react-router-dom";
 import axios from "../axiosConfig";
 import defaultLandingVideo from "../videos/landingSmall.mp4";
-import defaultLandingImage from "../images/homepage.jpg"; 
+import defaultLandingImage from "../images/homepage.jpg";
 
 const Landing = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const videoRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-        setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -55,20 +54,14 @@ const Landing = () => {
     fetchLandingVideo();
   }, []);
 
-  useEffect(() => {
-    if (!loading && videoRef.current && !isMobile) {
-      videoRef.current.play();
-    }
-  }, [loading, isMobile]);
-
   return (
     <div className={styles.landingContainer}>
       {isMobile ? (
         <img src={defaultLandingImage} alt="Landing" className={styles.image} />
       ) : (
-        <video ref={videoRef} autoPlay muted loop inline="true" className={styles.video}>
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
+        <video autoPlay muted loop playsInline className={styles.video}>
+          <source src={videoUrl} />
+          Your browser does not support the video tag.
         </video>
       )}
 

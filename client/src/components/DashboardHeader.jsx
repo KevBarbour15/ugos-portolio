@@ -18,6 +18,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               <span>upload</span>
             </button>
           </li>
+
           <li className={styles.dashboardHeaderNavItem}>
             <button
               className={`${styles.dashboardHeaderButton} ${
