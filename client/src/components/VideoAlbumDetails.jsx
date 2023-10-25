@@ -42,7 +42,6 @@ const VideoAlbumDetails = ({ id }) => {
                 <ReactPlayer
                   url={media.url}
                   controls={isHovered}
-                  playing
                   loop
                   muted
                   width="100%" 

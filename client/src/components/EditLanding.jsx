@@ -122,7 +122,6 @@ function EditLanding() {
           },
         }
       );
-      
 
       if (response.data && typeof response.data.random === "boolean") {
         setIsRandom(response.data.random);
@@ -195,7 +194,6 @@ function EditLanding() {
               style={{
                 margin: "1px",
                 border: selectedVideo === video ? "3px solid green" : "none",
-                pointerEvents: "none",
               }}
               onClick={() => setSelectedVideo(video)}
             />
@@ -224,7 +222,6 @@ function EditLanding() {
               style={{
                 margin: "1px",
                 border: toDeleteVideo === video ? "3px solid red" : "none",
-                pointerEvents: "none",
               }}
               onClick={() => setToDeleteVideo(video)}
             />

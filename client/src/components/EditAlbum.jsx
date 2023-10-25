@@ -286,7 +286,6 @@ const EditAlbum = () => {
                     margin: "1px",
                     border:
                       selectedCover === m._id ? "3px solid green" : "none",
-                    pointerEvents: "none",
                   }}
                   onClick={() => {
                     setCoverImage(m._id);
@@ -338,7 +337,7 @@ const EditAlbum = () => {
                   style={{
                     margin: "1px",
                     border: selectedImage === m._id ? "3px solid red" : "none",
-                    pointerEvents: "none",
+                    
                   }}
                   onClick={() => {
                     setSelectedImage(m._id);
