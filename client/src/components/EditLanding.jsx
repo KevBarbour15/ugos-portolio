@@ -195,6 +195,7 @@ function EditLanding() {
               style={{
                 margin: "1px",
                 border: selectedVideo === video ? "3px solid green" : "none",
+                pointerEvents: "none",
               }}
               onClick={() => setSelectedVideo(video)}
             />
@@ -218,12 +219,12 @@ function EditLanding() {
             <video
               key={video}
               src={video}
-              autoPlay
               loop
               muted
               style={{
                 margin: "1px",
                 border: toDeleteVideo === video ? "3px solid red" : "none",
+                pointerEvents: "none",
               }}
               onClick={() => setToDeleteVideo(video)}
             />

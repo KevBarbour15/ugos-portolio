@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-  const [activeTab, setActiveTab] = useState("Create Album");
+  const [activeTab, setActiveTab] = useState("Upload Media");
 
   const navigate = useNavigate();
 

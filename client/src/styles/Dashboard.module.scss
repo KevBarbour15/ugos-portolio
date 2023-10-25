@@ -1,5 +1,5 @@
 .container {
-  background-color: #f9f7f6;
+  background-color: white;
   overflow: auto;
 }
 
@@ -33,7 +33,7 @@
   display: block;
   width: 475px;
   color: black;
-  margin-top:2.5vh;
+  margin-top: 2.5vh;
 }
 
 .dashLabel {
@@ -266,59 +266,69 @@
   margin-bottom: 3vh;
 }
 
-
 @media (max-width: 768px) {
   /* Adjustments for tablets and smaller devices */
-  .dashButton, .deleteButton {
-      width: 100%;
-      max-width: 250px;
+  .dashButton,
+  .deleteButton {
+    width: 100%;
+    max-width: 250px;
   }
 }
 
 @media (max-width: 480px) {
   /* Adjustments for mobile devices */
-  
-  .dashInputLabel, .labelText, .dashLabel {
-      font-size: 1rem;
+
+  .dashInputLabel,
+  .labelText,
+  .dashLabel {
+    font-size: 1rem;
   }
-  
+
   .dashInputField {
-      padding: 0.5rem;
-      font-size: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 1024px) {
-  .dashUploadInput, .dashLabel, .progressBar {
-      width: 90%;
+  .dashUploadInput,
+  .dashLabel,
+  .progressBar {
+    width: 90%;
   }
 }
 
 @media (max-width: 768px) {
-  .dashButton, .deleteButton {
-      width: 100%;
-      max-width: 250px;
+  .dashButton,
+  .deleteButton {
+    width: 100%;
+    max-width: 250px;
   }
-  .inputWrapper, .dashSelect, .dashImageContainer {
-      width: 90%;
+  .inputWrapper,
+  .dashSelect,
+  .dashImageContainer {
+    width: 90%;
   }
 }
 
 // mobile
 @media (max-width: 480px) {
-  .dashInputLabel, .labelText, .dashLabel {
-      font-size: 1rem;
+  .dashInputLabel,
+  .labelText,
+  .dashLabel {
+    font-size: 1rem;
   }
   .dashInputField {
-      padding: 0.5rem;
-      font-size: 1rem;
-      width: 95%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 95%;
   }
-  .dashUploadInput, .dashLabel, .progressBar {
-      width: 95%;
+  .dashUploadInput,
+  .dashLabel,
+  .progressBar {
+    width: 95%;
   }
   .photoVideoSwitch {
-      --size: 65px;
+    --size: 65px;
   }
 }
-
