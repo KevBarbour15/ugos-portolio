@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axiosConfig";
 import styles from "../styles/Dashboard.module.scss";
-import {
-  successNotification,
-  imageSuccessNotification,
-  errorNotification,
-} from "../helpers/notifications";
 import isVideo from "../helpers/video";
+import { toast } from "react-toastify";
 
 // TO:DO we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
 
@@ -55,7 +51,7 @@ const EditAlbum = () => {
     e.preventDefault();
 
     if (!selectedAlbum) {
-      errorNotification("No album selected.", "Please select an album.");
+      toast.error("No album selected.");
       return;
     }
 
@@ -76,11 +72,11 @@ const EditAlbum = () => {
 
       if (response.status === 200) {
         setSelectedAlbum(response.data);
-        let message = "Title updated to '" + title + "'";
-        successNotification("Title updated successfully.", message);
+        toast.success("Title updated successfully.");
       }
     } catch (error) {
       console.error("Failed to update title", error);
+      toast.error("Failed to update title.");
     }
   };
 
@@ -88,7 +84,7 @@ const EditAlbum = () => {
     e.preventDefault();
 
     if (!selectedAlbum) {
-      errorNotification("No album selected.", "Please select an album.");
+      toast.error("No album selected.");
       return;
     }
 
@@ -109,11 +105,10 @@ const EditAlbum = () => {
 
       if (response.status === 200) {
         setSelectedAlbum(response.data);
-        let message = "Description updated to '" + description + "'";
-        successNotification("Description updated successfully.", message);
+        toast.success("Description updated successfully.");
       }
     } catch (error) {
-      errorNotification("Failed to update description.", error);
+      toast.error("Failed to update description.");
     }
   };
 
@@ -121,7 +116,7 @@ const EditAlbum = () => {
     e.preventDefault();
 
     if (!selectedAlbum) {
-      errorNotification("No album selected.", "Please select an album.");
+      toast.error("No album selected.");
       return;
     }
 
@@ -142,13 +137,10 @@ const EditAlbum = () => {
 
       console.log("response: ", response);
       if (response.status === 200) {
-        imageSuccessNotification(
-          "Cover image successfully updated.",
-          selectedUrl
-        );
+        toast.success("Cover image updated successfully.");
       }
     } catch (error) {
-      errorNotification("Failed to update cover image.", error);
+      toast.error("Failed to update cover image.");
     }
   };
 
@@ -156,7 +148,7 @@ const EditAlbum = () => {
     e.preventDefault();
 
     if (!selectedAlbum) {
-      errorNotification("No album selected.", "Please select an album.");
+      toast.error("No album selected.");
       return;
     }
 
@@ -178,7 +170,7 @@ const EditAlbum = () => {
       );
 
       if (response.status === 200) {
-        console.log("Album deleted successfully!");
+        toast.success("Album deleted successfully.");
         setAlbums(albums.filter((album) => album._id !== selectedAlbum._id));
         setSelectedAlbum(null);
         setTitle("");
@@ -189,7 +181,7 @@ const EditAlbum = () => {
         setSelectedUrl("");
       }
     } catch (error) {
-      console.error("Failed to delete album", error);
+      toast.error("Failed to delete album.");
     }
   };
 
@@ -197,12 +189,12 @@ const EditAlbum = () => {
     e.preventDefault();
 
     if (!selectedAlbum) {
-      errorNotification("No album selected.", "Please select an album.");
+      toast.error("No album selected.");
       return;
     }
 
     if (!selectedImage) {
-      console.error("No image selected");
+      toast.error("No image selected.");
       return;
     }
 
@@ -213,22 +205,19 @@ const EditAlbum = () => {
     if (!confirmation) return;
 
     try {
-      console.log("selectedImage: ", selectedImage);
-      console.log("selectedAlbum: ", selectedAlbum._id);
       const token = localStorage.getItem("token");
 
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
-      console.log(`/albums/${selectedAlbum._id}/media/${selectedImage}`);
+
       const response = await axios.delete(
         `/albums/${selectedAlbum._id}/media/${selectedImage}`,
         config
       );
 
-      console.log("Made it to here!");
       if (response.status === 200) {
-        console.log("Image deleted successfully!");
+        toast.success("Image deleted successfully.");
         setMedia(media.filter((m) => m._id !== selectedImage));
         setSelectedImage("");
       }

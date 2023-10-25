@@ -3,10 +3,7 @@ import axios from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import styles from "../styles/Login.module.scss";
-import {
-  successNotification,
-  errorNotification,
-} from "../helpers/notifications";
+import { toast } from "react-toastify";
 
 const Login = ({ onClose }) => {
   const username = "ugo";
@@ -25,13 +22,12 @@ const Login = ({ onClose }) => {
 
       localStorage.setItem("token", response.data.token);
       setIsAuthenticated(true);
-      successNotification("Successfully logged in.", null);
+      toast.success("Successfully logged in.");
       setTimeout(() => {
         navigate("/dashboard");
       }, 1500);
     } catch (error) {
-      console.log("Failed to login");
-      errorNotification("Failed to login. Try again.", null);
+      toast.error("Invalid password.");
     }
   };
 

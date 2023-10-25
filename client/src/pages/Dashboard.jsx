@@ -3,14 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "../styles/Dashboard.module.scss";
 import AuthContext from "../context/AuthContext";
 import CreateAlbum from "../components/CreateAlbum";
-import UploadPhoto from "../components/UploadPhoto";
-import UploadVideo from "../components/UploadVideo";
 import UploadMedia from "../components/UploadMedia";
 import EditAlbum from "../components/EditAlbum";
 import EditLanding from "../components/EditLanding";
 import DashboardHeader from "../components/DashboardHeader";
 import Layout from "../components/Layout";
-import { successNotification } from "../helpers/notifications";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -26,7 +24,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     navigate("/Home");
-    successNotification("Successfully logged out.", null);
+    toast.success("Successfully logged out.");
     localStorage.removeItem("token");
     setIsAuthenticated(false);
   };
@@ -38,12 +36,6 @@ const Dashboard = () => {
       break;
     case "Edit Album":
       CurrentComponent = EditAlbum;
-      break;
-    case "Upload Photo":
-      CurrentComponent = UploadPhoto;
-      break;
-    case "Upload Video":
-      CurrentComponent = UploadVideo;
       break;
     case "Upload Media":
       CurrentComponent = UploadMedia;

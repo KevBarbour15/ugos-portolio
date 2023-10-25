@@ -9,6 +9,8 @@ import About from "./pages/About";
 import PhotoAlbums from "./pages/PhotoAlbums";
 import VideoAlbums from "./pages/VideoAlbums";
 import AuthContext from "./context/AuthContext";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import "./App.scss";
 
 function App() {
@@ -25,6 +27,11 @@ function App() {
           setIsAuthenticated,
         }}
       >
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+        />
         <div>
           <Routes>
             <Route path="/" element={<Landing />} />

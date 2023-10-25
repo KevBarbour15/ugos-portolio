@@ -3,10 +3,7 @@ import axios from "../axiosConfig";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Dashboard.module.scss";
-import {
-  imageSuccessNotification,
-  errorNotification,
-} from "../helpers/notifications";
+import {toast} from "react-toastify";
 
 function UploadMedia() {
   const [albums, setAlbums] = useState([]);
@@ -34,7 +31,7 @@ function UploadMedia() {
 
     if (isPhoto) {
       if (!file.type.startsWith("image/")) {
-        errorNotification("Please upload an image file.", null);
+        toast.error("Please upload an image file.");
         return;
       }
     } else {
@@ -45,10 +42,7 @@ function UploadMedia() {
         "video/quicktime",
       ];
       if (!validTypes.includes(file.type)) {
-        errorNotification(
-          "Invalid video type. Please upload a valid video file.",
-          null
-        );
+        toast.error("Please upload a video file.");
         return;
       }
     }
@@ -61,6 +55,7 @@ function UploadMedia() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
 
     const data = new FormData();
     data.append("file", file);
@@ -81,9 +76,9 @@ function UploadMedia() {
     try {
       const res = await axios.post("/media/upload", data, config);
       if (isPhoto) {
-        imageSuccessNotification("Successfully uploaded photo.", null);
+        toast.success("Successfully uploaded photo.");
       } else {
-        imageSuccessNotification("Successfully uploaded video.", null);
+        toast.success("Successfully uploaded video.");
       }
       setProgress(100);
       setTimeout(() => {
@@ -91,7 +86,7 @@ function UploadMedia() {
         setFile(null);
       }, 1500);
     } catch (error) {
-      errorNotification("An error occurred while uploading the file.", null);
+      toast.error("Error uploading file.");
       console.error(
         `An error occurred while uploading the file. Error: `,
         error

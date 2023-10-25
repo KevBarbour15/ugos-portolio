@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "../axiosConfig";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/Dashboard.module.scss"
+import styles from "../styles/Dashboard.module.scss";
+import { toast } from "react-toastify";
 
-import {
-  imageSuccessNotification,
-  errorNotification,
-} from "../helpers/notifications";
-
-// TODO: clean up the CSS styles in this component and incorporate them into the global styles in Dashboard.module.scss
 function EditLanding() {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -32,7 +27,7 @@ function EditLanding() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && !file.type.startsWith("video/")) {
-      alert("Please upload a video file");
+      toast.error("Please upload a video file.");
       return;
     }
     setFile(file);
@@ -42,9 +37,10 @@ function EditLanding() {
     e.preventDefault();
 
     if (!file) {
-      alert("Please select a video before uploading.");
+      toast.error("Please select a video to upload.");
       return;
     }
+
     const data = new FormData();
     data.append("video", file);
 
@@ -66,7 +62,7 @@ function EditLanding() {
       console.log("File uploaded successfully. Response: ", res.data);
       setProgress(100);
 
-      imageSuccessNotification("Video uploaded successfully.", null);
+      toast.success("Successfully uploaded video.");
       setTimeout(() => {
         setProgress(0);
       }, 1000);
@@ -84,9 +80,7 @@ function EditLanding() {
     e.preventDefault();
 
     if (!selectedVideo) {
-      errorNotification(
-        "Please select a video to set as current landing page."
-      );
+      toast.error("Please select a video to set as current.");
       return;
     }
 
@@ -104,15 +98,12 @@ function EditLanding() {
         }
       );
 
-      imageSuccessNotification(
-        "Current video set successfully.",
-        selectedVideo
-      );
+      toast.success("Successfully set current video.");
 
       setSelectedVideo(null);
       fetchLandingVideos();
     } catch (error) {
-      errorNotification("Error setting current video.", null);
+      toast.error("Error setting current video.");
     }
   };
 
@@ -131,7 +122,7 @@ function EditLanding() {
           },
         }
       );
-      console.log("Server Response:", response.data);
+      
 
       if (response.data && typeof response.data.random === "boolean") {
         setIsRandom(response.data.random);
@@ -147,7 +138,7 @@ function EditLanding() {
     e.preventDefault();
 
     if (!toDeleteVideo) {
-      errorNotification("Please select a video to delete.");
+      toast.error("Please select a video to delete.");
       return;
     }
 
@@ -163,12 +154,12 @@ function EditLanding() {
         }
       );
 
-      imageSuccessNotification("Video deleted successfully.", null);
+      toast.success("Successfully deleted video.");
       setToDeleteVideo(null);
       fetchLandingVideos();
     } catch (error) {
       console.log("Error deleting video: ", error);
-      errorNotification("Error deleting video.", error);
+      toast.error("Error deleting video.");
     }
   };
 
