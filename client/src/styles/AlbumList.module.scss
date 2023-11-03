@@ -74,10 +74,10 @@
   font-size: calc(2.75vw);
   text-align: center;
   box-sizing: border-box;
+  font-family: "times new roman";
+  text-decoration: none;
+  letter-spacing: 0.2em;
   text-shadow: 1.35px 1.35px 0.85px black;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
   @media (max-width: 768px) {
     font-size: calc(7.5vw);
   }
