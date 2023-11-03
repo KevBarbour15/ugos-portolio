@@ -4,8 +4,6 @@ import styles from "../styles/Dashboard.module.scss";
 import isVideo from "../helpers/video";
 import { toast } from "react-toastify";
 
-// TO:DO we need to fix when we delete an image, we need to check if it is the cover image, and if so replace it with next image
-
 const EditAlbum = () => {
   const [albums, setAlbums] = useState([]);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
