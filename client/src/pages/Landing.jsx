@@ -59,10 +59,12 @@ const Landing = () => {
       {isMobile ? (
         <img src={defaultLandingImage} alt="Landing" className={styles.image} />
       ) : (
-        <video autoPlay muted loop playsInline className={styles.video}>
-          <source src={videoUrl} />
-          Your browser does not support the video tag.
-        </video>
+        videoUrl && (
+          <video autoPlay muted loop playsInline className={styles.video}>
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )
       )}
 
       <div className={styles.landingButtonEnter}>

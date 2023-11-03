@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.headerTitleContainer}>swelly sensei</div>
+      <div className={styles.headerTitleContainer}>swellysensei</div>
       <nav className={styles.headerNav}>
         <Link className={styles.headerNavLink} to="/Home">
           photo
@@ -25,7 +25,7 @@ const Header = () => {
         className={styles.dropdownButton}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <img src={bars} alt="dropdown"/>
+        <i className="fa-regular fa-bars" style={{ color: 'white' }}></i>
       </button>
       <div
         className={styles.dropdownContent}
