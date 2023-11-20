@@ -2,13 +2,13 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("../middleware");
 const router = express.Router();
-
-const SECRET_KEY = "verysecretkey";
+const SECRET_KEY = process.env.UGO_SECRET_KEY;
+const PASSWORD = process.env.UGO_PASSWORD;
 
 router.post("/Login", (req, res) => {
   const { username, password } = req.body;
 
-  if (username === "ugo" && password === "ugo") {
+  if (username === "ugo" && password === PASSWORD) {
     const token = jwt.sign({ username }, SECRET_KEY, {
       expiresIn: "1h",
     });

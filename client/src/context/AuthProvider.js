@@ -6,7 +6,6 @@ const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    console.log("AuthContext.js: useEffect()");
     const validateToken = async () => {
       const token = localStorage.getItem("token");
       if (token) {

@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-
-const SECRET_KEY = "verysecretkey";
+const SECRET_KEY = process.env.UGO_SECRET_KEY;
 
 function verifyToken(req, res, next) {
   const bearerHeader = req.headers["authorization"];
