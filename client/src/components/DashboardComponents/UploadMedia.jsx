@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/Dashboard.module.scss";
-import {toast} from "react-toastify";
+import styles from "../../pages/Dashboard/Dashboard.module.scss";
+import { toast } from "react-toastify";
 
 function UploadMedia() {
   const [albums, setAlbums] = useState([]);
@@ -56,7 +56,6 @@ function UploadMedia() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const data = new FormData();
     data.append("file", file);
     data.append("album", selectedAlbum);
@@ -70,7 +69,7 @@ function UploadMedia() {
       },
     };
 
-    console.log(data.get('album'));
+    console.log(data.get("album"));
 
     setProgress(50);
     try {

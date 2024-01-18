@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "../axiosConfig";
-import styles from "../styles/Dashboard.module.scss";
+import axios from "../../axiosConfig";
+import styles from "../../pages/Dashboard/Dashboard.module.scss";
 import {toast} from "react-toastify"; 
 
 const CreateAlbum = () => {

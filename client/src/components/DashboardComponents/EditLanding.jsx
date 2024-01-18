@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/Dashboard.module.scss";
+import styles from "../../pages/Dashboard/Dashboard.module.scss";
 import { toast } from "react-toastify";
 
 function EditLanding() {

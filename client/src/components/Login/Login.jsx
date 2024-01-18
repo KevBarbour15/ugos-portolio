@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
-import styles from "../styles/Login.module.scss";
+import AuthContext from "../../context/AuthContext";
+import styles from "./Login.module.scss";
 import { toast } from "react-toastify";
 
 const Login = ({ onClose }) => {
@@ -35,7 +35,7 @@ const Login = ({ onClose }) => {
     <div className={styles.modalBackground}>
       <div className={styles.modalContent}>
         <button className={styles.closeButton} onClick={onClose}>
-          <span className={styles.iconCross}></span>
+          <span className="material-icons">close</span>
         </button>
         <form className={styles.formGroup} onSubmit={handleSubmit}>
           <input

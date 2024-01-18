@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import { Link } from "react-router-dom";
-import styles from "../styles/AlbumList.module.scss";
-import placeholderImg from "../images/gold-bars.png";
-import Layout from "../components/Layout";
+import styles from "./Albums.module.scss";
+import placeholderImg from "./assets/gold-bars.png";
+import Layout from "./../../components/Layout/Layout";
 
 function PhotoAlbums() {
   const [albums, setAlbums] = useState([]);

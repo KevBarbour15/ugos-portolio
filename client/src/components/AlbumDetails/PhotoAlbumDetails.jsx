@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
-import styles from "../styles/AlbumDetails.module.scss";
+import styles from "./AlbumDetails.module.scss";
 
 const PhotoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/Dashboard.module.scss";
-import AuthContext from "../context/AuthContext";
-import CreateAlbum from "../components/CreateAlbum";
-import UploadMedia from "../components/UploadMedia";
-import EditAlbum from "../components/EditAlbum";
-import EditLanding from "../components/EditLanding";
-import DashboardHeader from "../components/DashboardHeader";
-import Layout from "../components/Layout";
+import styles from "./Dashboard.module.scss";
+import AuthContext from "../../context/AuthContext";
+import CreateAlbum from "../../components/DashboardComponents/CreateAlbum";
+import UploadMedia from "../../components/DashboardComponents/UploadMedia";
+import EditAlbum from "../../components/DashboardComponents/EditAlbum";
+import EditLanding from "../../components/DashboardComponents/EditLanding";
+import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
+import Layout from "./../../components/Layout/Layout";
 import { toast } from "react-toastify";
 
 const Dashboard = () => {

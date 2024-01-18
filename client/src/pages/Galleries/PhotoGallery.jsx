@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import PhotoAlbumDetails from "../components/PhotoAlbumDetails";
-import Layout from "../components/Layout";
+import PhotoAlbumDetails from "../../components/AlbumDetails/PhotoAlbumDetails";
+import Layout from "./../../components/Layout/Layout";
 
 const PhotoGallery = () => {
   const { id } = useParams();

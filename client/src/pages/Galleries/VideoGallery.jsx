@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import VideoAlbumDetails from "../components/VideoAlbumDetails";
-import Layout from "../components/Layout";
+import VideoAlbumDetails from "../../components/AlbumDetails/VideoAlbumDetails";
+import Layout from "./../../components/Layout/Layout";
 
 const VideoGallery = () => {
   const { id } = useParams();

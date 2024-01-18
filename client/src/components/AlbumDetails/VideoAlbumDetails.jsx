@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import ReactPlayer from "react-player";
-import styles from "../styles/AlbumDetails.module.scss";
-import isVideo from "../helpers/video";
+import styles from "./AlbumDetails.module.scss";
+import isVideo from "../../helpers/video";
 
 const VideoAlbumDetails = ({ id }) => {
   const [album, setAlbum] = useState(null);
@@ -44,7 +44,7 @@ const VideoAlbumDetails = ({ id }) => {
                   controls={true}
                   playing={false}
                   muted
-                  width="100%" 
+                  width="100%"
                   height="auto"
                 />
               ) : (

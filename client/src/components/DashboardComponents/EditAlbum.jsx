@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "../axiosConfig";
-import styles from "../styles/Dashboard.module.scss";
-import isVideo from "../helpers/video";
+import axios from "../../axiosConfig";
+import styles from "../../pages/Dashboard/Dashboard.module.scss";
+import isVideo from "../../helpers/video";
 import { toast } from "react-toastify";
 
 const EditAlbum = () => {
@@ -335,7 +335,6 @@ const EditAlbum = () => {
                   style={{
                     margin: "1px",
                     border: selectedImage === m._id ? "3px solid red" : "none",
-                    
                   }}
                   onClick={() => {
                     setSelectedImage(m._id);

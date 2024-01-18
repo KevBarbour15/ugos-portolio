@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import styles from "../styles/About.module.scss";
+import Layout from "../../components/Layout/Layout";
+import styles from "./About.module.scss";
 
 const About = () => {
   return (

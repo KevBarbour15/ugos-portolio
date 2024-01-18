@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/Header.module.scss";
-import bars from "../images/gold-bars.png";
+import styles from "./Header.module.scss";
 
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -16,16 +15,13 @@ const Header = () => {
         <Link className={styles.headerNavLink} to="/Videos">
           video
         </Link>
-        <Link className={styles.headerNavLink} to="/About">
-          about
-        </Link>
       </nav>
 
       <button
         className={styles.dropdownButton}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <i className="fa-regular fa-bars" style={{ color: 'white' }}></i>
+         <span className="material-icons">menu</span>
       </button>
       <div
         className={styles.dropdownContent}

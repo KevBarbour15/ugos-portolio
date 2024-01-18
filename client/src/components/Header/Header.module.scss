@@ -24,7 +24,6 @@
 .headerNav {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
   max-width: 50%;
   margin-right: 3.5vw;
 }
@@ -35,6 +34,11 @@
   font-weight: 700;
   text-decoration: none;
   color: white;
+  transition: all 250ms;
+}
+
+.headerNavLink:hover {
+  transform: scale(1.15);
 }
 
 .dropdownButton {
@@ -44,6 +48,7 @@
   cursor: pointer;
   -webkit-text-stroke: 0.5px black;
   padding: 0.4em 1em;
+  color: white;
 }
 
 .dropdownButton img {
