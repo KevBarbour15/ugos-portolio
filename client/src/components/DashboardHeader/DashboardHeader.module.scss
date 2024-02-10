@@ -1,0 +1,90 @@
+.dashboardHeader {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid white;
+}
+
+.dashboardHeaderNav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.dashboardHeaderNavItem {
+  text-align: center;
+}
+
+.dashboardHeaderButton {
+  background: none;
+  border: 1px black solid;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  display: block;
+  margin-left: .75vw;
+  margin-right: .75vw;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.dashboardHeaderButton:hover{
+  border: 1px white solid;
+  border-radius: 8px;
+  color:black;
+  background-color: #e0e0e0;
+}
+
+.dashboardHeaderButtonActive {
+  align-items: center;
+  color: black;
+  background-color: white;
+  border: 1px white solid;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.dashboardHeaderButtonActive:hover {
+  background-color: white;
+}
+
+.dashboardHeaderButtonActive span {
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+@media (max-width: 768px) {
+  .dashboardHeaderNav {
+    flex-direction: column;
+  }
+  
+  .dashboardHeaderButton {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.5em;
+    letter-spacing: 0.5em;
+  }
+}
