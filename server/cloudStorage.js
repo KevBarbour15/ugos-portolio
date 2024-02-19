@@ -1,8 +1,15 @@
 const { Storage } = require("@google-cloud/storage");
+
+const GCLOUD_PROJECT_ID = process.env.GCLOUD_PROJECT_ID;
+const GCLOUD_FILENAME = process.env.GCLOUD_FILENAME;
+
 const storage = new Storage({
-  projectId: "ugos-portfolio-v2",
-  keyFilename: "ugos-portfolio-v2-797e65bd170d.json",
+  projectId: GCLOUD_PROJECT_ID,
+  keyFilename: GCLOUD_FILENAME,
 });
 
-const bucket = storage.bucket("ugo-portfolio-media");
+// Reference to your specific bucket
+const bucketName = "ugo-media-bucket";
+const bucket = storage.bucket(bucketName);
+
 module.exports = bucket;

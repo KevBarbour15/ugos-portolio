@@ -30,12 +30,15 @@ const Footer = () => {
       <div className={styles.contactContainer}>
         <a
           href="https://www.instagram.com/swellysensei/"
-          className={styles.item}
+          className={styles.footerContact}
         >
-          <i className={`fab fa-instagram ${styles.icon}`}></i>
+          instagram
         </a>
-        <a href="mailto:swellysensei@gmail.com" className={styles.item}>
-          <i className={`fas fa-envelope ${styles.icon}`}></i>
+        <a
+          href="mailto:swellysensei@gmail.com"
+          className={styles.footerContact}
+        >
+          contact
         </a>
       </div>
     </footer>

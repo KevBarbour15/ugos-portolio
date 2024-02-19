@@ -18,12 +18,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/Home");
+      //navigate("/PhotoAlbums");
     }
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
-    navigate("/Home");
+    navigate("/PhotoAlbums");
     toast.success("Successfully logged out.");
     localStorage.removeItem("token");
     setIsAuthenticated(false);

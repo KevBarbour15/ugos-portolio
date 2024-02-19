@@ -32,20 +32,14 @@ const PhotoAlbumDetails = ({ id }) => {
         albumData.media.map((media) => preloadImage(media.url))
       );
 
-      const mediaWithDimensions = preloadedImages.map((img, index) => {
-        const orientation =
-          img.naturalWidth > img.naturalHeight ? "landscape" : "portrait";
-
+      const media = preloadedImages.map((img, index) => {
         return {
           ...albumData.media[index],
-          orientation,
           url: img.src,
-          width: img.naturalWidth,
-          height: img.naturalHeight,
         };
       });
 
-      setAlbum({ ...albumData, media: mediaWithDimensions });
+      setAlbum({ ...albumData, media: media });
     } catch (error) {
       console.error("Could not fetch album", error);
     }
@@ -57,19 +51,17 @@ const PhotoAlbumDetails = ({ id }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.albumTitle}>{album?.title}</h2>
-      <p className={styles.albumInfo}>{album?.description}</p>
-
+      <div className={styles.albumHeader}>
+        <div className={styles.albumInfoWrapper}>
+          <h2 className={styles.albumTitle}>{"collection " + album?.title}</h2>
+          <p className={styles.albumInfo}>{album?.description}</p>
+        </div>
+      </div>
       {album?.media && album.media.length > 0 ? (
         <div className={styles.mediaContainer}>
           {album.media.map((media, index) => (
             <div
               key={index}
-              className={`${styles.album} ${
-                media.orientation === "landscape"
-                  ? styles.landscape
-                  : styles.portrait
-              }`}
               onClick={() => {
                 setPhotoIndex(index);
                 setIsOpen(true);

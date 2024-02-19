@@ -5,6 +5,7 @@ const Album = require("../schemas/album");
 const bucket = require("../cloudStorage");
 const verifyToken = require("../middleware");
 const router = express.Router();
+const mongoose = require("mongoose");
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -50,25 +51,43 @@ router.post(
 
     blobStream.on("finish", async () => {
       const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
-      const media = new Media({
-        album: req.body.album,
+      const mediaData = {
         url: publicUrl,
-      });
+      };
 
-      await media.save();
+      console.log(req.body);
 
-      const album = await Album.findById(req.body.album);
-      if (album) {
-        album.media.push(media._id);
-        if (!album.albumCover) {
-          album.albumCover = media._id;
-        }
-        await album.save();
+
+      // Validate `album` before adding it to `mediaData`
+      if (mongoose.isValidObjectId(req.body.album)) {
+        mediaData.album = req.body.album;
+        console.log("is valid");
       } else {
-        console.log(`No album with id: ${req.body.album} found`);
+        console.log("is not valid");
       }
 
-      res.status(200).send({ url: publicUrl });
+      const media = new Media(mediaData);
+
+      try {
+        await media.save();
+
+        if (mediaData.album) {
+          const album = await Album.findById(mediaData.album);
+          if (album) {
+            album.media.push(media._id);
+            if (!album.albumCover) {
+              album.albumCover = media._id;
+            }
+            await album.save();
+          } else {
+            console.log(`No album with id: ${mediaData.album} found`);
+          }
+        }
+
+        res.status(200).send({ url: publicUrl });
+      } catch (error) {
+        next(error);
+      }
     });
 
     blobStream.end(req.file.buffer);

@@ -3,68 +3,70 @@
 }
 
 .container {
-  padding: 2.5vh;
   display: flex;
-  flex-direction: column; 
-  align-items: center;      
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.container img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
+.albumHeader {
+  height: 270px;
+  border-bottom: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.galleryImage {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0.5vh;
-  overflow: hidden;
-  max-width: 100%;
-  
-}
-
-.galleryImage:hover {
-  cursor: pointer;
+.albumInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  max-width: 500px;
 }
 
 .albumTitle {
-  color: white;
-  letter-spacing: 2px;
+  color: rgba(25, 25, 25, 1);
   text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;      
-  width: 100%;              
+  line-height: 1.2;
+  letter-spacing: 0em;
+  font-size: 9px;
+  text-align: left;
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-style: normal;
 }
 
 .albumInfo {
-  color: grey;
-  font-size: .75em;
-  letter-spacing: 2px;
+  color: rgba(25, 25, 25, 1);
   text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;       
-  width: 100%;              
-  margin-bottom: 1.5vh;     
+  line-height: 1.3;
+  letter-spacing: 0em;
+  font-size: 9px;
+  text-align: justify;
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-style: normal;
+  margin: 0 15px;
 }
 
 .mediaContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  max-width: 750px;
+  height: auto;
+  margin: 15px;
 }
 
-.album {
-  margin: 0.5vh;
-  overflow: hidden;
+.galleryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border: 1px solid black;
+  margin: 5px 0;
+  cursor: pointer;
 }
-
-.portrait {
-  flex: 0 0 calc(50% - 1vh); 
-}
-
-.landscape {
-  flex: 0 0 100%;  
-}
-

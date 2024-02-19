@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "../../axiosConfig";
 import styles from "../../pages/Dashboard/Dashboard.module.scss";
-import {toast} from "react-toastify"; 
 
 const CreateAlbum = () => {
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedOption, setSelectedOption] = useState("photo");
 
@@ -12,7 +11,6 @@ const CreateAlbum = () => {
     e.preventDefault();
 
     if (!title) {
-      toast.error("Please enter a title.");
       return;
     }
 
@@ -36,16 +34,15 @@ const CreateAlbum = () => {
         },
       });
 
-      setTitle(null);
+      console.log(response);
+      setTitle("");
       setDescription("");
       setSelectedOption("photo");
-      toast.success(`Successfully created ${option} album.`);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         alert(error.response.data);
       } else {
         console.error(error);
-        toast.error(`Error creating ${option} album.`);
       }
     }
   };

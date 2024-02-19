@@ -3,7 +3,6 @@ import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import styles from "./Login.module.scss";
-import { toast } from "react-toastify";
 
 const Login = ({ onClose }) => {
   const username = "ugo";
@@ -22,7 +21,6 @@ const Login = ({ onClose }) => {
 
       localStorage.setItem("token", response.data.token);
       setIsAuthenticated(true);
-      toast.success("Successfully logged in.");
       setTimeout(() => {
         navigate("/dashboard");
       }, 1500);
@@ -38,18 +36,17 @@ const Login = ({ onClose }) => {
           <span className="material-icons">close</span>
         </button>
         <form className={styles.formGroup} onSubmit={handleSubmit}>
+          <label htmlFor="password" className={styles.formLabel}>
+            Password:
+          </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
             id="password"
             className={styles.formField}
             required
           />
-          <label htmlFor="password" className={styles.formLabel}>
-            Password:
-          </label>
 
           <button type="submit" className={styles.loginButton}>
             Login

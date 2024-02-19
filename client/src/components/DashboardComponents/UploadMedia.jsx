@@ -19,11 +19,11 @@ function UploadMedia() {
         (album) => album.photo === isPhoto
       );
       setAlbums(filteredAlbums);
+      if(filteredAlbums.length > 0) {
+        setSelectedAlbum(filteredAlbums[0]._id);
+      }
     };
     fetchAlbums();
-    return () => {
-      setSelectedAlbum("");
-    };
   }, [isPhoto]);
 
   const handleFileChange = (e) => {
@@ -59,9 +59,11 @@ function UploadMedia() {
     const data = new FormData();
     data.append("file", file);
     data.append("album", selectedAlbum);
-
     const token = localStorage.getItem("token");
 
+    console.log("data: ", data);
+    console.log("file: ", file);
+    console.log("album: ", selectedAlbum);
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -69,23 +71,17 @@ function UploadMedia() {
       },
     };
 
-    console.log(data.get("album"));
-
     setProgress(50);
     try {
       const res = await axios.post("/media/upload", data, config);
-      if (isPhoto) {
-        toast.success("Successfully uploaded photo.");
-      } else {
-        toast.success("Successfully uploaded video.");
-      }
+      
+      console.log(res);
       setProgress(100);
       setTimeout(() => {
         setProgress(0);
         setFile(null);
       }, 1500);
     } catch (error) {
-      toast.error("Error uploading file.");
       console.error(
         `An error occurred while uploading the file. Error: `,
         error
