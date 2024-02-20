@@ -51,6 +51,19 @@
   padding: 2px;
 }
 
+.dashTextArea {
+  width: 300px;
+  height: 250px;
+  margin-bottom: 14px;
+  background-color: #efefef;
+  border: 1px solid rgba(25, 25, 25, 1);
+  padding: 2px;
+}
+
+.dashTextArea:focus {
+  outline: none;
+}
+
 .dashSelect {
   width: 300px;
   height: 24px;
@@ -170,14 +183,21 @@
 }
 
 .dashImageContainer {
-  height: 75px;
-  width: 400px;
+  height: 104px;
+  width: 300px;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   overflow-x: auto;
-  scrollbar-width: thick;
   scrollbar-color: grey #616467;
   border: 1px solid rgba(25, 25, 25, 1);
   margin-bottom: 14px;
+  background-color: #efefef;
 }
+
+.dashImageContainer img, .dashImageContainer video {
+  width: auto;
+  height: 100px;
+  margin: 0;
+  box-sizing: border-box;
+}
+

@@ -177,7 +177,7 @@ const EditAlbum = () => {
       );
 
       if (response.status === 200) {
-        toast.success("Image deleted successfully.");
+        
         setMedia(media.filter((m) => m._id !== selectedImage));
         setSelectedImage("");
       }
@@ -218,8 +218,8 @@ const EditAlbum = () => {
       <form onSubmit={handleUpdateDescription} className={styles.dashForm}>
         <div className={styles.inputWrapper}>
           <label className={styles.dashLabel}>description:</label>
-          <input
-            className={styles.dashInputField}
+          <textarea
+            className={styles.dashTextArea}
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

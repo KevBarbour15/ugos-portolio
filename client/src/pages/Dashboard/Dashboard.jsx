@@ -5,7 +5,6 @@ import AuthContext from "../../context/AuthContext";
 import CreateAlbum from "../../components/DashboardComponents/CreateAlbum";
 import UploadMedia from "../../components/DashboardComponents/UploadMedia";
 import EditAlbum from "../../components/DashboardComponents/EditAlbum";
-import EditLanding from "../../components/DashboardComponents/EditLanding";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import Layout from "./../../components/Layout/Layout";
 
