@@ -47,7 +47,8 @@
   height: 24px;
   margin-bottom: 14px;
   background-color: #efefef;
-  border: 1px solid black;
+  border: 1px solid rgba(25, 25, 25, 1);
+  padding: 2px;
 }
 
 .dashSelect {
@@ -55,6 +56,9 @@
   height: 24px;
   margin-bottom: 14px;
   background-color: #efefef;
+  border: 1px solid rgba(25, 25, 25, 1);
+  border-radius: 0px !important;
+  padding: 2px;
 }
 
 .dashSelect:focus,
@@ -69,7 +73,7 @@
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  border: 1px solid black;
+  border: 1px solidrgba(25, 25, 25, 1);
   width: 125px;
   color: rgba(25, 25, 25, 1);
   text-transform: uppercase;
@@ -105,7 +109,7 @@
   height: 24px !important;
   background-color: #efefef !important;
   width: 300px;
-  border: 1px solid black;
+  border: 1px solid rgba(25, 25, 25, 1);
   border-radius: 0px !important;
   overflow: hidden;
   margin-bottom: 14px;
@@ -135,11 +139,11 @@
   position: relative;
   cursor: pointer;
   transition: 0.75s ease;
-  color: black;
+  color: rgba(25, 25, 25, 1);
 }
 
 .photoVideoSwitch input[type="checkbox"]:checked + label {
-  background: #e0e0e0;
+  background: #efefef;
 }
 
 .photoVideoSwitch input[type="checkbox"]:checked + label:before {
@@ -149,13 +153,13 @@
 .photoVideoSwitch label:before {
   transition: all 0.3s ease;
   content: "";
-  width: calc((var(--size) / 2) - 10px);
-  height: calc((var(--size) / 2) - 10px);
+  width: calc((var(--size) / 2) - 5px);
+  height: calc((var(--size) / 2) - 5px);
   position: absolute;
-  left: 5px;
+  left: 2px;
   top: 50%;
   transform: translateY(-50%);
-  background: black;
+  background:rgba(25, 25, 25, 1);
 }
 
 .switchLabel {
@@ -173,6 +177,6 @@
   overflow-x: auto;
   scrollbar-width: thick;
   scrollbar-color: grey #616467;
-  border: 1px solid black;
+  border: 1px solid rgba(25, 25, 25, 1);
   margin-bottom: 14px;
 }
