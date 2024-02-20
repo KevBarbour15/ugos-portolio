@@ -67,6 +67,9 @@ const CreateAlbum = () => {
       </div>
       <form className={styles.dashForm} onSubmit={onSubmit}>
         <div className={styles.inputWrapper}>
+        <label className={styles.dashLabel} htmlFor="albumTitle">
+            title:
+          </label>
           <input
             className={styles.dashInputField}
             id="albumTitle"
@@ -75,12 +78,14 @@ const CreateAlbum = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <label className={styles.dashInputLabel} htmlFor="albumTitle">
-           title:
-          </label>
+         
         </div>
 
+       
         <div className={styles.inputWrapper}>
+        <label className={styles.dashLabel} htmlFor="albumDescription">
+            description:
+          </label>
           <input
             className={styles.dashInputField}
             id="albumDescription"
@@ -88,9 +93,7 @@ const CreateAlbum = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <label className={styles.dashInputLabel} htmlFor="albumDescription">
-           description:
-          </label>
+          
         </div>
 
         <button className={styles.dashButton} type="submit">

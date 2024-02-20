@@ -8,7 +8,6 @@ import EditAlbum from "../../components/DashboardComponents/EditAlbum";
 import EditLanding from "../../components/DashboardComponents/EditLanding";
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader";
 import Layout from "./../../components/Layout/Layout";
-import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -23,8 +22,7 @@ const Dashboard = () => {
   }, [isAuthenticated, navigate]);
 
   const handleLogout = () => {
-    navigate("/PhotoAlbums");
-    toast.success("Successfully logged out.");
+    navigate("/");
     localStorage.removeItem("token");
     setIsAuthenticated(false);
   };

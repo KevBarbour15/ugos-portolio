@@ -43,6 +43,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               <span>edit album</span>
             </button>
           </li>
+          {/*}
           <li className={styles.dashboardHeaderNavItem}>
             <button
               className={`${styles.dashboardHeaderButton} ${
@@ -55,6 +56,7 @@ const DashboardHeader = ({ activeTab, setActiveTab, handleLogout }) => {
               <span>edit landing</span>
             </button>
           </li>
+            */}
           <li className={styles.dashboardHeaderNavItem}>
             <button
               className={styles.dashboardHeaderButton}

@@ -124,10 +124,8 @@ function UploadMedia() {
             </option>
           ))}
         </select>
-
-        <label htmlFor="media" className={styles.dashLabel}>
-          Select {isPhoto ? "photo" : "video"}:
-        </label>
+        
+    
         <input
           className={styles.dashUploadInput}
           type="file"
