@@ -10,9 +10,7 @@ const Home = () => {
     <div>
       <Layout>
         <div className={styles.homeContainer}>
-          <video autoPlay muted loop playsInline>
-            <source src={defaultLandingVideo} type="video/mp4" />
-          </video>
+          <img src={img} />
         </div>
       </Layout>
     </div>
