@@ -27,12 +27,11 @@ const Header = () => {
   const fetchAlbums = async () => {
     try {
       const res = await axios.get("/albums");
+      console.log("res.data: ", res.data);
       const photoAlbums = res.data.filter((album) => album.photo);
       const videoAlbums = res.data.filter((album) => !album.photo);
       setPhotoAlbums(photoAlbums);
       setVideoAlbums(videoAlbums);
-      console.log("photoAlbums: ", photoAlbums);
-      console.log("videoAlbums: ", videoAlbums);
     } catch (error) {
       console.error("Error fetching albums:", error);
     }
