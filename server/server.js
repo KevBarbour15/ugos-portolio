@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Connecting server.");
+  res.send("Server is up and running.");
 });
 
 const mediaRoutes = require("./routes/media");
