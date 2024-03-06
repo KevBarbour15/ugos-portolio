@@ -74,7 +74,7 @@ const PhotoAlbumDetails = ({ id }) => {
           ))}
         </div>
       ) : (
-        <p>No media in this album.</p>
+        <p>Loading...</p>
       )}
 
       {isOpen && (

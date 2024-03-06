@@ -1,13 +1,12 @@
 .footer {
   position: relative;
-  margin-top: auto;
   height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: rgb(213, 213, 213);
-  border-top: 1px solid black;
+  background-color: rgba(235, 234, 230, 1);
+  border-top: 1px solid rgba(25, 25, 26, 1);
 }
 
 .contactContainer {
