@@ -51,6 +51,7 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles.headerLinksContainer}>
+            {/*}
             <Link
               to="/About"
               onClick={toggleBoth}
@@ -58,12 +59,15 @@ const Header = () => {
             >
               about me
             </Link>
+            */}
             <button onClick={togglePhotoDropdown} className={styles.headerLink}>
-              photo collections
+              collections
             </button>
+            {/*
             <button onClick={toggleVideoDropdown} className={styles.headerLink}>
               video collections
             </button>
+          */}
           </div>
         </div>
       </div>
@@ -76,8 +80,9 @@ const Header = () => {
                   to={`/PhotoCollection/${album._id}`}
                   key={album._id}
                   className={styles.dropdownLink}
+                  onClick={toggleBoth}
                 >
-                  photo collection {idx + 1}
+                  collection {idx + 1}
                 </Link>
               ))}
             </div>
@@ -93,6 +98,7 @@ const Header = () => {
                   to={`/VideoCollection/${album._id}`}
                   key={album._id}
                   className={styles.dropdownLink}
+                  onClick={toggleBoth}
                 >
                   video collection {idx + 1}
                 </Link>

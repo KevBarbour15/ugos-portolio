@@ -3,6 +3,7 @@
 }
 
 .dashContainer {
+  box-sizing: border-box;
   text-transform: uppercase;
   color: rgba(25, 25, 25, 1);
   text-transform: uppercase;
@@ -11,6 +12,8 @@
   font-size: 9px;
   font-family: "Space Mono";
   margin: 14px;
+  min-height: calc(100vh - 115px);
+  height: auto;
 }
 
 .dashForm {

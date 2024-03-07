@@ -33,7 +33,16 @@
 .view {
   display: flex;
   margin-bottom: 0;
+  text-decoration: none;
+  color: black;
 }
+
+.view a {
+  text-decoration: none;
+  color: black;
+}
+
+
 
 .titleDescriptionWrapper {
   display: flex;
