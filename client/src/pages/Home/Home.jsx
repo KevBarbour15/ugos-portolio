@@ -25,8 +25,9 @@ const Home = () => {
           <div className={styles.imagesContainer}>
             {images.map((image, idx) => {
               let viewIdx = "0" + (idx + 1);
+              const isLast = idx === images.length - 1;
               return (
-                <div className={styles.imageContainer}>
+                <div className={`${styles.imageContainer} ${isLast ? styles.noBorderRight : ''}`}>
                   <TitleContainer
                     title="crimson sky"
                     view={"view " + viewIdx}

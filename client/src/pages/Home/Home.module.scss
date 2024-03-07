@@ -7,13 +7,6 @@
   margin: auto;
 }
 
-.titleContainer {
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .homeBanner {
   border-top: 1px solid #000;
 }
@@ -35,7 +28,13 @@
   display: flex;
   flex-direction: column;
   width: calc(100vw / 4);
+  border-right: 1px solid #000;
 }
+
+.noBorderRight {
+  border-right: none;
+}
+
 
 .imageContainer .titleContainer:not(:last-child) {
   border-right: 1px solid #000;
