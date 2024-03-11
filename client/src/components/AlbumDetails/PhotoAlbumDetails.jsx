@@ -1,13 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "./AlbumDetails.module.scss";
+import useFadeIn from "../../animations/useFadeIn";
+import MoonLoader from "react-spinners/MoonLoader";
 
 const PhotoAlbumDetails = ({ id }) => {
-  const [album, setAlbum] = useState(null);
+  const [album, setAlbum] = useState("");
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  const shouldDisplayLoading = isLoading || !minLoadTimePassed;
+  const minLoadingTime = 250;
+
+  const headerRef = useRef(null);
+  const bodyRef = useRef(null);
+
+  useFadeIn(shouldAnimate, headerRef, 0.25, 0.75);
+  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75);
 
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -46,35 +60,55 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   useEffect(() => {
+    // load the album
     fetchAlbum();
-  }, []);
+    
+    if (album) {
+      setIsLoading(false);
+      setTimeout(() => {
+        setMinLoadTimePassed(true);
+        setShouldAnimate(true);
+      }, minLoadingTime);
+    }
+  }, [album, headerRef]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.albumHeader}>
-        <div className={styles.albumInfoWrapper}>
-          <h2 className={styles.albumTitle}>{"collection " + album?.title}</h2>
-          <p className={styles.albumInfo}>{album?.description}</p>
-        </div>
-      </div>
-      {album?.media && album.media.length > 0 ? (
-        <div className={styles.mediaContainer}>
-          {album.media.map((media, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                setPhotoIndex(index);
-                setIsOpen(true);
-              }}
-            >
-              <div className={styles.galleryImage}>
-                <img src={media.url} alt="" />
-              </div>
-            </div>
-          ))}
+      {shouldDisplayLoading ? (
+        <div className={styles.loadingContainer}>
+          <MoonLoader
+            color={"black"}
+            loading={true}
+            size={75}
+            speedMultiplier={0.75}
+          />
         </div>
       ) : (
-        <p>Loading...</p>
+        <>
+          <div ref={headerRef} className={styles.albumHeader}>
+            <div className={styles.albumInfoWrapper}>
+              <h2 className={styles.albumTitle}>
+                {"collection " + album?.title}
+              </h2>
+              <p className={styles.albumInfo}>{album?.description}</p>
+            </div>
+          </div>
+          <div ref={bodyRef} className={styles.mediaContainer}>
+            {album.media.map((media, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  setPhotoIndex(index);
+                  setIsOpen(true);
+                }}
+              >
+                <div className={styles.galleryImage}>
+                  <img src={media.url} alt="" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {isOpen && (
