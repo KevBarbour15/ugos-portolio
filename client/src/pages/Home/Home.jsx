@@ -15,8 +15,8 @@ const Home = () => {
   const headerRef = useRef(null);
   const bodyRef = useRef(null);
 
-  useFadeIn(true, headerRef, 0.5, 0.75);
-  useFadeIn(true, bodyRef, 0.75, 0.75);
+  useFadeIn(true, headerRef, 0.5, 0.75, 25 );
+  useFadeIn(true, bodyRef, 1, 1, 0);
 
   return (
     <>

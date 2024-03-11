@@ -20,8 +20,8 @@ const PhotoAlbumDetails = ({ id }) => {
   const headerRef = useRef(null);
   const bodyRef = useRef(null);
 
-  useFadeIn(shouldAnimate, headerRef, 0.25, 0.75);
-  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75);
+  useFadeIn(shouldAnimate, headerRef, 0.25, 0.75, 25);
+  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75, 25);
 
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -62,7 +62,7 @@ const PhotoAlbumDetails = ({ id }) => {
   useEffect(() => {
     // load the album
     fetchAlbum();
-    
+
     if (album) {
       setIsLoading(false);
       setTimeout(() => {
