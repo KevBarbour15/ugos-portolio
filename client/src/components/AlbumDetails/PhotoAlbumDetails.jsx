@@ -25,9 +25,9 @@ const PhotoAlbumDetails = ({ id }) => {
   const bodyRef = useRef(null);
   const galleryImagesRef = useRef([]);
 
-  useFadeIn(shouldAnimate, headerRef, 0, 0.5, 0);
-  useFadeIn(shouldAnimate, titleRef, 0.25, 0.75, -25);
-  useFadeIn(shouldAnimate, infoRef, 0.25, 0.75, 25);
+  useFadeIn(shouldAnimate, headerRef, 0.25, 0.5, 0);
+  useFadeIn(shouldAnimate, titleRef, 0.25, 0.5, -25);
+  useFadeIn(shouldAnimate, infoRef, 0.25, 0.5, 25);
   useFadeIn(shouldAnimate, bodyRef, 0, 0.5, 0);
   useAnimateImages(shouldAnimate, galleryImagesRef);
 

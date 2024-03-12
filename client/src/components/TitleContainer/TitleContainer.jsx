@@ -7,7 +7,7 @@ const TitleContainer = ({ title, view, description }) => {
   const titleRef = useRef(null);
   const descRef = useRef(null);
 
-  useFadeIn(true, titleRef,0.25, 0.75, -25);
+  useFadeIn(true, titleRef, 0.25, 0.75, -25);
   useFadeIn(true, descRef, 0.25, 0.75, 25);
 
   return (
