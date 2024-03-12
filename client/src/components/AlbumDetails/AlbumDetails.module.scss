@@ -78,3 +78,15 @@
 .ril__toolbar {
   background-color: rgba(0, 0, 0, 0);
 }
+
+@media screen and (max-width: 900px) {
+  .mediaContainer {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mediaContainer {
+    width: 75%;
+  }
+}
