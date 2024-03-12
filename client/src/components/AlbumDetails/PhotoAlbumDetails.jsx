@@ -3,7 +3,9 @@ import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "./AlbumDetails.module.scss";
+import gsap from "gsap";
 import useFadeIn from "../../animations/useFadeIn";
+import useAnimateImages from "../../animations/useAnimateImages";
 import MoonLoader from "react-spinners/MoonLoader";
 
 const PhotoAlbumDetails = ({ id }) => {
@@ -18,10 +20,16 @@ const PhotoAlbumDetails = ({ id }) => {
   const minLoadingTime = 250;
 
   const headerRef = useRef(null);
+  const titleRef = useRef(null);
+  const infoRef = useRef(null);
   const bodyRef = useRef(null);
+  const galleryImagesRef = useRef([]);
 
-  useFadeIn(shouldAnimate, headerRef, 0.25, 0.75, 25);
-  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75, 25);
+  useFadeIn(shouldAnimate, headerRef, 0, 0.5, 0);
+  useFadeIn(shouldAnimate, titleRef, 0.25, 0.75, -25);
+  useFadeIn(shouldAnimate, infoRef, 0.25, 0.75, 25);
+  useFadeIn(shouldAnimate, bodyRef, 0, 0.5, 0);
+  useAnimateImages(shouldAnimate, galleryImagesRef);
 
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -60,7 +68,6 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   useEffect(() => {
-    // load the album
     fetchAlbum();
 
     if (album) {
@@ -87,10 +94,12 @@ const PhotoAlbumDetails = ({ id }) => {
         <>
           <div ref={headerRef} className={styles.albumHeader}>
             <div className={styles.albumInfoWrapper}>
-              <h2 className={styles.albumTitle}>
-                {"collection " + album?.title}
+              <h2 ref={titleRef} className={styles.albumTitle}>
+                {album?.title}
               </h2>
-              <p className={styles.albumInfo}>{album?.description}</p>
+              <p ref={infoRef} className={styles.albumInfo}>
+                {album?.description}
+              </p>
             </div>
           </div>
           <div ref={bodyRef} className={styles.mediaContainer}>
@@ -103,7 +112,11 @@ const PhotoAlbumDetails = ({ id }) => {
                 }}
               >
                 <div className={styles.galleryImage}>
-                  <img src={media.url} alt="" />
+                  <img
+                    ref={(el) => (galleryImagesRef.current[index] = el)}
+                    src={media.url}
+                    alt=""
+                  />
                 </div>
               </div>
             ))}

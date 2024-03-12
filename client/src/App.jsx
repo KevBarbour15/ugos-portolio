@@ -26,8 +26,8 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/PhotoCollection/:id" element={<PhotoGallery />} />
-            <Route path="/VideoCollection/:id" element={<VideoGallery />} />
+            <Route path="photo-collection/:id" element={<PhotoGallery />} />
+            <Route path="/video-collection/:id" element={<VideoGallery />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/About" element={<About />} />

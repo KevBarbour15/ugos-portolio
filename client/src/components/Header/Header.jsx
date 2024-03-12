@@ -1,13 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import axios from "../../axiosConfig";
+import gsap from "gsap";
 
 const Header = () => {
   const [isPhotoDropdownOpen, setPhotoDropdownOpen] = useState(false);
   const [isVideoDropdownOpen, setVideoDropdownOpen] = useState(false);
   const [photoAlbums, setPhotoAlbums] = useState([]);
   const [videoAlbums, setVideoAlbums] = useState([]);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    if (isPhotoDropdownOpen) {
+      gsap.to(menuRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.25,
+        ease: "sine.inout",
+      });
+    } else {
+      gsap.to(menuRef.current, {
+        autoAlpha: 0,
+        y: -20,
+        duration: 0.25,
+        ease: "sine.inout",
+        onComplete: () => {
+          gsap.set(menuRef.current, { y: 20 });
+        }
+      });
+    }
+  }, [isPhotoDropdownOpen]);
 
   const togglePhotoDropdown = () => {
     setPhotoDropdownOpen(!isPhotoDropdownOpen);
@@ -72,12 +95,12 @@ const Header = () => {
         </div>
       </div>
       {isPhotoDropdownOpen && (
-        <div className={styles.dropdownContainer}>
+        <div ref={menuRef} className={styles.dropdownContainer}>
           <div className={styles.dropdownNavContainer}>
             <div className={styles.dropdownLinks}>
               {photoAlbums.map((album, idx) => (
                 <Link
-                  to={`/PhotoCollection/${album._id}`}
+                  to={`/photo-collection/${album._id}`}
                   key={album._id}
                   className={styles.dropdownLink}
                   onClick={toggleBoth}
@@ -95,7 +118,7 @@ const Header = () => {
             <div className={styles.dropdownLinks}>
               {videoAlbums.map((album, idx) => (
                 <Link
-                  to={`/VideoCollection/${album._id}`}
+                  to={`/video-collection/${album._id}`}
                   key={album._id}
                   className={styles.dropdownLink}
                   onClick={toggleBoth}
