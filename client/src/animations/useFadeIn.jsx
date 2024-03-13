@@ -9,7 +9,7 @@ const useFadeIn = (shouldAnimate, ref, delay, duration, y) => {
         duration: duration,
         opacity: 0,
         y: y,
-        ease: "ease.inOut",
+        ease: "sine.inOut",
         clearProps: "all",
       });
     }
