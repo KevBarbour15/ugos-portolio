@@ -8,7 +8,7 @@ import useAnimateImages from "../../animations/useAnimateImages";
 import MoonLoader from "react-spinners/MoonLoader";
 
 const PhotoAlbumDetails = ({ id }) => {
-  const [album, setAlbum] = useState("");
+  const [album, setAlbum] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -50,6 +50,7 @@ const PhotoAlbumDetails = ({ id }) => {
     galleryImagesRef.current = [];
     try {
       const response = await axios.get(`/albums/${id}`);
+      
       const albumData = response.data;
 
       const preloadedImages = await Promise.all(
@@ -64,6 +65,7 @@ const PhotoAlbumDetails = ({ id }) => {
       });
 
       setAlbum({ ...albumData, media: media });
+      console.log(album);
     } catch (error) {
       console.error("Could not fetch album", error);
     } finally {
@@ -74,6 +76,7 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   useEffect(() => {
+    console.log("id: ", id )
     fetchAlbum();
   }, [id]);
 
