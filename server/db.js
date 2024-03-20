@@ -12,8 +12,6 @@ async function connect() {
   try {
     await client.connect();
 
-    const databasesList = await client.db().admin().listDatabases();
-
     mongoose
       .connect(uri, {
         useNewUrlParser: true,

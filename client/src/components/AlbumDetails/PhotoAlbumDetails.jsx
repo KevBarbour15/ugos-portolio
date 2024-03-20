@@ -3,7 +3,6 @@ import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "./AlbumDetails.module.scss";
-import gsap from "gsap";
 import useFadeIn from "../../animations/useFadeIn";
 import useAnimateImages from "../../animations/useAnimateImages";
 import MoonLoader from "react-spinners/MoonLoader";
@@ -16,7 +15,6 @@ const PhotoAlbumDetails = ({ id }) => {
   const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
-  const shouldDisplayLoading = isLoading || !minLoadTimePassed;
   const minLoadingTime = 250;
 
   const headerRef = useRef(null);
@@ -25,10 +23,10 @@ const PhotoAlbumDetails = ({ id }) => {
   const bodyRef = useRef(null);
   const galleryImagesRef = useRef([]);
 
-  useFadeIn(shouldAnimate, headerRef, 0.25, 0.5, 0);
-  useFadeIn(shouldAnimate, titleRef, 0.25, 0.5, -25);
-  useFadeIn(shouldAnimate, infoRef, 0.25, 0.5, 25);
-  useFadeIn(shouldAnimate, bodyRef, 0, 0.5, 0);
+  useFadeIn(shouldAnimate, headerRef, 0.5, 0.75, 0);
+  useFadeIn(shouldAnimate, titleRef, 0.5, 0.75, -25);
+  useFadeIn(shouldAnimate, infoRef, 0.5, 0.75, 25);
+  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75, 0);
   useAnimateImages(shouldAnimate, galleryImagesRef);
 
   const preloadImage = (url) => {
@@ -46,6 +44,10 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   const fetchAlbum = async () => {
+    setIsLoading(true); 
+    setMinLoadTimePassed(false);
+    setShouldAnimate(false);
+    galleryImagesRef.current = [];
     try {
       const response = await axios.get(`/albums/${id}`);
       const albumData = response.data;
@@ -64,30 +66,33 @@ const PhotoAlbumDetails = ({ id }) => {
       setAlbum({ ...albumData, media: media });
     } catch (error) {
       console.error("Could not fetch album", error);
+    } finally {
+      setTimeout(() => {
+        setMinLoadTimePassed(true);
+      }, minLoadingTime);
     }
   };
 
   useEffect(() => {
     fetchAlbum();
+  }, [id]);
 
-    if (album) {
+  useEffect(() => {
+    if (minLoadTimePassed) {
       setIsLoading(false);
-      setTimeout(() => {
-        setMinLoadTimePassed(true);
-        setShouldAnimate(true);
-      }, minLoadingTime);
+      setShouldAnimate(true);
     }
-  }, [album, headerRef]);
+  }, [minLoadTimePassed]);
 
   return (
     <div className={styles.container}>
-      {shouldDisplayLoading ? (
+      {isLoading ? (
         <div className={styles.loadingContainer}>
           <MoonLoader
             color={"black"}
             loading={true}
             size={75}
-            speedMultiplier={0.75}
+            speedMultiplier={0.5}
           />
         </div>
       ) : (

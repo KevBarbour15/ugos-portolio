@@ -36,6 +36,7 @@ const Home = () => {
               const isLast = idx === images.length - 1;
               return (
                 <div
+                  key={idx}
                   className={`${styles.imageContainer} ${
                     isLast ? styles.noBorderRight : ""
                   }`}

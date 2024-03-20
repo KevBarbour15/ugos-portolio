@@ -30,9 +30,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const album = await Album.findById(req.params.id).populate(
-      "media albumCover"
-    );
+    const album = await Album.findById(req.params.id);
     if (!album) res.status(404).send("No album found");
     res.send(album);
   } catch (error) {
@@ -54,7 +52,7 @@ router.put("/:id", verifyToken, async (req, res) => {
 
 router.delete("/:id/media/:mediaId", verifyToken, async (req, res) => {
   try {
-    const { id: albumId, mediaId } = req.params; 
+    const { id: albumId, mediaId } = req.params;
 
     const media = await Media.findByIdAndDelete(mediaId);
     if (!media) {
@@ -68,11 +66,6 @@ router.delete("/:id/media/:mediaId", verifyToken, async (req, res) => {
     const mediaIndex = album.media.indexOf(mediaId);
     if (mediaIndex !== -1) {
       album.media.splice(mediaIndex, 1);
-      await album.save();
-    }
-
-    if (album.albumCover.toString() === mediaId) {
-      album.albumCover = null;
       await album.save();
     }
 

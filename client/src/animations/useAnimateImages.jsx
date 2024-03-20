@@ -7,11 +7,9 @@ const useAnimateImages = (shouldAnimate, elementsRef) => {
       gsap.from(elementsRef.current, {
         delay: 0.5,
         opacity: 0,
-        stagger: 0.15,
-        y: 25,
+        stagger: 0.25,
+        y: 0,
         ease: "sine.inOut",
-        // Make sure elements are treated individually
-        transformOrigin: 'center bottom',
       });
     }
   }, [shouldAnimate, elementsRef]);

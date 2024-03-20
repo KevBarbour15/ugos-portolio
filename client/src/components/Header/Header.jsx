@@ -12,25 +12,15 @@ const Header = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (isPhotoDropdownOpen) {
+    if (isPhotoDropdownOpen || isVideoDropdownOpen) {
       gsap.to(menuRef.current, {
         autoAlpha: 1,
         y: 0,
         duration: 0.25,
         ease: "sine.inout",
       });
-    } else {
-      gsap.to(menuRef.current, {
-        autoAlpha: 0,
-        y: -20,
-        duration: 0.25,
-        ease: "sine.inout",
-        onComplete: () => {
-          gsap.set(menuRef.current, { y: 20 });
-        }
-      });
     }
-  }, [isPhotoDropdownOpen]);
+  }, [isPhotoDropdownOpen, isVideoDropdownOpen]);
 
   const togglePhotoDropdown = () => {
     setPhotoDropdownOpen(!isPhotoDropdownOpen);
@@ -50,7 +40,7 @@ const Header = () => {
   const fetchAlbums = async () => {
     try {
       const res = await axios.get("/albums");
-      console.log("res.data: ", res.data);
+
       const photoAlbums = res.data.filter((album) => album.photo);
       const videoAlbums = res.data.filter((album) => !album.photo);
       setPhotoAlbums(photoAlbums);
@@ -84,13 +74,12 @@ const Header = () => {
             </Link>
             */}
             <button onClick={togglePhotoDropdown} className={styles.headerLink}>
-              collections
+              photo collections
             </button>
-            {/*
+
             <button onClick={toggleVideoDropdown} className={styles.headerLink}>
               video collections
             </button>
-          */}
           </div>
         </div>
       </div>
@@ -105,7 +94,7 @@ const Header = () => {
                   className={styles.dropdownLink}
                   onClick={toggleBoth}
                 >
-                  collection {idx + 1}
+                  photo collection {idx + 1}
                 </Link>
               ))}
             </div>
@@ -113,7 +102,7 @@ const Header = () => {
         </div>
       )}
       {isVideoDropdownOpen && (
-        <div className={styles.dropdownContainer}>
+        <div ref={menuRef} className={styles.dropdownContainer}>
           <div className={styles.dropdownNavContainer}>
             <div className={styles.dropdownLinks}>
               {videoAlbums.map((album, idx) => (

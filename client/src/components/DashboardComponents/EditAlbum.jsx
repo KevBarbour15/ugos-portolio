@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const EditAlbum = () => {
   const [albums, setAlbums] = useState([]);
-  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [selectedAlbum, setSelectedAlbum] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState([]);
@@ -134,7 +134,7 @@ const EditAlbum = () => {
 
       if (response.status === 200) {
         setAlbums(albums.filter((album) => album._id !== selectedAlbum._id));
-        setSelectedAlbum(null);
+        setSelectedAlbum("");
         setTitle("");
         setDescription("");
         setMedia([]);

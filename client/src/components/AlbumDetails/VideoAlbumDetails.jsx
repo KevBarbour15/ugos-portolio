@@ -1,60 +1,110 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../../axiosConfig";
 import ReactPlayer from "react-player";
 import styles from "./AlbumDetails.module.scss";
 import isVideo from "../../helpers/video";
+import useFadeIn from "../../animations/useFadeIn";
+import useAnimateImages from "../../animations/useAnimateImages";
+import MoonLoader from "react-spinners/MoonLoader";
 
 const VideoAlbumDetails = ({ id }) => {
-  const [album, setAlbum] = useState(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [album, setAlbum] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [videosReadyCount, setVideosReadyCount] = useState(0);
+  const minLoadingTime = 250;
+
+  const headerRef = useRef(null);
+  const titleRef = useRef(null);
+  const infoRef = useRef(null);
+  const bodyRef = useRef(null);
+  const galleryVideosRef = useRef([]);
+
+  useFadeIn(shouldAnimate, headerRef, 0.25, 0.5, 0);
+  useFadeIn(shouldAnimate, titleRef, 0.25, 0.5, -25);
+  useFadeIn(shouldAnimate, infoRef, 0.25, 0.5, 25);
+  useFadeIn(shouldAnimate, bodyRef, 0.5, 0.5, 0);
+  useAnimateImages(shouldAnimate, galleryVideosRef);
+
+  const fetchAlbum = async () => {
+    try {
+      const response = await axios.get(`/albums/${id}`);
+      setAlbum(response.data);
+    } catch (error) {
+      console.error("Could not fetch album", error);
+    } finally {
+      setTimeout(() => {
+        setMinLoadTimePassed(true);
+      }, minLoadingTime);
+    }
+  };
 
   useEffect(() => {
-    const fetchAlbum = async () => {
-      try {
-        const response = await axios.get(`/albums/${id}`);
-        setAlbum(response.data);
-      } catch (error) {
-        console.error("Could not fetch album", error);
-      }
-    };
     fetchAlbum();
   }, [id]);
 
-  if (!album) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    if (minLoadTimePassed && videosReadyCount === album?.media.length) {
+      setIsLoading(false);
+      setShouldAnimate(true);
+    }
+  }, [minLoadTimePassed, videosReadyCount, album]);
+
+  const videoComponent = (media, index) => (
+    <div ref={(el) => (galleryVideosRef.current[index] = el)} key={index} className={styles.galleryImage}>
+      <ReactPlayer
+        url={media.url}
+        controls={true}
+        playing={true}
+        muted
+        width="100%"
+        height="auto"
+        margin="0"
+        onReady={() => setVideosReadyCount((prev) => prev + 1)}
+      />
+    </div>
+  );
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.albumTitle}>{album.title}</h2>
-      <p className={styles.albumInfo}>{album.description}</p>
+      {isLoading && (
+        <div className={styles.loadingContainer}>
+          <MoonLoader
+            color={"black"}
+            loading={true}
+            size={75}
+            speedMultiplier={0.5}
+          />
+        </div>
+      )}
 
-      {album.media && album.media.length > 0 ? (
-        album.media.map((media, index) => (
-          <div
-            key={index}
-            className={styles.galleryImage}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <div className={styles.album}>
-              {isVideo(media.url) ? (
-                <ReactPlayer
-                  url={media.url}
-                  controls={true}
-                  playing={false}
-                  muted
-                  width="100%"
-                  height="auto"
-                />
-              ) : (
-                <img src={media.url} alt="" />
-              )}
+      {album && (
+        <>
+          <div ref={headerRef} className={styles.albumHeader}>
+            <div className={styles.albumInfoWrapper}>
+              <h2 ref={titleRef} className={styles.albumTitle}>
+                {album?.title}
+              </h2>
+              <p ref={infoRef} className={styles.albumInfo}>
+                {album?.description}
+              </p>
             </div>
           </div>
-        ))
-      ) : (
-        <p>No media in this album.</p>
+          <div ref={bodyRef} className={styles.mediaContainer}>
+            {album?.media && album.media.length > 0 ? (
+              album?.media.map((media, index) =>
+                isVideo(media.url) ? (
+                  videoComponent(media, index)
+                ) : (
+                  <img src={media.url} alt="" key={index} />
+                )
+              )
+            ) : (
+              <div>No media available</div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );

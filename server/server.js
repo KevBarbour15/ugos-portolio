@@ -16,9 +16,7 @@ app.get("/", (req, res) => {
 const mediaRoutes = require("./routes/media");
 const albumRoutes = require("./routes/albums");
 const authRoutes = require("./routes/auth");
-const landingRoutes = require("./routes/landing");
 
-app.use("/landing", landingRoutes);
 app.use("/media", mediaRoutes);
 app.use("/albums", albumRoutes);
 app.use("/auth", authRoutes);

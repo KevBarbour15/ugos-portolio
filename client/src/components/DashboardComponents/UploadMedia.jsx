@@ -7,8 +7,8 @@ import { toast } from "react-toastify";
 
 function UploadMedia() {
   const [albums, setAlbums] = useState([]);
-  const [selectedAlbum, setSelectedAlbum] = useState(null);
-  const [file, setFile] = useState(null);
+  const [selectedAlbum, setSelectedAlbum] = useState("");
+  const [file, setFile] = useState("");
   const [progress, setProgress] = useState(0);
   const [isPhoto, setIsPhoto] = useState(true);
 
@@ -75,11 +75,10 @@ function UploadMedia() {
     try {
       const res = await axios.post("/media/upload", data, config);
       
-      console.log(res);
       setProgress(100);
       setTimeout(() => {
         setProgress(0);
-        setFile(null);
+        setFile("");
       }, 1500);
     } catch (error) {
       console.error(

@@ -55,9 +55,6 @@ router.post(
         url: publicUrl,
       };
 
-      console.log(req.body);
-
-
       // Validate `album` before adding it to `mediaData`
       if (mongoose.isValidObjectId(req.body.album)) {
         mediaData.album = req.body.album;
@@ -75,9 +72,6 @@ router.post(
           const album = await Album.findById(mediaData.album);
           if (album) {
             album.media.push(media._id);
-            if (!album.albumCover) {
-              album.albumCover = media._id;
-            }
             await album.save();
           } else {
             console.log(`No album with id: ${mediaData.album} found`);

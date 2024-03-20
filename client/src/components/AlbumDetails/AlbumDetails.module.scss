@@ -58,21 +58,20 @@
 .mediaContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 35%;
-  height: 100%;
-  margin: 30px 0;
+  min-height: calc(100vh - 180px - 55px);
+  padding: 30px 0;
 }
 
-.galleryImage img {
+.galleryImage img,
+.galleryImage video {
   width: 100%;
   height: auto;
-  object-fit: cover;
   transition: transform 0.3s ease;
   border: 1px solid rgba(25, 25, 26, 1);
-  margin: 15px 0;
   cursor: pointer;
+  margin: 15px 0;
 }
 
 .ril__toolbar {
