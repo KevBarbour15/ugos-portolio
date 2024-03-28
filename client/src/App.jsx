@@ -9,6 +9,11 @@ import About from "./pages/About/About";
 import AuthContext from "./context/AuthContext";
 import "./App.scss";
 
+// GSAP animations
+import gsap from "gsap";
+import { ScrambleTextPlugin } from "gsap/all";
+gsap.registerPlugin(ScrambleTextPlugin);
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
