@@ -3,8 +3,13 @@ import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import styles from "./AlbumDetails.module.scss";
+
+// Animation imports
 import useFadeIn from "../../animations/useFadeIn";
 import useAnimateImages from "../../animations/useAnimateImages";
+import useScramble from "../../animations/useScramble";
+
+// Loader imports
 import MoonLoader from "react-spinners/MoonLoader";
 
 const PhotoAlbumDetails = ({ id }) => {
@@ -14,6 +19,8 @@ const PhotoAlbumDetails = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const minLoadingTime = 250;
 
@@ -24,8 +31,8 @@ const PhotoAlbumDetails = ({ id }) => {
   const galleryImagesRef = useRef([]);
 
   useFadeIn(shouldAnimate, headerRef, 0.5, 0.75, 0);
-  useFadeIn(shouldAnimate, titleRef, 0.5, 0.75, -25);
-  useFadeIn(shouldAnimate, infoRef, 0.5, 0.75, 25);
+  useScramble(shouldAnimate, titleRef, 0.75, 1.25, title);
+  useScramble(shouldAnimate, infoRef, 0.75, 1.25, description);
   useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75, 0);
   useAnimateImages(shouldAnimate, galleryImagesRef);
 
@@ -44,14 +51,17 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   const fetchAlbum = async () => {
-    setIsLoading(true); 
+    setIsLoading(true);
     setMinLoadTimePassed(false);
     setShouldAnimate(false);
     galleryImagesRef.current = [];
     try {
       const response = await axios.get(`/albums/${id}`);
-      
+
       const albumData = response.data;
+
+      setTitle(albumData.title);
+      setDescription(albumData.description);
 
       const preloadedImages = await Promise.all(
         albumData.media.map((media) => preloadImage(media.url))
@@ -76,7 +86,7 @@ const PhotoAlbumDetails = ({ id }) => {
   };
 
   useEffect(() => {
-    console.log("id: ", id )
+    console.log("id: ", id);
     fetchAlbum();
   }, [id]);
 
@@ -103,10 +113,10 @@ const PhotoAlbumDetails = ({ id }) => {
           <div ref={headerRef} className={styles.albumHeader}>
             <div className={styles.albumInfoWrapper}>
               <h2 ref={titleRef} className={styles.albumTitle}>
-                {album?.title}
+                {title}
               </h2>
               <p ref={infoRef} className={styles.albumInfo}>
-                {album?.description}
+                {description}
               </p>
             </div>
           </div>

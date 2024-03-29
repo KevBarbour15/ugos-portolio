@@ -3,8 +3,13 @@ import axios from "../../axiosConfig";
 import ReactPlayer from "react-player";
 import styles from "./AlbumDetails.module.scss";
 import isVideo from "../../helpers/video";
+
+// Animation imports
 import useFadeIn from "../../animations/useFadeIn";
 import useAnimateImages from "../../animations/useAnimateImages";
+import useScramble from "../../animations/useScramble";
+
+// Loader imports
 import MoonLoader from "react-spinners/MoonLoader";
 
 const VideoAlbumDetails = ({ id }) => {
@@ -13,6 +18,9 @@ const VideoAlbumDetails = ({ id }) => {
   const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [videosReadyCount, setVideosReadyCount] = useState(0);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   const minLoadingTime = 250;
 
   const headerRef = useRef(null);
@@ -22,14 +30,16 @@ const VideoAlbumDetails = ({ id }) => {
   const galleryVideosRef = useRef([]);
 
   useFadeIn(shouldAnimate, headerRef, 0.25, 0.5, 0);
-  useFadeIn(shouldAnimate, titleRef, 0.25, 0.5, -25);
-  useFadeIn(shouldAnimate, infoRef, 0.25, 0.5, 25);
+  useScramble(shouldAnimate, titleRef, 0.75, 1.25, title);
+  useScramble(shouldAnimate, infoRef, 0.75, 1.25, description);
   useFadeIn(shouldAnimate, bodyRef, 0.5, 0.5, 0);
   useAnimateImages(shouldAnimate, galleryVideosRef);
 
   const fetchAlbum = async () => {
     try {
       const response = await axios.get(`/albums/${id}`);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
       setAlbum(response.data);
     } catch (error) {
       console.error("Could not fetch album", error);
@@ -52,7 +62,11 @@ const VideoAlbumDetails = ({ id }) => {
   }, [minLoadTimePassed, videosReadyCount, album]);
 
   const videoComponent = (media, index) => (
-    <div ref={(el) => (galleryVideosRef.current[index] = el)} key={index} className={styles.galleryImage}>
+    <div
+      ref={(el) => (galleryVideosRef.current[index] = el)}
+      key={index}
+      className={styles.galleryImage}
+    >
       <ReactPlayer
         url={media.url}
         controls={true}
@@ -84,10 +98,10 @@ const VideoAlbumDetails = ({ id }) => {
           <div ref={headerRef} className={styles.albumHeader}>
             <div className={styles.albumInfoWrapper}>
               <h2 ref={titleRef} className={styles.albumTitle}>
-                {album?.title}
+                {title}
               </h2>
               <p ref={infoRef} className={styles.albumInfo}>
-                {album?.description}
+                {description}
               </p>
             </div>
           </div>
