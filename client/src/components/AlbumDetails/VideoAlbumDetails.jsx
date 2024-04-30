@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "../../axiosConfig";
+import "./AlbumDetails.scss";
+
+// video imports
 import ReactPlayer from "react-player";
-import styles from "./AlbumDetails.module.scss";
 import isVideo from "../../helpers/video";
 
 // Animation imports
@@ -65,7 +67,7 @@ const VideoAlbumDetails = ({ id }) => {
     <div
       ref={(el) => (galleryVideosRef.current[index] = el)}
       key={index}
-      className={styles.galleryImage}
+      className="galleryImage"
     >
       <ReactPlayer
         url={media.url}
@@ -81,9 +83,9 @@ const VideoAlbumDetails = ({ id }) => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className="albumContainer">
       {isLoading && (
-        <div className={styles.loadingContainer}>
+        <div className="loadingContainer">
           <MoonLoader
             color={"black"}
             loading={true}
@@ -95,17 +97,17 @@ const VideoAlbumDetails = ({ id }) => {
 
       {album && (
         <>
-          <div ref={headerRef} className={styles.albumHeader}>
-            <div className={styles.albumInfoWrapper}>
-              <h2 ref={titleRef} className={styles.albumTitle}>
+          <div ref={headerRef} className="albumHeader">
+            <div className="albumInfoWrapper">
+              <h2 ref={titleRef} className="albumTitle">
                 {title}
               </h2>
-              <p ref={infoRef} className={styles.albumInfo}>
+              <p ref={infoRef} className="albumInfo">
                 {description}
               </p>
             </div>
           </div>
-          <div ref={bodyRef} className={styles.mediaContainer}>
+          <div ref={bodyRef} className="mediaContainer">
             {album?.media && album.media.length > 0 ? (
               album?.media.map((media, index) =>
                 isVideo(media.url) ? (

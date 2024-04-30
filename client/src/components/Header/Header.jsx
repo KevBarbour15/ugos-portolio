@@ -40,10 +40,10 @@ const Header = () => {
   const fetchAlbums = async () => {
     try {
       const res = await axios.get("/albums");
-      
+
       const photoAlbums = res.data.filter((album) => album.photo);
       const videoAlbums = res.data.filter((album) => !album.photo);
-  
+
       setPhotoAlbums(photoAlbums);
       setVideoAlbums(videoAlbums);
     } catch (error) {
@@ -61,7 +61,7 @@ const Header = () => {
         <div className={styles.headerNavContainer}>
           <div className={styles.headerTitleContainer}>
             <Link className={styles.headerTitle} to="/">
-              swelly sensei
+              swelly studio
             </Link>
           </div>
           <div className={styles.headerLinksContainer}>
@@ -92,7 +92,6 @@ const Header = () => {
                 <Link
                   to={`/photo-collection/${album._id}`}
                   key={album._id}
-                  
                   className={styles.dropdownLink}
                   onClick={toggleBoth}
                 >
@@ -103,7 +102,7 @@ const Header = () => {
           </div>
         </div>
       )}
-      
+
       {isVideoDropdownOpen && (
         <div ref={menuRef} className={styles.dropdownContainer}>
           <div className={styles.dropdownNavContainer}>

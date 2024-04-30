@@ -2,12 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import axios from "../../axiosConfig";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
-import styles from "./AlbumDetails.module.scss";
+import "./AlbumDetails.scss";
 
 // Animation imports
 import useFadeIn from "../../animations/useFadeIn";
 import useAnimateImages from "../../animations/useAnimateImages";
 import useScramble from "../../animations/useScramble";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 // Loader imports
 import MoonLoader from "react-spinners/MoonLoader";
@@ -24,6 +26,20 @@ const PhotoAlbumDetails = ({ id }) => {
 
   const minLoadingTime = 250;
 
+  useGSAP(() => {
+    gsap.from(".galleryImage", {
+      scrollTrigger: {
+        trigger: ".galleryImage",
+        start: "top 50%",
+        end: "top 40%",
+        scrub: 1,
+      },
+      delay: 0.25,
+      opacity: 0,
+      x: -30,
+    });
+  });
+
   const headerRef = useRef(null);
   const titleRef = useRef(null);
   const infoRef = useRef(null);
@@ -34,7 +50,6 @@ const PhotoAlbumDetails = ({ id }) => {
   useScramble(shouldAnimate, titleRef, 0.75, 1.25, title);
   useScramble(shouldAnimate, infoRef, 0.75, 1.25, description);
   useFadeIn(shouldAnimate, bodyRef, 0.5, 0.75, 0);
-  useAnimateImages(shouldAnimate, galleryImagesRef);
 
   const preloadImage = (url) => {
     return new Promise((resolve, reject) => {
@@ -98,9 +113,9 @@ const PhotoAlbumDetails = ({ id }) => {
   }, [minLoadTimePassed]);
 
   return (
-    <div className={styles.container}>
+    <div className="albumContainer">
       {isLoading ? (
-        <div className={styles.loadingContainer}>
+        <div className="loadingContainer">
           <MoonLoader
             color={"black"}
             loading={true}
@@ -110,17 +125,17 @@ const PhotoAlbumDetails = ({ id }) => {
         </div>
       ) : (
         <>
-          <div ref={headerRef} className={styles.albumHeader}>
-            <div className={styles.albumInfoWrapper}>
-              <h2 ref={titleRef} className={styles.albumTitle}>
+          <div ref={headerRef} className="albumHeader">
+            <div className="albumInfoWrapper">
+              <h2 ref={titleRef} className="albumTitle">
                 {title}
               </h2>
-              <p ref={infoRef} className={styles.albumInfo}>
+              <p ref={infoRef} className="albumInfo">
                 {description}
               </p>
             </div>
           </div>
-          <div ref={bodyRef} className={styles.mediaContainer}>
+          <div ref={bodyRef} className="mediaContainer">
             {album.media.map((media, index) => (
               <div
                 key={index}
@@ -129,7 +144,7 @@ const PhotoAlbumDetails = ({ id }) => {
                   setIsOpen(true);
                 }}
               >
-                <div className={styles.galleryImage}>
+                <div className="galleryImage">
                   <img
                     ref={(el) => (galleryImagesRef.current[index] = el)}
                     src={media.url}

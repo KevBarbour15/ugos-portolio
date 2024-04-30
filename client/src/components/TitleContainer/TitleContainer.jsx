@@ -39,9 +39,11 @@ const TitleContainer = ({ title, view, description }) => {
 
   return (
     <div className={styles.titleContainer}>
-      <div  className={styles.titleInfoWrapper}>
-        <span ref={titleRef} className={styles.title}>{title}</span>
-        <Link to="https://swellysensei.onrender.com/photo-collection/65ea095ece2462fa93b3694b">
+      <div className={styles.titleInfoWrapper}>
+        <span ref={titleRef} className={styles.title}>
+          {title}
+        </span>
+        <Link to="https://swellystudio.com/photo-collection/65ea095ece2462fa93b3694b">
           <a ref={viewRef} className={styles.view}>
             {view}
           </a>

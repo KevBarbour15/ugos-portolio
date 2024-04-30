@@ -11,8 +11,9 @@ import "./App.scss";
 
 // GSAP animations
 import gsap from "gsap";
-import { ScrambleTextPlugin } from "gsap/all";
-gsap.registerPlugin(ScrambleTextPlugin);
+import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+gsap.registerPlugin(ScrambleTextPlugin, ScrollTrigger);
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
