@@ -6,13 +6,16 @@ body {
   min-height: 100vh;
   width: 100%;
   background-color: rgba(235, 234, 230, 1);
-}
 
-input,
-select,
-textarea,
-button,
-option {
-  -webkit-appearance: none;
-  appearance: none;
+  
+  // remove border radius for uniform styling
+  input,
+  select,
+  textarea,
+  button,
+  option {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0px;
+  }
 }
