@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "../../axiosConfig";
 import styles from "../../pages/Dashboard/Dashboard.module.scss";
+
+import useFadeIn from "../../animations/useFadeIn";
 
 const CreateAlbum = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedOption, setSelectedOption] = useState("photo");
+  const containerRef = useRef(null);
+
+  useFadeIn(true, containerRef, 0, 0.75, 0);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +53,7 @@ const CreateAlbum = () => {
   };
 
   return (
-    <div className={styles.dashContainer}>
+    <div ref={containerRef} className={styles.dashContainer}>
       <div className={styles.photoVideoSwitch}>
         <span className={styles.labelText}>photo</span>
         <input

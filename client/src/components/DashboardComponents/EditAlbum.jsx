@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "../../axiosConfig";
 import styles from "../../pages/Dashboard/Dashboard.module.scss";
 import isVideo from "../../helpers/video";
 import { toast } from "react-toastify";
+
+import useFadeIn from "../../animations/useFadeIn";
 
 const EditAlbum = () => {
   const [albums, setAlbums] = useState([]);
@@ -12,6 +14,9 @@ const EditAlbum = () => {
   const [media, setMedia] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedUrl, setSelectedUrl] = useState("");
+  const containerRef = useRef(null);
+
+  useFadeIn(true, containerRef, 0, 0.75, 0);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -177,7 +182,6 @@ const EditAlbum = () => {
       );
 
       if (response.status === 200) {
-        
         setMedia(media.filter((m) => m._id !== selectedImage));
         setSelectedImage("");
       }
@@ -187,7 +191,7 @@ const EditAlbum = () => {
   };
 
   return (
-    <div className={styles.dashContainer}>
+    <div ref={containerRef} className={styles.dashContainer}>
       <form onSubmit={handleUpdateTitle} className={styles.dashForm}>
         <label className={styles.dashLabel}>select album to edit:</label>
         <select onChange={handleSelectAlbum} className={styles.dashSelect}>

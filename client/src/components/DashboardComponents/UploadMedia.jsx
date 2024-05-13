@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "../../axiosConfig";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../pages/Dashboard/Dashboard.module.scss";
 import { toast } from "react-toastify";
+
+import useFadeIn from "../../animations/useFadeIn";
 
 function UploadMedia() {
   const [albums, setAlbums] = useState([]);
@@ -11,6 +13,9 @@ function UploadMedia() {
   const [file, setFile] = useState("");
   const [progress, setProgress] = useState(0);
   const [isPhoto, setIsPhoto] = useState(true);
+  const containerRef = useRef(null);
+
+  useFadeIn(true, containerRef, 0, 0.75, 0);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -19,7 +24,7 @@ function UploadMedia() {
         (album) => album.photo === isPhoto
       );
       setAlbums(filteredAlbums);
-      if(filteredAlbums.length > 0) {
+      if (filteredAlbums.length > 0) {
         setSelectedAlbum(filteredAlbums[0]._id);
       }
     };
@@ -74,7 +79,7 @@ function UploadMedia() {
     setProgress(50);
     try {
       const res = await axios.post("/media/upload", data, config);
-      
+
       setProgress(100);
       setTimeout(() => {
         setProgress(0);
@@ -90,7 +95,7 @@ function UploadMedia() {
   };
 
   return (
-    <div className={styles.dashContainer}>
+    <div ref={containerRef} className={styles.dashContainer}>
       <div className={styles.photoVideoSwitch}>
         <span className={styles.labelText}>photo</span>
         <input
@@ -123,8 +128,7 @@ function UploadMedia() {
             </option>
           ))}
         </select>
-        
-    
+
         <input
           className={styles.dashUploadInput}
           type="file"
