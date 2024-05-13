@@ -16,21 +16,21 @@ const TitleContainer = ({ title, view, description }) => {
 
   useGSAP(() => {
     gsap.from(titleRef.current, {
-      duration: 0.75,
+      duration: 1,
       delay: 0.25,
       opacity: 0,
       scrambleText: { text: title },
     });
 
     gsap.from(descRef.current, {
-      duration: 0.75,
+      duration: 1,
       delay: 0.25,
       opacity: 0,
       scrambleText: { text: description },
     });
 
     gsap.from(viewRef.current, {
-      duration: 0.75,
+      duration: 1,
       delay: 0.25,
       opacity: 0,
       scrambleText: { text: view },

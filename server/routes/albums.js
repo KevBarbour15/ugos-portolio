@@ -3,7 +3,6 @@ const Album = require("../schemas/album");
 const Media = require("../schemas/media");
 const verifyToken = require("../middleware");
 const router = express.Router();
-const mongoose = require("mongoose");
 
 router.post("/", verifyToken, async (req, res) => {
   try {
@@ -31,7 +30,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  console.log("Hit this route");
   try {
     const album = await Album.findById(req.params.id).populate("media");
     console.log("album: ", album);

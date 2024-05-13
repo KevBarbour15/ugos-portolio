@@ -6,7 +6,6 @@ import "./AlbumDetails.scss";
 
 // Animation imports
 import useFadeIn from "../../animations/useFadeIn";
-import useAnimateImages from "../../animations/useAnimateImages";
 import useScramble from "../../animations/useScramble";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

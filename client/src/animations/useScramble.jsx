@@ -14,7 +14,7 @@ const useScramble = (shouldAnimate, ref, delay, duration, text) => {
         clearProps: "all",
       });
     }
-  }, [shouldAnimate, ref, delay, duration]);
+  }, [shouldAnimate, ref, delay, duration, text]);
 };
 
 export default useScramble;
