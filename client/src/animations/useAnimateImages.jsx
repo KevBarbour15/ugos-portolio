@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const useAnimateImages = (shouldAnimate, elementsRef) => {
   useEffect(() => {

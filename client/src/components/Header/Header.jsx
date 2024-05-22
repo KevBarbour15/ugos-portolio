@@ -3,32 +3,59 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import axios from "../../axiosConfig";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Header = () => {
   const [isPhotoDropdownOpen, setPhotoDropdownOpen] = useState(false);
   const [isVideoDropdownOpen, setVideoDropdownOpen] = useState(false);
   const [photoAlbums, setPhotoAlbums] = useState([]);
   const [videoAlbums, setVideoAlbums] = useState([]);
-  const menuRef = useRef(null);
+  const photoMenuRef = useRef(null);
+  const videoMenuRef = useRef(null);
 
-  useEffect(() => {
-    if (isPhotoDropdownOpen || isVideoDropdownOpen) {
-      gsap.to(menuRef.current, {
-        autoAlpha: 1,
+  useGSAP(() => {
+    if (isPhotoDropdownOpen) {
+      gsap.to(photoMenuRef.current, {
+        duration: 0.5,
         y: 0,
-        duration: 0.25,
-        ease: "sine.inout",
+      });
+    } else {
+      gsap.to(photoMenuRef.current, {
+        duration: 0.5,
+        y: -60,
       });
     }
-  }, [isPhotoDropdownOpen, isVideoDropdownOpen]);
+  }, [isPhotoDropdownOpen]);
+
+  useGSAP(() => {
+    if (isVideoDropdownOpen) {
+      gsap.to(videoMenuRef.current, {
+        duration: 0.5,
+        y: 0,
+      });
+    } else {
+      gsap.to(videoMenuRef.current, {
+        duration: 0.5,
+        y: -60,
+      });
+    }
+  }, [isVideoDropdownOpen]);
 
   const togglePhotoDropdown = () => {
-    setPhotoDropdownOpen(!isPhotoDropdownOpen);
+    if (isPhotoDropdownOpen) {
+      setPhotoDropdownOpen(false);
+    } else {
+      setPhotoDropdownOpen(true);
+    }
     if (isVideoDropdownOpen) setVideoDropdownOpen(false);
   };
 
   const toggleVideoDropdown = () => {
-    setVideoDropdownOpen(!isVideoDropdownOpen);
+    if (isVideoDropdownOpen) {
+      setVideoDropdownOpen(false);
+    } else {
+      setVideoDropdownOpen(true);
+    }
     if (isPhotoDropdownOpen) setPhotoDropdownOpen(false);
   };
 
@@ -65,15 +92,6 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles.headerLinksContainer}>
-            {/*}
-            <Link
-              to="/About"
-              onClick={toggleBoth}
-              className={styles.headerLink}
-            >
-              about me
-            </Link>
-            */}
             <button onClick={togglePhotoDropdown} className={styles.headerLink}>
               photo collections
             </button>
@@ -84,43 +102,49 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {isPhotoDropdownOpen && (
-        <div ref={menuRef} className={styles.dropdownContainer}>
-          <div className={styles.dropdownNavContainer}>
-            <div className={styles.dropdownLinks}>
-              {photoAlbums.map((album, idx) => (
-                <Link
-                  to={`/photo-collection/${album._id}`}
-                  key={album._id}
-                  className={styles.dropdownLink}
-                  onClick={toggleBoth}
-                >
-                  photo collection {idx + 1}
-                </Link>
-              ))}
-            </div>
+      <div
+        ref={photoMenuRef}
+        className={`${styles.dropdownContainer} ${
+          isPhotoDropdownOpen ? styles.visible : styles.hidden
+        }`}
+      >
+        <div className={styles.dropdownNavContainer}>
+          <div className={styles.dropdownLinks}>
+            {photoAlbums.map((album, idx) => (
+              <Link
+                to={`/photo-collection/${album._id}`}
+                key={album._id}
+                className={styles.dropdownLink}
+                onClick={toggleBoth}
+              >
+                photo collection {idx + 1}
+              </Link>
+            ))}
           </div>
         </div>
-      )}
+      </div>
 
-      {isVideoDropdownOpen && (
-        <div ref={menuRef} className={styles.dropdownContainer}>
-          <div className={styles.dropdownNavContainer}>
-            <div className={styles.dropdownLinks}>
-              {videoAlbums.map((album, idx) => (
-                <Link
-                  to={`/video-collection/${album._id}`}
-                  key={album._id}
-                  className={styles.dropdownLink}
-                  onClick={toggleBoth}
-                >
-                  video collection {idx + 1}
-                </Link>
-              ))}
-            </div>
+      <div
+        ref={videoMenuRef}
+        className={`${styles.dropdownContainer} ${
+          isVideoDropdownOpen ? styles.visible : styles.hidden
+        }`}
+      >
+        <div className={styles.dropdownNavContainer}>
+          <div className={styles.dropdownLinks}>
+            {videoAlbums.map((album, idx) => (
+              <Link
+                to={`/video-collection/${album._id}`}
+                key={album._id}
+                className={styles.dropdownLink}
+                onClick={toggleBoth}
+              >
+                video collection {idx + 1}
+              </Link>
+            ))}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
