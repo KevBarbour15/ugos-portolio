@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      //navigate("/PhotoAlbums");
+      navigate("/");
     }
   }, [isAuthenticated, navigate]);
 
